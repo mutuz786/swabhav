@@ -1,37 +1,40 @@
 package com.techlabs.basic;
 
-public class WelcomeTest {
+public class OverloadingTest {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
+		
 		System.err.println("Hello");
 		System.err.println(false);
 		System.err.println("fbi");
 		System.err.println(12342.3232);
 		System.err.println(5.6f);
 		
-		printinfo("Hello");
-		printinfo(10.5);
-		printinfo(10.5f);
-		printinfo(true);
-		printinfo('g');
+		printInfo("Hello");
+		printInfo(10.5);
+		printInfo(10.5f);
+		printInfo(true);
+		printInfo('g');
+		
 	}
-	static void printinfo(String str)
+	static void printInfo(String str)
 	{
 		System.out.println(str);
 	}
-	static void printinfo(char ch)
+	static void printInfo(char ch)
 	{
 		System.out.println(ch);
 	}
-	static void printinfo(float fnum)
+	static void printInfo(float fnum)
 	{
 		System.out.println(fnum);
 	}
-	static void printinfo(double dnum)
+	static void printInfo(double dnum)
 	{
 		System.out.println(dnum);
 	}
-	static void printinfo(boolean is)
+	static void printInfo(boolean is)
 	{
 		System.out.println(is);
 	}
