@@ -3,7 +3,8 @@ package Assisnments;
 public class UrlExtractionTest {
 	public static void main(String[] args)
 	{
-		String link="http://www.swabhavtechlabs.com?role=designer&developer=murtaza&";
+		String link=" ";
+		//String link="http://www.swabhavtechlabs.com?role=designer&developer=murtaza&";
 		//String link="http://www.swabhavtechlabs.com?developer=murtaza";
 		//String link="http://www.swabhavtechlabs.com";
 		String company,developer,role;
