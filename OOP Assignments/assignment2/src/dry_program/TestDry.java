@@ -12,25 +12,24 @@ public class TestDry {
 			Scanner scan = new Scanner(System.in);
 			System.out.print("Student Name:");
 			names[i] = scan.nextLine();
-			
-			while(true) {
+
+			while (true) {
 				System.out.print("Total Marks(out of 500):");
-				int proxyCheck=scan.nextInt();
-				if(proxyCheck>0 && proxyCheck<=500) {
-					marks[i]=proxyCheck;
+				int proxyCheck = scan.nextInt();
+				if (proxyCheck > 0 && proxyCheck <= 500) {
+					marks[i] = proxyCheck;
 					break;
-				}
-				else
+				} else
 					System.out.println("Enter correct Info");
 			}
-			
+
 			percentage[i] = (float) (marks[i] * 0.20);
 			System.out.print("Percentage:" + percentage[i] + "\n");
 		}
 		for (int i = 0; i < 5; i++) {
-			System.out.println("Name:"+names[i]);
-			System.out.println("Marks:"+marks[i]+"/500");
-			System.out.println("Percentage"+percentage[i]);
+			System.out.println("Name:" + names[i]);
+			System.out.println("Marks:" + marks[i] + "/500");
+			System.out.println("Percentage" + percentage[i]);
 		}
 
 	}
