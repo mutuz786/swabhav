@@ -33,14 +33,23 @@ class Student {
 
 	public static void getName() {
 		System.out.println("Student Name:");
-		Scanner obj = new Scanner(System.in);
-		name = obj.nextLine();
+		Scanner scan = new Scanner(System.in);
+		name = scan.nextLine();
 	}
 
 	public static void getMarks() {
-		System.out.println("Total Marks(out of 500):");
-		Scanner obj = new Scanner(System.in);
-		marks = obj.nextInt();
+		Scanner scan = new Scanner(System.in);
+		while(true) {
+			System.out.println("Total Marks(out of 500):");
+			int proxyCheck=scan.nextInt();
+			if(proxyCheck>0 && proxyCheck<=500) {
+				marks=proxyCheck;
+				break;
+			}
+			else
+				System.out.println("Enter correct Info");
+		}
+		
 	}
 
 	public static void setDetails() {
