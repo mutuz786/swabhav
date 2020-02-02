@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class TestMagicNumber {
 	public static void main(String[] args) {
-		//int sum,number2;
 		System.out.println("Enter the number:");
 		Scanner scan=new Scanner(System.in);
 		int number1=scan.nextInt();
@@ -19,7 +18,6 @@ public class TestMagicNumber {
 				break;
 			sum+=(number%10);
 			number=number/10;
-			//System.out.println(sum+" "+number);
 		}
 		if(sum>9)
 			getResult(sum);
