@@ -6,8 +6,8 @@ public class TestMagicNumber {
 	public static void main(String[] args) {
 		System.out.println("Enter the number:");
 		Scanner scan=new Scanner(System.in);
-		int number1=scan.nextInt();
-		getResult(number1);
+		int number=scan.nextInt();
+		getResult(number);
 	}
 
 	private static void getResult(int number1) {
