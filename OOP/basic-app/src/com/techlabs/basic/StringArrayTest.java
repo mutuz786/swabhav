@@ -1,8 +1,7 @@
 package com.techlabs.basic;
 
 public class StringArrayTest {
-	public static void main(String[] args) {
-		String[] names = { "Murtazatt", "pawan", "pawan", "tejashree", "shejal", "tanmay", "jay", "vinit", "prasad" };
+	public static void main(String[] names) {
 		String[] namesWithA = new String[9];
 		String[] namesWithMax = new String[9];
 		int index1 = 0, max = 0, index2 = 0, maxNames = 0;

@@ -18,15 +18,15 @@ public class OverloadingTest {
 		printInfo('g');
 		
 	}
-	static void printInfo(String str)
+	private static void printInfo(String str)
 	{
 		System.out.println(str);
 	}
-	static void printInfo(char ch)
+	private static void printInfo(char ch)
 	{
 		System.out.println(ch);
 	}
-	static void printInfo(float fnum)
+	private static void printInfo(float fnum)
 	{
 		System.out.println(fnum);
 	}
