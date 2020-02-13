@@ -36,3 +36,53 @@ public class ClassReflectionTest {
 		}
 }
 //           java.lang.String
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.lang.reflect.Method;  
+import java.util.Scanner;
+public class Demo
+{  
+public static void main(String[] args)  
+{  
+System.out.println("Enter The Directory:");
+Scanner scan = new Scanner(System.in);
+String directory=scan.nextLine();
+try   
+{  
+Class<?> cls = Class.forName(directory);  
+System.out.println("Class Name: " + cls.getName());  
+System.out.println("Package Name: " + cls.getPackage());  
+Method[] methods = cls.getDeclaredMethods();  
+System.out.println("-----Methods of String class -------------");  
+for (Method method : methods)   
+{  
+System.out.println(method.getName());  
+}  
+}  
+catch (ClassNotFoundException e)   
+{  
+e.printStackTrace();  
+}  
+}  
+} 
