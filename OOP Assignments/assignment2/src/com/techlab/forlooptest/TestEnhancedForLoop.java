@@ -1,4 +1,4 @@
-package for_loop_program;
+package com.techlab.forlooptest;
 
 public class TestEnhancedForLoop {
 	public static void main(String[] args) {

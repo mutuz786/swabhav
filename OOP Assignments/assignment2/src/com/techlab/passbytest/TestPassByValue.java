@@ -1,4 +1,4 @@
-package passby_program;
+package com.techlab.passbytest;
 
 public class TestPassByValue {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package dry_program;
+package com.techlab.drytest;
 
 import java.util.Scanner;
 

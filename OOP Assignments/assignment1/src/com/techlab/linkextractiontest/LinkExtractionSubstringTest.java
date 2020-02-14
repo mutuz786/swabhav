@@ -1,6 +1,6 @@
-package Assisnments;
+package com.techlab.linkextractiontest;
 
-public class UrlExtractionSubstringTest {
+public class LinkExtractionSubstringTest {
 	//static String link="http://www.swabhavtechlabs.com";
 	static String link="http://www.swabhavtechlabs.com?developer=murtaza";
 	//static String link = "http://www.aurionpro.com?developer=murtaza&role=designer";

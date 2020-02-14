@@ -1,4 +1,4 @@
-package reflection_program;
+package com.techlab.reflectiontest;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

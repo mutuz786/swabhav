@@ -1,6 +1,6 @@
-package Assisnments;
+package com.techlab.linkextractiontest;
 
-public class UrlExtractionTest {
+public class LinkExtractionTest {
 	public static void main(String[] args)
 	{
 		String link=" ";

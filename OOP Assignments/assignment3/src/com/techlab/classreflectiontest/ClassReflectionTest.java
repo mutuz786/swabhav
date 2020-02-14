@@ -2,7 +2,6 @@ package com.techlab.classreflectiontest;
 
 import java.util.Scanner;
 import java.lang.reflect.*;
-//import java.lang.*;
 
 public class ClassReflectionTest {
 	private static Scanner scan;
@@ -10,14 +9,18 @@ public class ClassReflectionTest {
 		System.out.println("Enter the address:");
 		String classDirectory=getDirectory();
 		try   {  
-			Class<?> cls = Class.forName(classDirectory);  
-			System.out.println("Class Name: " + cls.getName());  
-			System.out.println("Package Name: " + cls.getPackage());  
-			Method[] methods = cls.getDeclaredMethods();  
-			System.out.println("-----Methods of String class -------------");  
-			for (Method method : methods)   
-			{  
-				System.out.println(method.getName());  
+			Class<?> classObject = Class.forName(classDirectory);  
+			System.out.println("Class Name:" + classObject.getName());  
+			Method[] methods = classObject.getDeclaredMethods();  
+			System.out.println("Methods of String class:");  
+			for (Method method : methods) {
+				if (isGet(method))
+					System.out.println(method.getName() + "(Getter Method)");
+				else if (isSet(method))
+					System.out.println(method.getName() + "(setter Method)");
+				else
+					System.out.println(method.getName());
+
 			}  
 		}  
 		catch (ClassNotFoundException e)   {  
@@ -25,24 +28,45 @@ public class ClassReflectionTest {
 		}
 	}
 
+	private static boolean isSet(Method method) {
+		if (!(method.getName()).startsWith("set"))
+			return false;
+		if (method.getParameterTypes().length != 1)
+			return false;
+		return true;
+	}
+
+	private static boolean isGet(Method method) {
+		if (!(method.getName()).startsWith("get"))
+			return false;
+		if (method.getReturnType()== null)
+			return false;
+		return true;
+	}
+
 	private static String getDirectory() {
 		scan = new Scanner(System.in);
 		String classDirectory=scan.nextLine();
-		//return getValidDirectory(classDirectory);
-		return classDirectory;
+		return getValidDirectory(classDirectory);
+		//return classDirectory;
 	}
 
 	private static String getValidDirectory(String classDirectory) {
-		String[] splitDirectory;
-		splitDirectory=classDirectory.split(".");
-		String buffer=null;
-		for(int i=0;i<2;i++) {
-			splitDirectory[i]=splitDirectory[i].toLowerCase();
-			buffer=buffer.concat(splitDirectory[i]);
-			System.out.println(buffer);
+		System.out.println("Enter the data:");
+		try (Scanner scan = new Scanner(System.in)) {
+			System.out.println(classDirectory);
+			classDirectory=classDirectory.replace(".", " ");
+			System.out.println(classDirectory);
+			String [] directoryArray=classDirectory.split("\\s");
+			classDirectory="";
+			for(int i=0;i<directoryArray.length-1;i++) {
+				directoryArray[i]=directoryArray[i].toLowerCase();
+				classDirectory=classDirectory+(directoryArray[i]);
+				classDirectory=classDirectory.concat(".");
+			}
+			classDirectory=classDirectory+directoryArray[directoryArray.length-1];
+			System.out.println(classDirectory);
 		}
-		classDirectory=buffer.concat(splitDirectory[splitDirectory.length-1]);
-		System.out.println(classDirectory);
 		return classDirectory;
 	}
 }

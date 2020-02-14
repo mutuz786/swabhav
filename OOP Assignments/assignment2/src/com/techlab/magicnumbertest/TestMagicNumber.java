@@ -1,4 +1,4 @@
-package magic_number_program;
+package com.techlab.magicnumbertest;
 
 import java.util.Scanner;
 

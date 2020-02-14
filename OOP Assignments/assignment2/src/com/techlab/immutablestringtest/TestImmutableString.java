@@ -1,4 +1,4 @@
-package immutable_string_program;
+package com.techlab.immutablestringtest;
 
 public class TestImmutableString {
 	public static void main(String[] args) {
