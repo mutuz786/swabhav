@@ -16,7 +16,7 @@ public class Rectangle {
 	public void changeHeight(int pheight) {
 		if (pheight < 1)
 			height = 1;
-		else if (pheight > 100)
+		else if (pheight > 100) //remove magic numbers 
 			height = 100;
 		else
 			height = pheight;
