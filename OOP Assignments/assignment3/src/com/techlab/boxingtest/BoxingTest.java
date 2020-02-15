@@ -10,7 +10,7 @@ public class BoxingTest {
 		showType(test1);
 		int test2=50;
 		showType(test2);
-		Integer test3=50;
+		Integer test3=(Integer)test2;
 		showType(test3);
 	}
 	static void showType(int number){

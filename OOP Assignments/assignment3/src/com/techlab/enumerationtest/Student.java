@@ -20,6 +20,4 @@ public enum Student{
 	public String getYear(){
 	return year;
 	}
-	
-	
 }

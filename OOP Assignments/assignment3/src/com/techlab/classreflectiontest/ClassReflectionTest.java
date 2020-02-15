@@ -10,7 +10,9 @@ public class ClassReflectionTest {
 		String classDirectory=getDirectory();
 		try   {  
 			Class<?> classObject = Class.forName(classDirectory);  
-			System.out.println("Class Name:" + classObject.getName());  
+			System.out.println("Class Name:" + classObject.getName()); 
+			Constructor[] constructors=classObject.getConstructors();
+			
 			Method[] methods = classObject.getDeclaredMethods();  
 			System.out.println("Methods of String class:");  
 			for (Method method : methods) {
