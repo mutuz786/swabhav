@@ -3,7 +3,7 @@ package com.techlabs.model;
 public class Rectangle {
 	private int width;
 	private int height;
-
+//dry violation in changeWidth and changeHeight
 	public void changeWidth(int pwidth) {
 		if (pwidth < 1)
 			width = 1;
