@@ -6,24 +6,24 @@ public class Rectangle {
 	
 	private int UPPER_LIMIT=100;
 	private int LOWER_LIMIT=1;
+												//dry violation in changeWidth and changeHeight
+	  											//Tried to remove dry but had to change the behaviour of theclass diagram
 	public void changeWidth(int pwidth) {
-		if (pwidth < LOWER_LIMIT)
-			width = LOWER_LIMIT;
-		else if (pwidth > UPPER_LIMIT)
-			width = UPPER_LIMIT;
-		else
-			width = pwidth;
+		width=checkValue(pwidth);
 	}
 
 	public void changeHeight(int pheight) {
-		if (pheight < LOWER_LIMIT)
-			height = LOWER_LIMIT;
-		else if (pheight > UPPER_LIMIT)
-			height = UPPER_LIMIT;
-		else
-			height = pheight;
+		height=checkValue(pheight);
 	}
-
+	
+	private int checkValue(int value) {
+		if (value < LOWER_LIMIT)
+			return LOWER_LIMIT;
+		else if (value > UPPER_LIMIT)
+			return UPPER_LIMIT;
+		return value;
+	}
+	
 	public int readWidth() {
 		return width;
 	}
