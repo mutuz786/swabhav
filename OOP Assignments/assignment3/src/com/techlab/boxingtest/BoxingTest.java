@@ -12,6 +12,16 @@ public class BoxingTest {
 		showType(test2);
 		Integer test3=(Integer)test2;
 		showType(test3);
+		
+		int i1=1;
+		int i2=1;
+		System.out.println(i1==i2);
+		Integer num1=1;
+		int num2=1;
+		System.out.println(num1==num2);
+		Integer one=new Integer(1);
+		Integer anotherOne=new Integer(1);
+		System.out.println(one==anotherOne);
 	}
 	static void showType(int number){
 		System.out.println("int");

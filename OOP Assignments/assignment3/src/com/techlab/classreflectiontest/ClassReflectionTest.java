@@ -50,7 +50,6 @@ public class ClassReflectionTest {
 		scan = new Scanner(System.in);
 		String classDirectory=scan.nextLine();
 		return getValidDirectory(classDirectory);
-		//return classDirectory;
 	}
 
 	private static String getValidDirectory(String classDirectory) {
@@ -72,4 +71,3 @@ public class ClassReflectionTest {
 		return classDirectory;
 	}
 }
-//           java.lang.String

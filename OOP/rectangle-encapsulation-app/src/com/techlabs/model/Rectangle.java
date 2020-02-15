@@ -3,21 +3,23 @@ package com.techlabs.model;
 public class Rectangle {
 	private int width;
 	private int height;
-
+	
+	private int UPPER_LIMIT=100;
+	private int LOWER_LIMIT=1;
 	public void changeWidth(int pwidth) {
-		if (pwidth < 1)
-			width = 1;
-		else if (pwidth > 100)
-			width = 100;
+		if (pwidth < LOWER_LIMIT)
+			width = LOWER_LIMIT;
+		else if (pwidth > UPPER_LIMIT)
+			width = UPPER_LIMIT;
 		else
 			width = pwidth;
 	}
 
 	public void changeHeight(int pheight) {
-		if (pheight < 1)
-			height = 1;
-		else if (pheight > 100)
-			height = 100;
+		if (pheight < LOWER_LIMIT)
+			height = LOWER_LIMIT;
+		else if (pheight > UPPER_LIMIT)
+			height = UPPER_LIMIT;
 		else
 			height = pheight;
 	}
