@@ -5,18 +5,16 @@ import com.techlab.circle.Circle;
 public class CircleTest {
 	public static void main(String[] args) {
 
-		Circle r1 = new Circle();
-		Circle r2 = new Circle();
-		Circle r3 = new Circle();
-		Circle r4 = new Circle();
-		Circle r5 = new Circle();
-
-		Circle[] circles = { r1, r2, r3, r4, r5 };
-
+		Circle[] circles = new Circle[5];
+		circles[0]=new Circle();
 		circles[0].setRadius(5f);
+		circles[1]=new Circle();
 		circles[1].setRadius(10f);
+		circles[2]=new Circle();
 		circles[2].setRadius(2.5f);
+		circles[3]=new Circle();
 		circles[3].setRadius(3f);
+		circles[4]=new Circle();
 		circles[4].setRadius(6f);
 
 		printInfo(circles);
@@ -34,34 +32,39 @@ public class CircleTest {
 	}
 
 	private static Circle findBigPerimeter(Circle[] circles) {
-		return getCircle(circles, "bigperimeter");
+		Circle temp = circles[0];
+		for (Circle circle : circles) {
+			if (circle.calculatePerimeter() > temp.calculatePerimeter())
+				temp = circle;
+		}
+		return temp;
 	}
 	
 	private static Circle findSmallPerimeter(Circle[] circles) {
-		return getCircle(circles, "smallperimeter");
+		Circle temp = circles[0];
+		for (Circle circle : circles) {
+			if (circle.calculatePerimeter() < temp.calculatePerimeter())
+				temp = circle;
+		}
+		return temp;
 	}
 
 	private static Circle findBigCircle(Circle[] circles) {
-		return getCircle(circles, "bigcircle");
+		Circle temp = circles[0];
+		for (Circle circle : circles) {
+			if (circle.getRadius() > temp.getRadius())
+				temp = circle;
+		}
+		return temp;
 	}
 
 	private static Circle findSmallCircle(Circle[] circles) {
-		return getCircle(circles, "smallcircle");
-	}
-
-	private static Circle getCircle(Circle[] circles, String operation) {
-		Circle value = circles[0];
+		Circle temp = circles[0];
 		for (Circle circle : circles) {
-			if (operation == "bigcircle" && circle.getRadius() > value.getRadius())
-				value = circle;
-			if (operation == "smallcircle" && circle.getRadius() < value.getRadius())
-				value = circle;
-			if (operation == "bigperimeter" && circle.calculatePerimeter() > value.calculatePerimeter())
-				value = circle;
-			if (operation == "smallperimeter" && circle.calculatePerimeter() < value.calculatePerimeter())
-				value = circle;
+			if (circle.getRadius() < temp.getRadius())
+				temp = circle;
 		}
-		return value;
+		return temp;
 	}
 
 	private static void printInfo(Circle[] circles) {

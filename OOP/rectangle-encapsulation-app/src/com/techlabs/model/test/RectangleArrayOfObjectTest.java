@@ -2,7 +2,7 @@ package com.techlabs.model.test;
 
 import com.techlabs.model.Rectangle;
 
-public class RectangleArrayTest {
+public class RectangleArrayOfObjectTest {
 	public static void main(String[] args) {
 		Rectangle[] rectangles = new Rectangle[3];
 
