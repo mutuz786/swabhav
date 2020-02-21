@@ -22,35 +22,43 @@ public class CircleTest {
 		printInfo(circles);
 		Circle big = findBigCircle(circles);
 		System.out.println("Largest circle is radius " + big.getRadius());
+		
 		Circle small = findSmallCircle(circles);
 		System.out.println("Smallest circle is radius " + small.getRadius());
-		float bigPerimeter = findBigPerimeter(circles);
-		System.out.println("The biggest circle has perimeter " + bigPerimeter);
+		
+		Circle bigPerimeter = findBigPerimeter(circles);
+		System.out.println("The biggest circle has perimeter " + bigPerimeter.calculatePerimeter());
+		
+		Circle smallPerimeter = findSmallPerimeter(circles);
+		System.out.println("The small circle has perimeter " + smallPerimeter.calculatePerimeter());
 	}
 
-	private static float findBigPerimeter(Circle[] circles) {
-		float value = 0;
-		for (Circle circle : circles) {
-			if (circle.calculatePerimeter() > value)
-				value = circle.calculatePerimeter();
-		}
-		return value;
+	private static Circle findBigPerimeter(Circle[] circles) {
+		return getCircle(circles, "bigperimeter");
+	}
+	
+	private static Circle findSmallPerimeter(Circle[] circles) {
+		return getCircle(circles, "smallperimeter");
 	}
 
 	private static Circle findBigCircle(Circle[] circles) {
-		return getCircle(circles, "big");
+		return getCircle(circles, "bigcircle");
 	}
 
 	private static Circle findSmallCircle(Circle[] circles) {
-		return getCircle(circles, "small");
+		return getCircle(circles, "smallcircle");
 	}
 
 	private static Circle getCircle(Circle[] circles, String operation) {
 		Circle value = circles[0];
 		for (Circle circle : circles) {
-			if (operation == "big" && circle.getRadius() > value.getRadius())
+			if (operation == "bigcircle" && circle.getRadius() > value.getRadius())
 				value = circle;
-			if (operation == "small" && circle.getRadius() < value.getRadius())
+			if (operation == "smallcircle" && circle.getRadius() < value.getRadius())
+				value = circle;
+			if (operation == "bigperimeter" && circle.calculatePerimeter() > value.calculatePerimeter())
+				value = circle;
+			if (operation == "smallperimeter" && circle.calculatePerimeter() < value.calculatePerimeter())
 				value = circle;
 		}
 		return value;
