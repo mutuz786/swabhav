@@ -8,7 +8,7 @@ public class TestBox {
 		t.go();
 	}
 	private void go() {
-		j=i;
+		//j=i;
 		System.out.println(i);
 		System.out.println(j);
 	}

@@ -6,6 +6,7 @@ public class CircleTest {
 	public static void main(String[] args) {
 
 		Circle[] circles = new Circle[5];
+		//System.out.println(circles[0]);
 		circles[0]=new Circle();
 		circles[0].setRadius(5f);
 		circles[1]=new Circle();
