@@ -18,17 +18,14 @@ public class CircleTest {
 		circles[4].setRadius(6f);
 
 		printInfo(circles);
-		Circle big = findBigCircle(circles);
-		System.out.println("Largest circle is radius " + big.getRadius());
-		
-		Circle small = findSmallCircle(circles);
-		System.out.println("Smallest circle is radius " + small.getRadius());
-		
-		Circle bigPerimeter = findBigPerimeter(circles);
-		System.out.println("The biggest circle has perimeter " + bigPerimeter.calculatePerimeter());
-		
-		Circle smallPerimeter = findSmallPerimeter(circles);
-		System.out.println("The small circle has perimeter " + smallPerimeter.calculatePerimeter());
+		System.out.println("Largest circle is radius " + findBigCircle(circles).getRadius());
+		System.out.println("Smallest circle is radius " + findSmallCircle(circles).getRadius());
+		System.out.println("The biggest circle has perimeter " + findBigPerimeter(circles).calculatePerimeter());
+		System.out.println("The small circle has perimeter " + findSmallPerimeter(circles).calculatePerimeter());
+		printInfo(findBigCircle(circles));
+		printInfo(findSmallCircle(circles));
+		printInfo(findBigPerimeter(circles));
+		printInfo(findSmallPerimeter(circles));
 	}
 
 	private static Circle findBigPerimeter(Circle[] circles) {
