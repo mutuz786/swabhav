@@ -5,24 +5,22 @@ public class Rectangle {
 	private int height;
 	private String color;
 
-	public Rectangle(int pwidth, int pheight, String pcolor) {
+	public Rectangle(int pwidth, int pheight, ColorType pcolor) {
 		width = validateParameter(pwidth);
 		height = validateParameter(pheight);
-		color = validatecolor(pcolor);
+		color = validateColor(pcolor);
 	}
 
 	public Rectangle(int pwidth, int pheight) {
 		width = validateParameter(pwidth);
 		height = validateParameter(pheight);
-		color = "red";
+		color = ColorType.RED.toString();
 	}
 
-	private String validatecolor(String colorParameter) {
-		if (colorParameter == null)
-			return "red";
-		if (colorParameter.equalsIgnoreCase("red") || colorParameter.equalsIgnoreCase("blue")|| colorParameter.equalsIgnoreCase("green"))
-			return colorParameter.toLowerCase();
-		return "red";
+	private String validateColor(ColorType color) {
+		if (color == null)
+			return ColorType.RED.toString();
+		return color.toString();
 	}
 
 	private int validateParameter(int parameter) {
