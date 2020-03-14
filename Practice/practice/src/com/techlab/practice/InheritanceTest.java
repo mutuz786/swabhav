@@ -4,6 +4,9 @@ class Animals{
 	public void roam() {
 		System.out.println("Running");
 	}
+	public void eat() {
+		System.out.println("Eating");
+	}
 }
 
 interface Tamable{
@@ -18,10 +21,10 @@ class Birds extends Animals{
 
 class Emu extends Birds{
 	public void roam() {
-		super.roam();
+		new Animals().roam();
 	}
 	public void eat() {
-		System.out.println("Eating");
+		System.out.println("Pecking");
 	}
 }
 
@@ -36,14 +39,22 @@ public class InheritanceTest {
 		Emu emu1=new Emu();
 		emu1.roam();
 		emu1.eat();
+		System.out.println();
+		
 		Animals emu2=new Emu();
 		emu2.roam();
-		//emu2.eat();			//The method eat() is undefined for the type Animals
+		emu2.eat();			//The method eat() is undefined for the type Animals
+		System.out.println();
+
 		Rooster rooster1=new Rooster();
 		rooster1.roam();
 		rooster1.tame();
+		rooster1.eat();
+		System.out.println();
+
 		Animals rooster2=new Rooster();
 		rooster2.roam();
 		//rooster2.tame();		//The method tame() is undefined for the type Animals
+		rooster2.eat();
 	}
 }
