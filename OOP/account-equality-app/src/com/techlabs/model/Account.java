@@ -64,7 +64,8 @@ public class Account {
 	private String attributes() {
 		return "\nID:" + id + "\nName:" + name + "\nBalance:" + balance;
 	}
-
+	
+	@Override
 	public boolean equals(Account account) {
 		return (this.attributes().equalsIgnoreCase(account.attributes()));
 	}
