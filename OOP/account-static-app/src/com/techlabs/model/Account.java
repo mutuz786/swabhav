@@ -35,7 +35,7 @@ public class Account {
 	public int getMinBal() {
 		return MINIMUM_BALANCE;
 	}
-	
+
 	public static int getCount() {
 		return totalNumOfTransaction;
 	}
