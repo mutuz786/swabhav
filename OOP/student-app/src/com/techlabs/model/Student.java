@@ -5,32 +5,54 @@ public class Student {
 	private String name;
 	private float cgpa;
 	private static int count;
-	
-	public Student(int id,String name,float cgpa) {
-		this.id=id;
-		this.name=name;
-		this.cgpa=cgpa;
+
+	public Student(int id, String name, float cgpa) {
+		this.id = validId(id);
+		this.name = validName(name);
+		this.cgpa = validCgpa(cgpa);
 		count++;
 	}
-	
-	public Student(int id,String name) {
-		this(id,name,7.00f);
+
+	private float validCgpa(float cgpa) {
+		float LOWER_LIMIT = 0.00f;
+		float UPPER_LIMIT = 10.00f;
+		if (cgpa < LOWER_LIMIT)
+			return LOWER_LIMIT;
+		if (cgpa > UPPER_LIMIT)
+			return UPPER_LIMIT;
+		return cgpa;
 	}
-	
-	public int getId(){
-		return id;
-	}
-	
-	public String getName(){
+
+	private String validName(String name) {
+		if (name == null || name == "\\s")
+			return "unknown";
 		return name;
 	}
-	
-	public float getCgpa(){
+
+	private int validId(int id) {
+		if (id < 0)
+			return count;
+		return id;
+	}
+
+	public Student(int id, String name) {
+		this(id, name, 7.00f);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public float getCgpa() {
 		return cgpa;
 	}
 
 	public static int getCount() {
 		return count;
 	}
-	
+
 }
