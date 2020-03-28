@@ -56,8 +56,11 @@ public class Student {
 		return cgpa;
 	}
 
-	public static int getCount() {
+	public int getCount() {
 		return count;
 	}
-
+	
+	public static int getHeadCount() {
+		return count;
+	}
 }

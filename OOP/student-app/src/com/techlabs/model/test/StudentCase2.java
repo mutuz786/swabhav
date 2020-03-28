@@ -13,6 +13,6 @@ public class StudentCase2 {
 	}
 
 	private static void printInfo(Student student) {
-		System.out.println( student.getId() + "\t" + student.getName() + "\t" + student.getCgpa() + "\t" + Student.getCount());
+		System.out.println( student.getId() + "\t" + student.getName() + "\t" + student.getCgpa() + "\t" + student.getCount());
 	}
 }
