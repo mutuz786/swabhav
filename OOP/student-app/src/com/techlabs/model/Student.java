@@ -5,12 +5,17 @@ public class Student {
 	private String name;
 	private float cgpa;
 	private static int count;
+	static {
+		count = 0;
+		System.out.println("inside static block");
+	}
 
 	public Student(int id, String name, float cgpa) {
 		this.id = validId(id);
 		this.name = validName(name);
 		this.cgpa = validCgpa(cgpa);
 		count++;
+		System.out.println("inside constructor");
 	}
 
 	private float validCgpa(float cgpa) {
