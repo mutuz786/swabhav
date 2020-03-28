@@ -56,8 +56,9 @@ public class Account {
 		return balance;
 	}
 	
+	@Override
 	public String toString() {
-		return "ID:"+id+"\nName:"+name+"\nBalance:"+balance;
+		return super.toString()+"\nID:"+id+"\nName:"+name+"\nBalance:"+balance;
 	}
 
 }
