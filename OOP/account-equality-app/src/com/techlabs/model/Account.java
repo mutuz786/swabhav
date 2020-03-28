@@ -55,10 +55,18 @@ public class Account {
 	public double getBalance() {
 		return balance;
 	}
-	
+
 	@Override
 	public String toString() {
-		return super.toString()+"\nID:"+id+"\nName:"+name+"\nBalance:"+balance;
+		return super.toString() + attributes();
+	}
+
+	private String attributes() {
+		return "\nID:" + id + "\nName:" + name + "\nBalance:" + balance;
+	}
+
+	public boolean equals(Account account) {
+		return (this.attributes().equalsIgnoreCase(account.attributes()));
 	}
 
 }
