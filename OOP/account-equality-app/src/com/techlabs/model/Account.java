@@ -1,6 +1,8 @@
 package com.techlabs.model;
 
 public class Account {
+	private int id;
+	private String name;
 	private double balance;
 	private static int MINIMUM_BALANCE;
 	private static int totalNumOfTransaction;
@@ -9,8 +11,10 @@ public class Account {
 		totalNumOfTransaction = 0;
 	}
 
-	public Account(double amount) {
-		balance = amount;
+	public Account(int id,String name,double balance) {
+		this.id=id;
+		this.name=name;
+		this.balance = balance;
 	}
 
 	public void deposit(double amount) {
@@ -38,6 +42,16 @@ public class Account {
 
 	public static int getCount() {
 		return totalNumOfTransaction;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public String getName() {
+		return name;
+	}
+	public double getBalance() {
+		return balance;
 	}
 
 }
