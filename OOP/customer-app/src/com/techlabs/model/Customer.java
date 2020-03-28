@@ -4,16 +4,15 @@ public class Customer {
 	private String id;
 	private String name;
 	private int orders;
-	private static int count;
+	private static int next;
 	static {
-		count = 0;
+		next = 1000;
 	}
 
 	public Customer(String name, int orders) {
 		this.name = name;
 		this.orders = orders;
-		count++;
-		int next = 1000 + count;
+		next++;
 		this.id = "C".concat(String.valueOf(next));
 	}
 
