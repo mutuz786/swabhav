@@ -11,9 +11,9 @@ public class Account {
 		totalNumOfTransaction = 0;
 	}
 
-	public Account(int id,String name,double balance) {
-		this.id=id;
-		this.name=name;
+	public Account(int id, String name, double balance) {
+		this.id = id;
+		this.name = name;
 		this.balance = balance;
 	}
 
@@ -43,15 +43,21 @@ public class Account {
 	public static int getCount() {
 		return totalNumOfTransaction;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public double getBalance() {
 		return balance;
+	}
+	
+	public String toString() {
+		return "ID:"+id+"\nName:"+name+"\nBalance:"+balance;
 	}
 
 }
