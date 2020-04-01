@@ -1,10 +1,7 @@
 package com.techlabs.abstracttest;
 
-abstract class ScientificName extends Animal{
-	abstract void scientificName();
-}
 
-class Animal{
+abstract class Animal{
 	void eat() {
 		System.out.println("Eating");
 	}
@@ -12,15 +9,24 @@ class Animal{
 		System.out.println("Running");
 	}
 }
-class omnivore extends ScientificName{
+class Cat extends Animal{
+	
+}
 
-	@Override
-	void scientificName() {
-		System.out.println("");
-	}
+class Dog extends Animal{
 	
 }
 
 public class AbstractClassTest {
-
+	public static void main(String [] args) {
+		Cat cat=new Cat();
+		cat.roam();
+		cat.eat();
+		Dog dog=new Dog();
+		dog.roam();
+		dog.eat();
+		Animal animal=new Animal();
+		animal.roam();
+		animal.eat();
+	}
 }
