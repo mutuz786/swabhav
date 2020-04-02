@@ -1,6 +1,8 @@
 package com.techlabs.deserializeanarraytest;
 
-public class Account {
+import java.io.*;
+
+public class Account implements Serializable{
 	private String name = "";
 	private int id = 0;
 	private float balance = 0f;

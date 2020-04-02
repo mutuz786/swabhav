@@ -1,30 +1,33 @@
 package com.techlabs.overridingtest;
 
+class College{
+	void leader() {
+		System.out.println("Principal");
+	}
+}
+
+class Department extends College{
+	void leader() {
+		System.out.println("Head Of Department");
+	}
+}
+
+class ClassRoom extends College{
+	void leader() {
+		System.out.println("Class Teacher");
+	}
+}
+
 public class OverridingTest {
 	public static void main(String[] args) {
-		String name = "murtaza";
-		int number = 200;
-		double dnumber = 56.876;
-		float fnumber = 78.45f;
-		printinfo(name);
-		printinfo(number);
-		printinfo(fnumber);
-		printinfo(dnumber);
-	}
-
-	private static void printinfo(double dnumber) {
-		System.out.println(dnumber);
-	}
-
-	private static void printinfo(float fnumber) {
-		System.out.println(fnumber);
-	}
-
-	private static void printinfo(String name) {
-		System.out.println(name);
-	}
-
-	private static void printinfo(int number) {
-		System.out.println(number);
+		College college=new College();
+		college.leader();
+		Department department=new Department();
+		department.leader();
+		ClassRoom classroom=new ClassRoom();
+		classroom.leader();
+		College college1=new ClassRoom();
+		college1.leader();
+		
 	}
 }

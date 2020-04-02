@@ -1,14 +1,11 @@
 package com.techlabs.deserializationtest;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 public class DeserializationTest {
 	public static void main(String[] args) {
 		String filename = "acc101.ser";
-		Account account1 = deserialize(filename);
-		printInfo(account1);
+		deserialize(filename);
 	}
 
 	private static void printInfo(Account account) {
@@ -17,15 +14,16 @@ public class DeserializationTest {
 		System.out.println(account.getBalance());
 	}
 
-	private static Account deserialize(String filename) {
+	private static void deserialize(String filename) {
 		try {
-			Account acc=null;
 			FileInputStream file=new FileInputStream(filename);
 			ObjectInputStream in=new ObjectInputStream(file);
-			acc=(Account) in.readObject();
+			Account account=(Account) in.readObject();
+			printInfo(account);
 			in.close();
 			file.close();
-			return acc;
+			
+
 		}
 		catch(IOException e) {
 			System.out.println("IOException Found");
@@ -33,6 +31,5 @@ public class DeserializationTest {
 		catch(ClassNotFoundException e) {
 			System.out.println("ClassNotFoundException found");
 		}
-		return null;
 	}
 }
