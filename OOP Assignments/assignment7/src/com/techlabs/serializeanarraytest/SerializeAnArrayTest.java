@@ -4,8 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
-import com.techlabs.serializationtest.Account;
+import com.techlabs.account.*;
 
 public class SerializeAnArrayTest {
 	public static void main(String[] args) {

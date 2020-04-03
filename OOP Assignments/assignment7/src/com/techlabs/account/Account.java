@@ -1,11 +1,13 @@
-package com.techlabs.serializationtest;
+package com.techlabs.account;
+
 
 import java.io.*;
 
 public class Account implements Serializable{
-	private String name = "";
-	private int id = 0;
-	private float balance = 0f;
+	private static final long serialVersionUID = 1L;
+	public String name = "";
+	public int id = 0;
+	public float balance = 0f;
 
 	public  Account(int id, String name, float balance) {
 		this.name = name;

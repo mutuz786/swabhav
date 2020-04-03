@@ -1,6 +1,7 @@
 package com.techlabs.deserializationtest;
 
 import java.io.*;
+import com.techlabs.account.*;
 
 public class DeserializationTest {
 	public static void main(String[] args) {
@@ -8,18 +9,15 @@ public class DeserializationTest {
 		deserialize(filename);
 	}
 
-	private static void printInfo(Account account) {
-		System.out.println(account.getId());
-		System.out.println(account.getName());
-		System.out.println(account.getBalance());
-	}
-
 	private static void deserialize(String filename) {
 		try {
+			Account account=null;
 			FileInputStream file=new FileInputStream(filename);
 			ObjectInputStream in=new ObjectInputStream(file);
-			Account account=(Account) in.readObject();
-			printInfo(account);
+			account=(Account) in.readObject();
+			System.out.println(account.getId());
+			System.out.println(account.getName());
+			System.out.println(account.getBalance());
 			in.close();
 			file.close();
 			

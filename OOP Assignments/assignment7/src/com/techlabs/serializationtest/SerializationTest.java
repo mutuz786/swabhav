@@ -3,6 +3,7 @@ package com.techlabs.serializationtest;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import com.techlabs.account.*;
 
 public class SerializationTest {
 	public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class SerializationTest {
 	}
 
 	private static void serialize(Account account) {
-		String filename = "acc" + account.getId() + ".ser";
+		String filename = "acc101.ser";
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);
