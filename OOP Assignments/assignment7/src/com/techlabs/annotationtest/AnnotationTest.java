@@ -1,29 +1,19 @@
 package com.techlabs.annotationtest;
 
 import java.lang.reflect.*;
-import java.text.Annotation;
-
 public class AnnotationTest {
 	public static void main(String[] args) {
 		Class<? extends StudentClass> test=StudentClass.class;
-		Method[] methods =test.getDeclaredMethods();
-		Annotation[] annotations = (Annotation[]) test.getAnnotations();
-		for (int i = 0; i < annotations.length; i++) {
-			Annotation annotation = annotations[i];
-			System.out.println("name");
+		Method[] methods =test.getMethods();
+		System.out.println("Methods That Need To Refactor");
+		for(Method method:methods) {
+			getAnnotedMethods(method,NeedToRefactor.class);
 		}
-		
+	}
+
+	private static void getAnnotedMethods(Method method, Class<NeedToRefactor> classname) {
+		NeedToRefactor annotation=method.getAnnotation(NeedToRefactor.class);
+		if(annotation!=null)
+			System.out.println(method.getName());
 	}
 }
-
-
-/*
-for(Method method:methods) {
-System.out.println(method.getName());
-Annotation[] annotations = (Annotation[]) method.getDeclaredAnnotations();
-for(Annotation annotation : annotations){
-    if(annotation == NeedToRefactor){
-        System.out.println("name: ");
-    }
-}	
-} */

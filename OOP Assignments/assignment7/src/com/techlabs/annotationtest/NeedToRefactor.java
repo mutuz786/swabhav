@@ -1,7 +1,10 @@
 package com.techlabs.annotationtest;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(value = RetentionPolicy.RUNTIME)
+
 
 public @interface NeedToRefactor {
 }
