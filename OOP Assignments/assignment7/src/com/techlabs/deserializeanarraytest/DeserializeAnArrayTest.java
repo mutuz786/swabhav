@@ -3,7 +3,6 @@ package com.techlabs.deserializeanarraytest;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
 import com.techlabs.account.*;
 
 public class DeserializeAnArrayTest {
@@ -13,19 +12,23 @@ public class DeserializeAnArrayTest {
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
-			Object object = in.readObject();
-			ArrayList<Account> accounts = (ArrayList<Account>) object;
+			Account[] accounts=(Account[]) in.readObject();
 			in.close();
 			file.close();
-			for (int i = 0; i < accounts.size(); i++) {
-				System.out.println(accounts.get(i).getId());
-				System.out.println(accounts.get(i).getName());
-				System.out.println(accounts.get(i).getBalance());
-			}
+			printInfo(accounts);
 		} catch (IOException e) {
 			System.out.println("IOException Found");
 		} catch (ClassNotFoundException e) {
 			System.out.println("ClassNotFoundException found");
+		}
+	}
+
+	private static void printInfo(Account[] accounts) {
+		for (int i = 0; i < accounts.length; i++) {
+			System.out.println(accounts[i].getId());
+			System.out.println(accounts[i].getName());
+			System.out.println(accounts[i].getBalance());
+			System.out.println();
 		}
 	}
 

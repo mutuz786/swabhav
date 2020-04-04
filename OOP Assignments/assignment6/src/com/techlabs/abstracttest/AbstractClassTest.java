@@ -25,8 +25,5 @@ public class AbstractClassTest {
 		Dog dog=new Dog();
 		dog.roam();
 		dog.eat();
-		Animal animal=new Animal();
-		animal.roam();
-		animal.eat();
 	}
 }
