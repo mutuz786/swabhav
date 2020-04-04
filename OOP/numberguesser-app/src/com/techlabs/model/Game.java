@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
 	private int number;
-	ArrayList<Integer> attempts=new ArrayList<Integer>();
+	ArrayList<Integer> attempts = new ArrayList<Integer>();
 
 	public void startGame() {
 		this.number = (int) (100 * Math.random());
@@ -12,8 +12,8 @@ public class Game {
 	}
 
 	private void guess() {
-		GameTerminal gameTerminal=new GameTerminal();
-		int guess =gameTerminal.requestGuess();
+		GameTerminal gameTerminal = new GameTerminal();
+		int guess = gameTerminal.requestGuess();
 		if (guess < 0 || guess > 100) {
 			gameTerminal.outOfBounds();
 			guess();
@@ -37,8 +37,8 @@ public class Game {
 	}
 
 	private void loadMenu() {
-		GameTerminal gameTerminal=new GameTerminal();
-		int choice=gameTerminal.getchoice();
+		GameTerminal gameTerminal = new GameTerminal();
+		int choice = gameTerminal.getchoice();
 		switch (choice) {
 		case 1:
 			startGame();
