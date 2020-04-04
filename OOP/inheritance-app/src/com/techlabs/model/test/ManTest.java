@@ -4,9 +4,15 @@ import com.techlabs.model.*;
 
 public class ManTest {
 	public static void main(String [] args) {
-		case1();
-		case2();
-		case3();
+		//case1();
+		//case2();
+		//case3();
+		case4();
+	}
+
+	private static void atThePark(Man x) {
+		System.out.println("at the park");
+		x.play();
 	}
 
 	private static void case1() {
@@ -30,4 +36,13 @@ public class ManTest {
 		y.read();
 		y.walk();
 	}
+
+	private static void case4() {
+		atThePark(new Man());
+		atThePark(new Boy());
+		atThePark(new Kid());
+		atThePark(new Infant());
+	}
+
+
 }
