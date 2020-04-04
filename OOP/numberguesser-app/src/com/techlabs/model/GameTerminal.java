@@ -20,7 +20,7 @@ public class GameTerminal extends Input {
 	public void congratulate(ArrayList<Integer> attempts) {
 		System.out.println("You won the game\nAnd you made these guesses:");
 		for (Integer attempt : attempts) {
-			System.out.print(attempt);
+			System.out.print(attempt+"\t");
 		}
 	}
 
