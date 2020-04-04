@@ -7,7 +7,8 @@ public class ManTest {
 		//case1();
 		//case2();
 		//case3();
-		case4();
+		//case4();
+		case5();
 	}
 
 	private static void atThePark(Man x) {
@@ -44,5 +45,16 @@ public class ManTest {
 		atThePark(new Infant());
 	}
 
-
+	private static void case5() {
+		Object x;
+		x=10;
+		System.out.println(x.getClass());
+		x="hello";
+		System.out.println(x.getClass());
+		x=10>56;
+		System.out.println(x.getClass());
+		x=new Man();
+		System.out.println(x.getClass());
+		
+	}
 }
