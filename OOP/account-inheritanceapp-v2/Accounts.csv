@@ -1,0 +1,4 @@
+type,accno,name,balance,createdOn,age
+saving,100,murtaza,1000.0,Fri Jan 10 00:04:00 IST 2020,23
+current,101,Sagar,5000.0,Sat Jan 11 00:04:00 IST 2020,22
+saving,102,gaurav,20000.0,Fri Jan 03 00:04:00 IST 2020,21

@@ -30,6 +30,6 @@ public class Product {
 	}
 
 	public double calculatePrice() {
-		return price - price * discount;
+		return price - price * discount / 100;
 	}
 }

@@ -1,57 +1,39 @@
 package com.techlabs.model;
 
-import java.util.ArrayList;
-
 public class Game {
-	private int number;
-	ArrayList<Integer> attempts = new ArrayList<Integer>();
-
-	public void startGame() {
-		this.number = (int) (100 * Math.random());
-		guess();
+	private int randomNumber;
+	private int guessCount;
+	private String status;
+	
+	public void gameInit() {
+		status="Notstarted";
+		this.randomNumber = (int) (100 * Math.random());
+		guessCount = 0;
 	}
 
-	private void guess() {
-		GameTerminal gameTerminal = new GameTerminal();
-		int guess = gameTerminal.requestGuess();
-		if (guess < 0 || guess > 100) {
-			gameTerminal.outOfBounds();
-			guess();
-		}
-		if (guess < number) {
-			gameTerminal.missed("low");
-			attempts.add(guess);
-			guess();
-		}
-		if (guess > number) {
-			gameTerminal.missed("high");
-			attempts.add(guess);
-			guess();
-		}
-		if (guess == number) {
-			attempts.add(guess);
-			gameTerminal.congratulate(attempts);
-			attempts.removeAll(attempts);
-			loadMenu();
-		}
+	protected String checkGuess(int guess) {
+		status="inprogress";
+		guessCount++;
+		if (guess < randomNumber)
+			return "too low";
+		if (guess > randomNumber)
+			return "too high";
+		if (guess == randomNumber)
+			return "correct";
+		status="hasresult";
+		return "out of bounds";
+		
 	}
 
-	private void loadMenu() {
-		GameTerminal gameTerminal = new GameTerminal();
-		int choice = gameTerminal.getchoice();
-		switch (choice) {
-		case 1:
-			startGame();
-			break;
+	protected int getScore() {
+		status="end";
+		int score=100-(10*guessCount);
+		if(score<5)
+			return 5;
+		return score;
+	}
 
-		case 2:
-			System.exit(0);
-			break;
-
-		default:
-			loadMenu();
-			break;
-		}
-
+	public String getStatus() {
+		return status;
 	}
 }

@@ -4,7 +4,7 @@ import com.techlabs.model.*;
 
 public class GameTest {
 	public static void main(String [] args) {
-		Game game=new Game();
-		game.startGame();
+		GameTerminal game=new GameTerminal();
+		game.start();
 	}
 }
