@@ -1,9 +1,6 @@
-package com.techlabs.rickguitarapp.test;
+package com.techlabs.rickguitarapp;
 
 import java.util.*;
-
-import com.techlabs.rickguitarapp.*;
-
 public class FindGuitarTest {
 	public static void main(String[] args) {
 		Inventory inventory = new Inventory();
