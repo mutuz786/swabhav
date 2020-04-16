@@ -42,17 +42,17 @@ public class GuitarSpec {
 	}
 
 	public boolean matches(GuitarSpec spec) {
-		if(this.model!=null && !this.model.equals("") && !this.model.equals(spec.getModel()))
+		if (this.model != null && !this.model.equals("") && !this.model.equals(spec.getModel()))
 			return false;
-		if(this.numString!=spec.getNumString())
+		if (this.numString != spec.getNumString())
 			return false;
-		if(this.builder!=spec.getBuilder())
+		if (this.builder != spec.getBuilder())
 			return false;
-		if(this.type!=spec.getType())
+		if (this.type != spec.getType())
 			return false;
-		if(this.backWood!=spec.getBackWood())
+		if (this.backWood != spec.getBackWood())
 			return false;
-		if(this.frontWood!=spec.getFrontWood())
+		if (this.frontWood != spec.getFrontWood())
 			return false;
 		return true;
 	}
