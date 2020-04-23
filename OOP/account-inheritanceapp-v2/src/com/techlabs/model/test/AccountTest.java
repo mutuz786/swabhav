@@ -3,6 +3,7 @@ package com.techlabs.model.test;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 
 import com.techlabs.model.*;
 
@@ -15,13 +16,37 @@ public class AccountTest {
 		accounts[0] = acc1;
 		accounts[1] = acc2;
 		accounts[2] = acc3;
+
 		String fileName = "Accounts.csv";
 		FileWriter writer = new FileWriter(fileName);
 		writer.write("type,accno,name,balance,createdOn,age\n");
 		for (Account account : accounts) {
-			writer.write(account.getType() + "," + account.getAccno() + "," + account.getName() + ","+ account.getBalance() + "," + account.getCreationDate() + "," + account.calculateAge() + "\n");
+			writer.write(account.getType() + "," + account.getAccno() + "," + account.getName() + ","
+					+ account.getBalance() + "," + account.getCreationDate() + "," + account.calculateAge() + "\n");
 		}
 		writer.close();
+	}
+
+	public static Account[] findYoungAccholders(Account[] accHolders) {
+		int count = 0;
+		Date obj = new Date();
+		for (int i = 0; i < accHolders.length; i++) {
+			if (accHolders[i].calculateAge() < 40) {
+				count++;
+			}
+
+		}
+		Account[] newAccount = new Account[count];
+		count = 0;
+		for (int i = 0; i < accHolders.length; i++) {
+			if (accHolders[i].calculateAge() < 30) {
+				newAccount[count] = accHolders[i];
+				count++;
+			}
+
+		}
+
+		return newAccount;
 	}
 
 }

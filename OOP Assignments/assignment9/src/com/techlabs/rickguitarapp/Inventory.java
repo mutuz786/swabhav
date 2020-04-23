@@ -28,4 +28,12 @@ public class Inventory {
 		}
 		return matchedGuitar;
 	}
+
+	public int getGuitarsLength() {
+		return guitars.size();
+	}
+
+	public List<Guitar> getGuitars() {
+		return guitars;
+	}
 }

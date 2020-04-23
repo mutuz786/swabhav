@@ -18,5 +18,10 @@ public class Manager extends Employee{
 	protected double getTotalAllowances() {
 		return hra+ta+da;
 	}
+	
+	@Override
+	public String toString() {
+		return "Manager";
+	}
 
 }

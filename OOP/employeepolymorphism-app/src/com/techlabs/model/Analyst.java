@@ -15,5 +15,10 @@ public class Analyst extends Employee{
 	protected double getTotalAllowances() {
 		return perks;
 	}
+	
+	@Override
+	public String toString() {
+		return "Analyst";
+	}
 
 }

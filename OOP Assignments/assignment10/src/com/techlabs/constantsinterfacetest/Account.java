@@ -1,4 +1,4 @@
-package com.techlabs.model;
+package com.techlabs.constantsinterfacetest;
 
 
 public abstract class Account {

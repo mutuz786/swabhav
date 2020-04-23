@@ -9,6 +9,6 @@ public class EmloyeeTest {
 	}
 
 	private static void printSalarySlip(Employee employee) {
-		System.out.println("id:"+employee.getId()+"\nname:"+employee.getName()+"\ngender"+employee.getGender()+"\nnet salary"+employee.calculateNetSalary()+"\n"+employee.getAllowances());
+		System.out.println("role:"+employee+"\nid:"+employee.getId()+"\nname:"+employee.getName()+"\ngender"+employee.getGender()+"\nnet salary"+employee.calculateNetSalary()+"\n"+employee.getAllowances());
 	}
 }

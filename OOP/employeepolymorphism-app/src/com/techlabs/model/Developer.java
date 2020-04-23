@@ -17,5 +17,9 @@ public class Developer extends Employee{
 	protected double getTotalAllowances() {
 		return pa+bonus;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Developer";
+	}
 }
