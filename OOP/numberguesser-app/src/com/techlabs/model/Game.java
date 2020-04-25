@@ -4,6 +4,7 @@ public class Game {
 	private int randomNumber;
 	private int guessCount;
 	private String status;
+	private final int LOWER_LIMIT=5;
 
 	public void gameInit() {
 		status = "Notstarted";
@@ -27,9 +28,9 @@ public class Game {
 
 	public int getScore() {
 		status = "end";
-		int score = 100 - (10 * guessCount);
-		if (score < 5)
-			return 5;
+		int score = 100 - (10 * (guessCount-1));
+		if (score < LOWER_LIMIT)
+			return LOWER_LIMIT;
 		return score;
 	}
 

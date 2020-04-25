@@ -1,7 +1,7 @@
 package com.techlabs.constantsinterfacetest;
 
 
-public abstract class Account {
+public abstract class Account{
 	private static final int MAX_DEPOSIT = 100000;
 	private static final int MIN_DEPOSIT = 0;
 	private int accno;
