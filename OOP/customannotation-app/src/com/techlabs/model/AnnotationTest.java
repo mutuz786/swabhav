@@ -27,11 +27,7 @@ public class AnnotationTest {
 	private static int isTestCase(Method method, boolean testCase) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Foo foo=new Foo();
 		boolean result = false;
-		try {
 			result = (boolean) method.invoke(foo);
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			e.printStackTrace();
-		}
 		if(result==testCase) {
 			for (Method method1 : methods) {
 				MyBeforeEveryUnitTestcase annotation = method1.getAnnotation(MyBeforeEveryUnitTestcase.class);

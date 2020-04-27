@@ -1,0 +1,16 @@
+package com.techlabs.model.test;
+
+import com.techlabs.model.Account;
+
+public class Test {
+	public static void main(String [] args) {
+		Account account=new Account(101, "Murtaza", 1000);
+		try{
+			account.withdraw(600);
+		}
+		catch (RuntimeException e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println("end of main");
+	}
+}
