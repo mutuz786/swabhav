@@ -16,8 +16,8 @@ public class DataBaseManager {
 			String eName = elements[1].replaceAll("'", "");
 			String role = elements[2].replaceAll("'", "");
 			int managerId = 0;
-			if (!elements[6].equals("NULL")) {
-				managerId = Integer.parseInt(elements[6]);
+			if (!elements[3].equals("NULL")) {
+				managerId = Integer.parseInt(elements[3]);
 			}
 			String doj = elements[4].replaceAll("'", "");
 			int salary = Integer.parseInt(elements[5]);
