@@ -1,37 +1,15 @@
 package com.techlabs.enggineeringcollegedb;
 
 import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
-public class Person {
-	private int id;
-	private String name;
-	private Date dob;
-	private String address;
+public interface Person {
 
-	public Person(int id, String name, String dob, String address) throws ParseException {
-		this.id = id;
-		this.name = name;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
-		this.dob = (Date) dateFormat.parse(dob);
-		this.address = address;
-	}
+	abstract public int getId();
 
-	public int getId() {
-		return id;
-	}
+	abstract public String getName();
 
-	public String getName() {
-		return name;
-	}
+	abstract public Date getDob();
 
-	public Date getDob() {
-		return dob;
-	}
-
-	public String getAddress() {
-		return address;
-	}
+	abstract public String getAddress();
 
 }

@@ -33,17 +33,13 @@ public class CollectionTest {
 		readData(hashSet);
 		readData(linkedHashSet);
 		readData(treeSet);
-
 	}
-
 	private static void deleteData(Collection<Integer> collection) {
 		collection.remove(81);
 	}
-
 	private static void readData(Collection<Integer> collection) {
 		System.out.println(collection);
 	}
-
 	private static void addData(Collection<Integer> collection) {
 		collection.add(10);
 		collection.add(5);

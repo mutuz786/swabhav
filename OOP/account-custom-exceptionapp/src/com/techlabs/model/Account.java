@@ -1,5 +1,6 @@
 package com.techlabs.model;
 
+
 public class Account {
 	private static final double LOWER_LIMIT = 500;
 	private int id;
