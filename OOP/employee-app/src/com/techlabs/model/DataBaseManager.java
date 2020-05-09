@@ -1,8 +1,7 @@
 package com.techlabs.model;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.TreeSet;
+import java.util.*;
 
 public class DataBaseManager {
 	TreeSet<Employee> employees = new TreeSet<Employee>(new SalaryComparator());
@@ -30,7 +29,7 @@ public class DataBaseManager {
 		}
 	}
 
-	public TreeSet<Employee> getEmployees() {
+	public Collection<Employee> getEmployees() {
 		return employees;
 	}
 }
