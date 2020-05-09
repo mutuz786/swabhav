@@ -20,7 +20,7 @@ public class Tile {
 	}
 
 	protected void removeUnits() {
-
+		units.clear();
 	}
 
 	protected List<Unit> getUnits() {
