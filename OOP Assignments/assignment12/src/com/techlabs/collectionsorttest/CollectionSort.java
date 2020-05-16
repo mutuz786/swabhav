@@ -14,24 +14,19 @@ public class CollectionSort {
 		add(treeSet);
 		add(treeMap);
 
-		//read(hashSet);
-		//read(hashMap);
-		//read(treeSet);
-		//read(treeMap);
-		
-		hashSet=(HashSet<String>) sort(hashSet);
 		read(hashSet);
+		read(hashMap);
+		read(treeSet);
+		read(treeMap);
+
+		sort(hashSet);
 	}
 
-	private static Collection<String> sort(Collection<String> collection) {
-		List<String> list=new LinkedList<String>();
+	private static void sort(Collection<String> collection) {
+		List<String> list = new LinkedList<String>();
 		list.addAll(collection);
 		Collections.sort(list);
-		collection.clear();
-		for(String name:list) {
-			collection.add(name);
-		}
-		return collection;
+		System.out.println(list);
 	}
 
 	private static void read(Map<Integer, String> map) {

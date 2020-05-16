@@ -1,0 +1,5 @@
+CustID,CustName,CustAddress,OrderId,OrderDate,OrderCheckoutCost,ItemId,ItemQuantity,ProductId,ProductName,ProductPrice,ProductDiscount
+512c130b-b622-4def-a4c7-f1f65c26318b,Kishore,mumbai,453571d2-9c2c-4486-8d38-3ae640b9de33,Sat May 23 00:00:00 IST 2020,24631.889999977648,ecc2ff6a-943f-426f-ab31-45937597998e,21,7bc4921c-ff80-4a8c-bc87-9ba717767350,book,1562.12,0.25
+512c130b-b622-4def-a4c7-f1f65c26318b,Kishore,mumbai,453571d2-9c2c-4486-8d38-3ae640b9de33,Sat May 23 00:00:00 IST 2020,24631.889999977648,6a42e907-2d60-4271-a6e8-95c6944aae4c,3,53fe145c-5f08-4fce-a144-00fd015cc606,pen,10.0,0.05
+512c130b-b622-4def-a4c7-f1f65c26318b,Kishore,mumbai,ba44272b-a0ed-45fa-8a85-e4830db4a973,Tue Apr 21 00:00:00 IST 2020,3206.399946078658,90cbe1aa-b2c8-4fcf-b8d5-bee9a09070a8,2,5dd63307-d76e-4c94-9b26-5a058b41294e,rubber,20.0,0.01
+512c130b-b622-4def-a4c7-f1f65c26318b,Kishore,mumbai,ba44272b-a0ed-45fa-8a85-e4830db4a973,Tue Apr 21 00:00:00 IST 2020,3206.399946078658,dcd6879a-699b-4488-a1e0-47ebfeb1375a,6,4ce2c1ea-3c1b-4a5a-83b7-63e40db084af,bag,754.0,0.3

@@ -3,7 +3,7 @@ package com.techlabs.treemapcrudtest;
 import java.util.TreeMap;
 
 public class TreeMapExample {
-	static TreeMap<Integer, String> hashMap = new TreeMap<Integer, String>();
+	static TreeMap<Integer, String> treeMap = new TreeMap<Integer, String>();
 
 	public static void main(String[] args) {
 		add(2, "sagar");
@@ -19,14 +19,14 @@ public class TreeMapExample {
 		read();
 
 		searchValue(2);
-		
+
 		searchKey("Murtaza");
 
 	}
 
 	private static void searchKey(String searchValue) {
-		for (Integer key : hashMap.keySet()) {
-			if (hashMap.get(key).equalsIgnoreCase(searchValue)) {
+		for (Integer key : treeMap.keySet()) {
+			if (treeMap.get(key).equalsIgnoreCase(searchValue)) {
 				System.out.println("the value is on " + key);
 				return;
 			}
@@ -35,9 +35,9 @@ public class TreeMapExample {
 	}
 
 	private static void searchValue(int searchKey) {
-		for (Integer key : hashMap.keySet()) {
+		for (Integer key : treeMap.keySet()) {
 			if (key == searchKey) {
-				System.out.println("the key contains " + hashMap.get(key));
+				System.out.println("the key contains " + treeMap.get(key));
 				return;
 			}
 		}
@@ -45,17 +45,17 @@ public class TreeMapExample {
 	}
 
 	private static void delete(int key) {
-		hashMap.remove(key);
+		treeMap.remove(key);
 	}
 
 	private static void read() {
-		for (Integer key : hashMap.keySet()) {
-			System.out.println(key + " " + hashMap.get(key));
+		for (Integer key : treeMap.keySet()) {
+			System.out.println(key + " " + treeMap.get(key));
 		}
 		System.out.println();
 	}
 
 	private static void add(int key, String value) {
-		hashMap.put(key, value);
+		treeMap.put(key, value);
 	}
 }
