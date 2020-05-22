@@ -13,11 +13,14 @@ public class Test {
 		Product rubber = new Product(UUID.randomUUID(), "rubber", 20, 0.01f);
 		LineItem bookItem = new LineItem(UUID.randomUUID(), 21, book);
 		LineItem penItem = new LineItem(UUID.randomUUID(), 3, pen);
+		LineItem penItem1 = new LineItem(UUID.randomUUID(), 5, pen);
 		LineItem bagItem = new LineItem(UUID.randomUUID(), 6, bag);
 		LineItem rubberItem = new LineItem(UUID.randomUUID(), 2, rubber);
 		Order order1 = new Order(UUID.randomUUID(), toDate("23-MAY-2020"));
 		order1.addItem(bookItem);
+		order1.addItem(bookItem);
 		order1.addItem(penItem);
+		order1.addItem(penItem1);
 		Order order2 = new Order(UUID.randomUUID(), toDate("21-APR-2020"));
 		order2.addItem(rubberItem);
 		order2.addItem(bagItem);
@@ -32,9 +35,6 @@ public class Test {
 		vishal.addOrder(order4);
 		vishal.addOrder(order5);
 		printInfo(kishore);
-		CsvExporter export = new CsvExporter("customerorder.csv");
-		export.add(kishore);
-		export.add(vishal);
 	}
 
 	private static void printInfo(Customer customer) {

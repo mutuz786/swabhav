@@ -13,6 +13,12 @@ public class Order {
 	}
 
 	public void addItem(LineItem item) {
+		for(LineItem eachItem:items) {
+			if(eachItem.getProduct().getId().equals(item.getProduct().getId())) {
+				eachItem.updateQuantity(item.getQuantity());
+				return;
+			}
+		}
 		items.add(item);
 	}
 

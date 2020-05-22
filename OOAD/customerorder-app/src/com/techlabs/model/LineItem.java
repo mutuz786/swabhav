@@ -29,4 +29,8 @@ public class LineItem {
 		return product;
 	}
 
+	public void updateQuantity(int quantity) {
+		this.quantity+=quantity;
+	}
+
 }

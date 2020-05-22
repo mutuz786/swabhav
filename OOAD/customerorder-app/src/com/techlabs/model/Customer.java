@@ -15,7 +15,8 @@ public class Customer {
 	}
 
 	public void addOrder(Order order) {
-		orders.add(order);
+		if (!orders.contains(order))
+			orders.add(order);
 	}
 
 	public UUID getId() {

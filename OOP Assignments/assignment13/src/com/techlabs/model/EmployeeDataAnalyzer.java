@@ -6,25 +6,8 @@ public class EmployeeDataAnalyzer {
 	private Collection<Employee> empList = new TreeSet<Employee>();
 	FileManager filer = new FileManager();
 
-	public void addData(Extractable extractable) {
-		ArrayList<String> lines = (ArrayList<String>) filer.getData(extractable.getReader());
-		addEmpData(lines);
-	}
-
-	private void addEmpData(Collection<String> lines) {
-		for (String line : lines) {
-			String[] empData = line.split(",");
-			int empId = addInteger(empData[0]);
-			String name = addString(empData[1]);
-			String role = addString(empData[2]);
-			int managerId = addInteger(empData[3]);
-			String doj = addString(empData[4]);
-			int salary = addInteger(empData[5]);
-			int commision = addInteger(empData[6]);
-			int deptNo = addInteger(empData[7]);
-			Employee employee = new Employee(empId, name, role, managerId, doj, salary, commision, deptNo);
-			empList.add(employee);
-		}
+	public EmployeeDataAnalyzer(ILoader loader) {
+		empList = loader.load();
 	}
 
 	public Employee maxSalaryEmployee() {
@@ -34,35 +17,25 @@ public class EmployeeDataAnalyzer {
 	}
 
 	public Map<String, Integer> getDesignationWiseEmps() {
-		TreeSet<String> designationSet = new TreeSet<String>();
+		TreeMap<String, Integer> designationSet = new TreeMap<String, Integer>();
 		for (Employee emp : empList) {
-			designationSet.add(emp.getDesignation());
+			if (designationSet.containsKey(emp.getDesignation())) {
+				designationSet.put(emp.getDesignation(), designationSet.get(emp.getDesignation()) + 1);
+			} else
+				designationSet.put(emp.getDesignation(), 1);
 		}
-		TreeMap<String, Integer> DesignationWiseEmps = new TreeMap<String, Integer>();
-		for (String designation : designationSet) {
-			DesignationWiseEmps.put(designation, checkCount(designation));
-		}
-		return DesignationWiseEmps;
+		return designationSet;
 	}
 
-	private int checkCount(String designation) {
-		int count = 0;
+	public Map<Integer, Integer> getDeptNoWiseEmps() {
+		TreeMap<Integer, Integer> deptNoSet = new TreeMap<Integer, Integer>();
 		for (Employee emp : empList) {
-			if (designation.equals(emp.getDesignation()))
-				count++;
+			if (deptNoSet.containsKey(emp.getDeptNo())) {
+				deptNoSet.put(emp.getDeptNo(), deptNoSet.get(emp.getDeptNo()) + 1);
+			} else
+				deptNoSet.put(emp.getDeptNo(), 1);
 		}
-		return count;
-
-	}
-
-	private String addString(String data) {
-		return data.replaceAll("'", "");
-	}
-
-	private int addInteger(String data) {
-		if (data.equalsIgnoreCase("NULL"))
-			return 0;
-		return Integer.parseInt(data);
+		return deptNoSet;
 	}
 
 	public Iterable<Employee> getEmployeeList() {
