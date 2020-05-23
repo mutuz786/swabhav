@@ -1,4 +1,4 @@
-package com.techlabs.ocptest.test;
+package com.techlabs.openclosedprincipletest.test;
 
 import com.techlabs.openclosedprincipletest.*;
 
