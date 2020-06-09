@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ex3</title>
+</head>
+<body>
+	<p id="text">yo</p>
+	<script>
+		function startingNumber() {
+			var number = 100;
+			document.getElementById("text").innerHTML = number;
+			function endingNumber() {
+				var nextNumber = number + 400;
+				document.getElementById("text").appendChild(
+						document.createTextNode("   "+nextNumber));
+			}
+			return endingNumber;
+		}
+		var endingNumber = startingNumber();
+		endingNumber();
+	</script>
+</body>
+</html>

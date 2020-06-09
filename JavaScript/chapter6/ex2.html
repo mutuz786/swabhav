@@ -2,12 +2,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ex1</title>
+<title>ex2</title>
 </head>
 <body>
+	<p id="text">hi</p>
+	<button onclick="clearInterval(intervalID)">stop</button>
 	<script>
+		var text = "hello";
 		function printHello() {
-			document.writeln("Hello    ");
+			document.getElementById("text").innerHTML = text;
+			text = text + " hello";
 		}
 		var intervalID = setInterval(printHello, 1000);
 	</script>

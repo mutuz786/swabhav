@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ex2</title>
+</head>
+<body>
+	<p id="text">yo</p>
+	<script>
+		function start() {
+			document.getElementById("text").innerHTML = "Start";
+			function stop() {
+				document.getElementById("text").appendChild(document.createTextNode("   Stop"));
+			}
+			return stop;
+		}
+		var stop = start();
+		stop();
+	</script>
+</body>
+</html>

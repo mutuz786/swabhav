@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ex1</title>
+</head>
+<body>
+	<p id="text">yo</p>
+	<script>
+		//default value of number us set 100
+		var number = 100;
+
+		//function to display number variable on document
+		function displayNumber() {
+			//print default value of number on document
+			document.getElementById("text").innerHTML = number;
+
+			//create new variable number with value 500
+			var number = 500;
+
+			//print new variable of number on document
+			document.getElementById("text").innerHTML = number;
+		}
+		displayNumber();
+	</script>
+</body>
+</html>

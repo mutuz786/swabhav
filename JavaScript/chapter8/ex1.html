@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ex1</title>
+</head>
+<body>
+	<p id="text">yo</p>
+	<script>
+		var number = 100;
+		function displayNumber() {
+			document.getElementById("text").innerHTML = number;
+			var number = 500;
+			document.getElementById("text").innerHTML = number;
+		}
+		displayNumber();
+	</script>
+</body>
+</html>
