@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var total = 23 + 65 - 5 * 65 / 43 % 2;
+		printText();
+		function printText() {
+			document.getElementById("text").innerHTML = total;
+			document.getElementById("text").innerHTML += "<br>"
+					+ Math.floor(total);
+			document.getElementById("text").innerHTML += "<br>"
+					+ Math.round(total);
+			document.getElementById("text").innerHTML += "<br>"
+					+ Math.ceil(total);
+			document.getElementById("text").innerHTML += "<br>"
+					+ Math.abs(Math.cos(Math.PI));
+			document.getElementById("text").innerHTML += "<br>"
+					+ Math.pow(3, 2);
+			document.getElementById("text").innerHTML += "<br>" + Math.exp(4);
+			document.getElementById("text").innerHTML += "<br>" + Math.sqrt(64);
+			document.getElementById("text").innerHTML += "<br>" + Math.random()
+					* 10;
+			document.getElementById("text").innerHTML += "<br>" + Math.random()
+					* 10;
+			document.getElementById("text").innerHTML += "<br>" + Math.random()
+					* 10;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var input;
+		document.getElementById("text").innerHTML = input;
+		input = null;
+		document.getElementById("text").innerHTML += "<br>" + input;
+		document.getElementById("text").innerHTML += "<br>" + (input==undefined);
+		document.getElementById("text").innerHTML += "<br>" + (input===undefined);
+	</script>
+</body>
+</html>

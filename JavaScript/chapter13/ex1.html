@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<p id="text">hi</p>
+	<button onclick="printText();">Change</button>
+	<script type="text/javascript">
+		var name1 = "Murtaza";
+		var name2 = new String("Murtaza");
+		function printText() {
+			document.getElementById("text").innerHTML = typeof name1;
+			document.getElementById("text").innerHTML +=" "+ typeof name1.length;
+			document.getElementById("text").innerHTML +=" "+ typeof name2;
+			document.getElementById("text").innerHTML +=" "+ typeof name2.length;
+			
+		}
+	</script>
+</body>
+</html>

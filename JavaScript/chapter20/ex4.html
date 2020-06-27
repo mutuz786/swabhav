@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var nameChecker = {
+			names : [ "murtaza", "huzaifa", "mustafa", "batul" ],
+			check : function(name) {
+				for (var i = 0; i < this.names.length; i++) {
+					if (this.names[i] == name) {
+						return true;
+					}
+				}
+				return false;
+			}
+		};
+		
+		var bool = nameChecker.check("murtaza");
+		document.getElementById("text").innerHTML=bool;
+		bool=nameChecker.check("siri");
+		document.getElementById("text").innerHTML+="<br>"+bool;
+		</script>
+</body>
+
+</html>

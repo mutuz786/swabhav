@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var nameChecker = (function () {
+			names = ["murtaza", "huzaifa", "mustafa", "batul"];
+			function privatecheck(name) {
+				for (var i = 0; i < names.length; i++) {
+					if (names[i] == name) {
+						return true;
+					}
+				}
+				return false;
+			}
+			return {
+				checkName: privatecheck
+			};
+		})();
+		var bool = nameChecker.checkName("siri");
+		document.getElementById("text").innerHTML = bool;
+		bool = nameChecker.checkName("murtaza");
+		document.getElementById("text").innerHTML += "<br>" + bool;
+	</script>
+</body>
+
+</html>

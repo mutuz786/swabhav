@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var fruits = [ "mango", "chickoo", "banana", "berry", "grapes",
+				"banana" ];
+		var vegetables = [ "tomato", "brocoli", "cucumber", "cabbage" ];
+		var food = fruits.concat(vegetables);
+		printText();
+		function printText() {
+			document.getElementById("text").innerHTML += "<br>"
+					+ fruits.indexOf("banana", 0);
+			document.getElementById("text").innerHTML += "<br>"
+					+ fruits.lastIndexOf("banana");
+			
+			for (var i = 0; i < food.length; i++) {
+				document.getElementById("text").innerHTML += "<br>" + food[i];
+			}
+		}
+	</script>
+</body>
+</html>

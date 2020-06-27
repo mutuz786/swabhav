@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var input = "43";
+		if (input == 43) {
+			document.getElementById("text").innerHTML = "condition excepted";
+		} else {
+			document.getElementById("text").innerHTML = "condition unexcepted";
+		}
+		if (input === 43) {
+			document.getElementById("text").innerHTML += "<br>condition excepted";
+		} else {
+			document.getElementById("text").innerHTML += "<br>condition unexcepted";
+		}
+	</script>
+</body>
+
+</html>

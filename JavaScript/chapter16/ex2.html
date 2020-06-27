@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var student = {
+			getName : function() {
+				return this.firstName + " " + this.lastName;
+			}
+		};
+		var student1 = Object.create(student);
+		student1.firstName = "murtaza";
+		student1.lastName = "khilawala";
+		var student2 = Object.create(student);
+		student2.firstName = "sagar";
+		student2.lastName = "kirtane";
+		alert("the name is "+student1.getName()+","+student2.getName());
+	</script>
+</body>
+</html>

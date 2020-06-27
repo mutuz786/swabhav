@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<p id="text">hi</p>
+	<button onclick="printText();">Change</button>
+	<script type="text/javascript">
+		var name = "Harry Potter And The Goblet Of Fire";
+		function printText() {
+			document.getElementById("text").innerHTML = name.toLowerCase()
+					+ "<br>" + name.toUpperCase();
+		}
+	</script>
+</body>
+</html>

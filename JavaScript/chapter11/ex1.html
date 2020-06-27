@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+<p id="text">hi</p>
+<button onclick="printText();">Change</button>
+	<script type="text/javascript">
+		var names = new Array("Dennis", "Frank", "Dee", "Mac");
+		var pi = Math.round("3.14");
+		var todayDate = new Date();
+		var hello = new String("Hello!");
+		function printText(){
+			document.getElementById("text").innerHTML=names+" "+pi+" "+todayDate+" "+hello;
+		}
+	</script>
+</body>
+</html>

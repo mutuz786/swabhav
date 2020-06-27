@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<p id="text">hi</p>
+	<button onclick="printText();">Change</button>
+	<script type="text/javascript">
+		var name = "Murtaza";
+		var displayText = "hello ";
+		displayText = name.slice(3, 6);
+		displayText += " " + name.slice(3, -1);
+		displayText += " " + name.slice(-4, -1);
+		function printText() {
+			document.getElementById("text").innerHTML = displayText;
+		}
+	</script>
+</body>
+</html>

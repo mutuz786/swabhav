@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var names = [ "Murtaza", "Huazaifa", "Mustafa" ];
+		names.pop();
+		names.shift();
+		names.push("Batul");
+		names.unshift("Munira");
+		printText();
+		function printText() {
+			for (var i = 0; i < names.length; i++) {
+				document.getElementById("text").innerHTML += "<br>" + names[i];
+			}
+		}
+	</script>
+</body>
+</html>

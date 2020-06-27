@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<p id="text"></p>
+	<script type="text/javascript">
+		var name = {
+			firstName : "murtaza",
+			middleName : "mustafa",
+			lastName : "khilawala",
+			getName : function() {
+				return this.firstName + " " + this.middleName + " "
+						+ this.lastName;
+			}
+		};
+		alert(name.getName());
+	</script>
+</body>
+</html>
