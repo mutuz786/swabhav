@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<div id="paraContainer">
+		<p id="para" >Hello</p>
+	</div>
+	<button onclick="funct1()">QuerySelector</button>
+	<script type="text/javascript">
+		function funct1() {
+			var element = document.querySelector("p");
+			element.textContent += " "+element.getAttribute("id");
+			element.setAttribute("id","paraContains");
+			element.textContent += " "+element.getAttribute("id");
+		}
+	</script>
+</body>
+
+</html>

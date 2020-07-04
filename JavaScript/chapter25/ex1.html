@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<div id=paraContainer>
+		<p>hello</p>
+	</div>
+	<button onclick="funct1()">QuerySelector</button>
+	<script type="text/javascript">
+		function funct1() {
+			var bodyElement = document.body;
+			for (var i = 0; i < bodyElement.children.length; i++) {
+				var childNode = bodyElement.children[i];
+				document.querySelector("p").textContent+=" "+childNode.tagName;
+			}
+		}
+	</script>
+</body>
+
+</html>

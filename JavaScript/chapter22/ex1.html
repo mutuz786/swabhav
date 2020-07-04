@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<div id=paraContainer>
+		<p align="left">hello</p>
+		<p align="center">hello</p>
+		<p align="right">hello</p>
+	</div>
+	<button onclick="funct1()">QuerySelector</button>
+	<button onclick="funct2()">QuerySelectorAll</button>
+	<script type="text/javascript">
+		function funct1() {
+			var element=document.getElementById("paraContainer");
+			element.querySelector("p").style.color="red";
+		}
+		function funct2() {
+			var element=document.getElementById("paraContainer");
+			var paras=element.querySelectorAll("p");
+			for(var i=0;i<paras.length;i++){
+				paras[i].style.color="blue";
+			}
+		}
+	</script>
+</body>
+
+</html>
