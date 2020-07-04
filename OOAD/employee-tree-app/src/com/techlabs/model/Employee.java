@@ -28,7 +28,7 @@ public class Employee implements Comparable<Employee> {
 		this.deptNO = deptNo;
 	}
 
-	public void addEmployee(Employee employee) {
+	public void addReportee(Employee employee) {
 		employees.add(employee);
 	}
 

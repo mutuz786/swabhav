@@ -2,6 +2,7 @@ package com.techlabs.model;
 
 import java.io.*;
 import java.util.*;
+import java.util.Map.Entry;
 
 public class DataBaseManager {
 	Map<Integer, Employee> employees;
@@ -32,13 +33,24 @@ public class DataBaseManager {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		placement();
+		for (Map.Entry employee : employees.entrySet()) {
+			findRepoter((Employee) employee.getValue());
+		}
 	}
 
-	private void placement() {
-		for (Map.Entry employee : employees.entrySet()) {
-			Employee emp = (Employee) employee.getValue();
-			emp.addEmployee(employees.get(emp.getEmpNo()));
+	private void findRepoter(Employee employee) {
+		Employee emp1 = employee;
+		Employee emp2 = employees.get(emp1.getMngNo());
+		if (emp2 != null && emp1 != null)
+			emp2.addReportee(emp1);
+	}
+
+	public void addEmployee(Employee employee) {
+		employees.put(employee.getEmpNo(), employee);
+		findRepoter(employee);
+		for (Map.Entry empEntry : employees.entrySet()) {
+			if (((Employee) empEntry.getValue()).getMngNo() == employee.getEmpNo())
+				employee.addReportee((Employee) empEntry.getValue());
 		}
 	}
 
@@ -55,10 +67,6 @@ public class DataBaseManager {
 
 	public Map<Integer, Employee> getEmployees() {
 		return employees;
-	}
-
-	public void addEmployee(Employee employee) {
-		employees.put(employee.getEmpNo(), employee);
 	}
 
 }
