@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>todo List</title>
+    <style>
+        button {
+            color: blueviolet;
+            border-radius: 100%;
+        }
+
+        body {
+            align-content: center;
+        }
+    </style>
+    <script>
+        var tasks = [];
+        var buttons = [];
+        function add() {
+            var task = document.getElementById("task").value;
+            document.getElementById("task").value = "";
+            tasks.push(task);
+            display();
+        }
+
+        function remove(i) {
+            var result=confirm("Do you want to delete this task");
+            if(result){
+                tasks.splice(i - 1, 1);
+                buttons.splice(i, 1);
+                display();
+            }   
+        }
+
+        function display() {
+            var table = document.getElementById("table");
+            removeAll();
+            for (var i = 0; i < tasks.length; i++) {
+                var row = table.insertRow(0);
+                var cell = row.insertCell(0);
+                var button1 = document.createElement("BUTTON");
+                var text = document.createTextNode("X");
+                button1.appendChild(text);
+                button1.onmousedown = function () { remove(i) };
+                buttons.push(button1);
+                cell.innerHTML = tasks[i];
+                cell.appendChild(buttons[i]);
+            }
+        }
+        function removeAll() {
+            document.getElementById("table").innerHTML = "";
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" placeholder="Enter Your Task..." id="task">
+    <button onclick="add()">+</button><br>
+    <table id="table">
+    </table>
+</body>
+
+</html>
