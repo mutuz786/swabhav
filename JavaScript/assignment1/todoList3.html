@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>ToDo List</title>
+</head>
+
+<body>
+    <script>
+        var text = document.createElement("h3");
+        text.textContent = "Add Task";
+        var textBox = document.createElement("input");
+        textBox.setAttribute("type", "text");
+        var addButton = document.createElement("button");
+        addButton.textContent = "+";
+        addButton.addEventListener("click", addTask);
+        var table = document.createElement("table");
+        document.body.appendChild(text);
+        document.body.appendChild(textBox);
+        document.body.appendChild(addButton);
+        document.body.appendChild(table);
+        displayTask();
+        if (!(localStorage.index)) {
+            localStorage.index = 0;
+        }
+        var buttons = [];
+        function addTask() {
+            var task = textBox.value;
+            localStorage.setItem(localStorage.index, task);
+            localStorage.index = Number(localStorage.index) + 1;
+            textBox.value = "";
+            displayTask();
+        }
+        function displayTask() {
+            removeAllTask();
+            var range = localStorage.index;
+            for (var i = 0; i < range; i++) {
+                var taskElement = localStorage.getItem(i);
+                if (taskElement !== null) {
+                    var row = table.insertRow();
+                    var cell = row.insertCell();
+                    var button = document.createElement("button");
+                    button.textContent = "x";
+                    button.id = i;
+                    button.addEventListener("click", function () {
+                        localStorage.removeItem(this.id);
+                        displayTask();
+                    });
+                    buttons.push(button);
+                    cell.innerHTML = taskElement;
+                    cell.appendChild(button);
+                }
+            }
+        }
+        function removeAllTask() {
+            table.innerHTML = "";
+            buttons = [];
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<p>hello</p>
+	<button onclick="funct1()">Click Here</button>
+	<script type="text/javascript">
+		function funct1() {
+			var newBodyElement = document.createElement("p");
+			newBodyElement.textContent = "How are you";
+			var buttonElement = document.querySelector("button");
+			document.body.insertBefore(newBodyElement,buttonElement);
+		}
+	</script>
+</body>
+
+</html>

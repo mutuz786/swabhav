@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		#message {
+			position: absolute;
+		}
+	</style>
+</head>
+
+<body>
+	<img src="character.png" id="message">
+	<script>
+		var mapX = 0;
+		var mapY = 0;
+		var keys = [];
+		var messenger = document.getElementById("message");
+		window.addEventListener("keydown", move);
+		window.addEventListener("keyup", stop);
+		function move(event1) {
+			var keyCode = event1.keyCode;
+			keys[keyCode] = true;
+			switch (keyCode) {
+				case 39:
+					mapX += 5;
+					break;
+				case 37:
+					mapX -= 5;
+					break;
+				case 38:
+					mapY -= 5;
+					break;
+				case 40:
+					mapY += 5;
+					break;
+			}
+			if (keys[39] && keys[38]) {
+				mapX += 5;
+				mapY -= 5;
+			}
+			if (keys[39] && keys[40]) {
+				mapX += 5;
+				mapY += 5;
+			}
+			if (keys[37] && keys[38]) {
+				mapX -= 5;
+				mapY -= 5;
+			}
+			if (keys[37] && keys[40]) {
+				mapX -= 5;
+				mapY += 5;
+			}
+			messenger.style.left = mapX + "px";
+			messenger.style.top = mapY + "px";
+		}
+		function stop(event1) {
+			keys[event1.keyCode] = false;
+		}
+	</script>
+</body>
+
+</html>

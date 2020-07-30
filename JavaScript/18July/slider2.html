@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>slider</title>
+</head>
+
+<body>
+    <script>
+        var rangeSlider = document.createElement("input");
+        rangeSlider.setAttribute("type", "range");
+        rangeSlider.setAttribute("min", "1");
+        rangeSlider.setAttribute("max", "100");
+
+        var message = document.createElement("h3");
+
+        document.body.appendChild(rangeSlider);
+        document.body.appendChild(message);
+        rangeSlider.addEventListener("mouseup", changeText);
+
+        var buttons = [];
+
+        function changeText() {
+            var value = rangeSlider.value;
+            removeElements();
+            buttons.splice(0, buttons.length);
+            for (var i = 0; i < value; i++) {
+                var button = document.createElement("button");
+                button.textContent = i + 1;
+                button.id = i + 1;
+                button.addEventListener("click",alertMessage);
+                buttons.push(button);
+                document.body.appendChild(buttons[i]);
+            }
+        }
+        function removeElements() {
+            for (var i = 0; i < buttons.length; i++) {
+                document.body.removeChild(buttons[i]);
+            }
+        }
+
+        function alertMessage(event1){
+            alert("You clicked on the button with id:"+event1.currentTarget.id);
+        }
+
+    </script>
+
+</body>
+
+</html>

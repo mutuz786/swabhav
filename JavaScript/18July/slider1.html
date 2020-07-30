@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>Message</title>
+</head>
+
+<body>
+    <script>
+        var rangeSlider = document.createElement("input");
+        rangeSlider.setAttribute("type", "range");
+        rangeSlider.setAttribute("min", "0");
+        rangeSlider.setAttribute("max", "100");
+
+        var message = document.createElement("h3");
+
+        document.body.appendChild(rangeSlider);
+        document.body.appendChild(message);
+        rangeSlider.addEventListener("mouseup", changeText);
+
+        function changeText() {
+            var value = rangeSlider.value;
+            message.textContent = value;
+        }
+
+    </script>
+
+</body>
+
+</html>

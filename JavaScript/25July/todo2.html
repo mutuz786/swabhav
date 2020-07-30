@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ToDoList</title>
+    <style>
+        button {
+            border-radius: 100%;
+        }
+
+        #checked {
+            text-decoration: line-through;
+            color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ToDoList</h1>
+    <input type="text" name="task" id="task">
+    <button onclick="addTask()">+</button>
+    <br>
+    <p>todo items</p>
+    <table id="unchecked"></table>
+    <p>completed items</p>
+    <table id="checked"></table>
+
+    <script>
+        var uncheckedTask = [];
+        var uncheckedBox = [];
+        var checkedTask = [];
+        var checkedBox = [];
+        var unTable = document.getElementById("unchecked");
+        var cTable = document.getElementById("checked");
+
+        function addTask() {
+            uncheckedTask.push(document.getElementById("task").value);
+            document.getElementById("task").value = "";
+            display();
+        }
+
+        function display() {
+            removeAll();
+            for (var i = 0; i < uncheckedTask.length; i++) {
+                var number = i;
+                var row = unTable.insertRow();
+                var cell = row.insertCell();
+                var checkbox = document.createElement('input');
+                checkbox.type = "checkbox";
+                checkbox.id = i;
+                var label = document.createElement('label');
+                label.htmlFor = i;
+                checkbox.checked = false;
+                label.appendChild(document.createTextNode(uncheckedTask[i]));
+                checkbox.addEventListener("change", function () {
+                    checkedTask.push(uncheckedTask[this.id]);
+                    uncheckedTask.splice(this.id, 1);
+                    display();
+                });
+                uncheckedBox[i] = checkbox;
+                cell.appendChild(uncheckedBox[i]);
+                cell.appendChild(label);
+            }
+            for (var i = 0; i < checkedTask.length; i++) {
+                var row = cTable.insertRow();
+                var cell = row.insertCell();
+                var checkbox = document.createElement('input');
+                checkbox.type = "checkbox";
+                checkbox.id = i;
+                var label = document.createElement('label');
+                label.htmlFor = i;
+                checkbox.checked = true;
+                label.appendChild(document.createTextNode(checkedTask[i]));
+                checkbox.addEventListener("change", function () {
+                    uncheckedTask.push(checkedTask[this.id]);
+                    checkedTask.splice(this.id, 1);
+                    display();
+                });
+                checkedBox[i] = checkbox;
+                cell.appendChild(checkedBox[i]);
+                cell.appendChild(label);
+            }
+        }
+
+        function removeAll() {
+            unTable.innerHTML = "";
+            cTable.innerHTML = "";
+            uncheckedBox = [];
+            checkedBox = [];
+        }
+    </script>
+</body>
+
+</html>

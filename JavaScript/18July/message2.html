@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>Message Changer</title>
+</head>
+
+<body>
+    <script>
+        var label = document.createElement("label");
+        label.textContent = "Text1:";
+        var textbox = document.createElement("textarea");
+        textbox.addEventListener("keyup", changeText);
+        var message = document.createElement("h3");
+
+        document.body.appendChild(label);
+        document.body.appendChild(textbox);
+        document.body.appendChild(message);
+
+        function changeText() {
+            var messageText = textbox.value;
+            for (var i = 0; i <= 9; i++) {
+                messageText = messageText.replace(i, "");
+            }
+            message.textContent = messageText.toUpperCase();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Color Changer</title>
+</head>
+
+<body>
+    <script>
+        var colorArray=[];
+        var colors = document.createElement("select");
+        var defaultColor = document.createElement("option");
+        var redColor = document.createElement("option");
+        var blueColor = document.createElement("option");
+        var greenColor = document.createElement("option");
+
+        colorArray.push(defaultColor);
+        colorArray.push(redColor);
+        colorArray.push(blueColor);
+        colorArray.push(greenColor);
+        
+
+        colorArray[0].text = "--select--";
+        colorArray[1].text = "red";
+        colorArray[2].text = "blue";
+        colorArray[3].text = "green";
+
+        colorArray[1].value = "#ffcccb";
+        colorArray[2].value = "#00FFFF";
+        colorArray[3].value = "#90EE90";
+
+        colors.appendChild(colorArray[0]);
+        colors.appendChild(colorArray[1]);
+        colors.appendChild(colorArray[2]);
+        colors.appendChild(colorArray[3]);
+        document.body.appendChild(colors);
+
+        colors.addEventListener("click",colorBody);
+
+        function colorBody() {
+            var choosenColor = colors.value;
+            document.body.style.backgroundColor = choosenColor;
+        }
+    </script>
+
+</body>
+
+</html>

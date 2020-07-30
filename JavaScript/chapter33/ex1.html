@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+
+	<div id="numbers">
+		<button id="button1">One</button><br>
+		<button id="button2">Two</button><br>
+		<button id="button3">Three</button><br>
+		<button id="button4">Four</button><br>
+		<button id="button5">Five</button><br>
+	</div>
+	<h3 id="message"></h3>
+	<script type="text/javascript">
+		var numbers = document.getElementById("numbers");
+		numbers.addEventListener("click", alertMessage);
+		var messenger = document.getElementById("message");
+		function alertMessage(event1) {
+			if (event1.target !== event1.currentTarget) {
+				messenger.innerHTML += "You have clicked " + event1.target.id + "<br>";
+			}
+			event1.stopPropagation();
+		}
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+
+	<div id=paraContainer>
+		<p>hello</p>
+	</div>
+	<script type="text/javascript">
+		document.addEventListener("mousemove", funct1, false);
+		document.addEventListener("mousedown", funct2, false);
+		function funct1(e) {
+			document.querySelector("p").textContent = e.clientX + " " + e.clientY;
+		}
+		function funct2(e){
+			switch(e.button){
+				case 0:
+					alert("You Pressed left button");
+					break;
+				case 1:
+					alert("You Pressed middle button");
+					break;
+				case 2:
+					alert("You Pressed right button");
+					break;
+			}
+		}
+	</script>
+</body>
+
+</html>

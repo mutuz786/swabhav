@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>sessionStorage Test</title>
+</head>
+
+<body>
+    <script>
+        var text = document.createElement("p");
+        text.innerHTML = "Hello ";
+        document.body.appendChild(text);
+        var names = ["Murtaza", "Mustafa", "Khilawala"];
+        for (var i = 0; i < names.length; i++) {
+            if (typeof (Storage) !== "undefined") {
+                sessionStorage.setItem(i, names[i]);
+            }
+        }
+
+        sessionStorage.removeItem(1);
+
+        for (var i = 0; i < 3; i++) {
+            var name = sessionStorage.getItem(i)
+            if (name !== "null") {
+                text.textContent += name + " ";
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

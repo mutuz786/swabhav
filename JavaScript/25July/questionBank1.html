@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <title>questionBank</title>
+</head>
+
+<body>
+    <script>
+        var questions = [];
+        var i = 0;
+        var score = 0;
+        var start = document.createElement("button");
+        start.textContent = "start";
+        start.addEventListener("click", function () {
+            start.style.display = "none";
+            questions[0].style.display = "block";
+        });
+        document.body.appendChild(start);
+
+        addQuestion("What is the capital of india?", ["Mumbai", "Delhi", "Chennai", "Bihar"], 1);
+        addQuestion("Which of the following is the largest Archipelago in the world?", ["Andaman & Nicobar Island", "Malaysia", "Indonesia", "Maldives"], 2);
+        addQuestion("Which of the following is the world’s largest peninsula?", ["Indiia", "South Africa", "Arabia", "Both A & B"], 2);
+        addQuestion("Who is the richest person in the world in July 2020?", ["Jeff Bezos", "Jack ma", "Bill Gates", "Warren Buffett"], 0);
+
+        for (var j = 0; j < questions.length; j++) {
+            document.body.appendChild(questions[j]);
+        }
+
+        function addQuestion(que, opt, ans) {
+            var question = document.createElement("div");
+            question.id = 101 + i;
+            i++;
+            var text = document.createElement("h3");
+            text.textContent = "Id " + question.id + " :" + que;
+            question.appendChild(text);
+            var answer = ans;
+            var table = document.createElement("table");
+            for (var j = 0; j < 4; j++) {
+                var row = table.insertRow();
+                var cell = row.insertCell();
+                var option = document.createElement("input");
+                option.setAttribute("type", "radio");
+                option.id = 0;
+                option.name = "choice";
+                option.value = j;
+                var label = document.createElement('label');
+                label.htmlFor = "id";
+                label.appendChild(document.createTextNode(opt[j]));
+                cell.appendChild(option);
+                cell.appendChild(label);
+            }
+            question.appendChild(table);
+            var button = document.createElement("button");
+            button.addEventListener("click", function () {
+                const options = document.querySelectorAll('input[name="choice"]');
+                var selectedValue = -1;
+                for (const result of options) {
+                    if (result.checked) {
+                        selectedValue = result.value;
+                    }
+                }
+                if (selectedValue == -1) {
+                    alert("choose an option");
+                }
+                else {
+                    if (selectedValue == ans) {
+                        score++;
+                    }
+                    questions[question.id - 101].style.display = "none";
+                    if (questions[question.id - 100] == undefined) {
+                        var resultdisplay = document.createElement("div");
+                        finalScore = score / questions.length * 100;
+                        resultdisplay.innerHTML = "You Scored <br>" + finalScore;
+                        if (finalScore > 40) {
+                            resultdisplay.innerHTML += "<br>You Passed";
+                        }
+                        else {
+                            resultdisplay.innerHTML += "<br>You Failed";
+
+                        }
+                        document.body.appendChild(resultdisplay);
+                    }
+                    questions[question.id - 100].style.display = "block";
+                }
+            });
+            button.textContent = "Next";
+            question.appendChild(button);
+            question.style.display = "none";
+            questions.push(question);
+        }
+    </script>
+</body>
+
+</html>

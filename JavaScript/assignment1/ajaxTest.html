@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Ajax Testing</title>
+</head>
+
+<body>
+    <script>
+        var text = document.createElement("h3");
+        text.textContent = "Ajax Example:";
+        document.body.appendChild(text);
+        var button = document.createElement("button");
+        button.textContent = "Fetch Names";
+        button.addEventListener("click", change);
+        document.body.appendChild(button);
+        var space = document.createElement("div");
+        document.body.appendChild(space);
+
+        function change() {
+            var httpReq = new XMLHttpRequest();
+            httpReq.open("GET", "samplehtml.html");
+            httpReq.onreadystatechange = function () {
+                space.innerHTML = this.responseText;
+            };
+            httpReq.send();
+        }
+
+    </script>
+</body>
+
+</html>

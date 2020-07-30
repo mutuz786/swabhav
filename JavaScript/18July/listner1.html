@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>Color Changer</title>
+</head>
+
+<body>
+    <script>
+        var redButton=document.createElement("button");
+        redButton.textContent="red";
+        redButton.addEventListener("click",changeToRed);
+
+        var blueButton=document.createElement("button");
+        blueButton.textContent="blue";
+        blueButton.addEventListener("click",changeToBlue);
+
+        document.body.appendChild(redButton);
+        document.body.appendChild(blueButton);
+
+        function changeToRed() {
+            document.body.style.backgroundColor="#ffcccb";
+        }
+        function changeToBlue() {
+            document.body.style.backgroundColor="#00FFFF";
+        }
+    </script>
+
+</body>
+
+</html>

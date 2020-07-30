@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+
+		<p>hello</p>
+	<script type="text/javascript">
+		document.addEventListener("mousewheel", funct1, false);
+		function funct1(e) {
+			var direction=e.wheelDelta || -1* e.detail;
+			if(direction>0){
+				document.querySelector("p").textContent="up";
+			}
+			else{
+				document.querySelector("p").textContent="down";
+			}
+		}
+	</script>
+</body>
+
+</html>

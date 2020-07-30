@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>CanvasTest</title>
+</head>
+
+<body>
+    <script>
+        var x = 0;
+        var y = 0;
+        var valid = false;
+        var canvas = document.createElement("canvas");
+        canvas.id = "canvas";
+        canvas.style.height = 500;
+        canvas.style.width = 600;
+        canvas.style.border = "1px solid #000000";
+        document.body.appendChild(canvas);
+
+        var ctx = canvas.getContext("2d");
+
+        canvas.addEventListener("mousedown", startDrawing);
+        canvas.addEventListener("mousemove", continueDrawing);
+        canvas.addEventListener("mouseup", stopDrawing);
+
+        function startDrawing(e) {
+            x = e.offsetX;
+            y = e.offsetY;
+            valid = true;
+        }
+
+        function continueDrawing(e) {
+            if (valid) {
+                drawLine(ctx, x, y, e.offsetX, e.offsetY);
+                x = e.offsetX;
+                y = e.offsetY;
+            }
+        }
+
+        function stopDrawing(e) {
+            if (valid) {
+                drawLine(ctx, x, y, e.offsetX, e.offsetY);
+                valid = false;
+            }
+        }
+        function drawLine(ctx, x1, y1, x2, y2) {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>CanvasTest</title>
+</head>
+
+<body>
+    <script>
+        var canvas = document.createElement("canvas");
+        canvas.id = "canvas";
+        canvas.style.height = 500;
+        canvas.style.width = 600;
+        canvas.style.border = "1px solid #000000";
+        document.body.appendChild(canvas);
+
+        var ctx = canvas.getContext("2d");
+        ctx.moveTo(10, 130);
+        ctx.lineTo(10, 10);
+        ctx.lineTo(100, 80);
+        ctx.arc(100, 80, 30, 0, 2 * Math.PI);
+        ctx.arc(100, 80, 20, 0, 2 * Math.PI);
+        ctx.arc(100, 80, 10, 0, 2 * Math.PI);
+        ctx.moveTo(100, 80);
+        ctx.lineTo(190, 10);
+        ctx.lineTo(190, 130);
+        ctx.font = "25px Arial";
+        ctx.strokeText("URTAZA", 195, 130);
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

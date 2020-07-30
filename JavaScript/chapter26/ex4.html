@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<div id="frame1">
+		<div id="frame2" class="frame2Class">
+			<p>hello</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var frame2Body = document.querySelector(".frame2Class");
+		var frame2Clone=frame2Body.cloneNode(true);
+		document.querySelector("#frame1").appendChild(frame2Clone);
+	</script>
+</body>
+
+</html>

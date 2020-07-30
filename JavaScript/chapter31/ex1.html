@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<p id="message"></p>
+	<script>
+		var messenger = document.getElementById("message");
+		window.addEventListener("keydown", sendMesssage);
+		function sendMesssage(event1) {
+			var keyCode=event1.keyCode;
+			if(keyCode=="87")
+				messenger.textContent="You pressed W";
+			if(keyCode=="83"){
+				messenger.textContent="You pressed S";
+			}
+		}
+	</script>
+</body>
+
+</html>

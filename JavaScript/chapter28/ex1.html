@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<p>hello</p>
+	<script type="text/javascript">
+	document.querySelector("p").addEventListener("click",funct1,false);
+		function funct1() {
+			var newBodyElement = document.createElement("p");
+			newBodyElement.textContent = "How are you";
+			document.body.appendChild(newBodyElement);
+		}
+	</script>
+</body>
+
+</html>

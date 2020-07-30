@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>Color Changer</title>
+</head>
+
+<body>
+    <select name="color" id="cars" onclick="colorBody()">
+        <option value="">--select--</option>
+        <option value="#ffcccb">red</option>
+        <option value="#00FFFF">blue</option>
+        <option value="#90EE90">green</option>
+    </select>
+    <script>
+        function colorBody() {
+            var choosenColor = document.getElementById("cars").value
+            document.body.style.backgroundColor = choosenColor;
+        }
+    </script>
+
+</body>
+
+</html>

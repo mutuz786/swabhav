@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+</head>
+
+<body>
+	<p>hello</p>
+	<button onclick="funct1()">Add Element</button>
+	<button onclick="funct2()">Remove Element</button>
+	<script type="text/javascript">
+		var newBodyElement = document.createElement("p");
+		newBodyElement.textContent = "How are you";
+		var buttonElement = document.querySelector("button");
+		function funct1() {
+			document.body.insertBefore(newBodyElement, buttonElement);
+		}
+		function funct2() {
+			document.body.removeChild(newBodyElement);
+		}
+	</script>
+</body>
+
+</html>
