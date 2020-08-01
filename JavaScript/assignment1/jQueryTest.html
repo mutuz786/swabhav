@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#option").hide();
+            $("#menu").mouseover(function () {
+                $("#option").slideDown();
+            });
+            $("#comp").mouseleave(function () {
+                $("#option").slideUp();
+            });
+        });
+    </script>
+    <style>
+        #menu {
+            background-color: darkcyan;
+            padding: 1%;
+            width: max-content;
+        }
+
+        #option {
+            background-color: gray;
+            padding: 1%;
+            width: max-content;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Jquery Test</h2>
+    <div id="comp">
+        <div id="menu"> menu </div>
+        <div id="option">new <br>open <br>save</div>
+    </div>
+</body>
+
+</html>

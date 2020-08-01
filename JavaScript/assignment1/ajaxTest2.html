@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ajax Test</title>
+</head>
+
+<body>
+  <div id="form">
+  </div>
+  <button>GetData</button>
+
+  <script>
+    var button = document.querySelector("button");
+    button.addEventListener("click", function () {
+      const req = new XMLHttpRequest();
+
+      req.onload = function () {
+        document.getElementById("form").innerText = this.responseText;
+      };
+
+      req.open('GET', 'https://cors-proxy.htmldriven.com/?https://cors-anywhere.herokuapp.com');
+      req.send();
+    });
+
+  </script>
+</body>
+
+</html>

@@ -1,31 +1,51 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Ajax Testing</title>
+  <title>Ajax Test</title>
+  <style>
+    #form {
+      text-align: center;
+      border: 1px solid indigo;
+      padding: 10px 25px;
+      margin: 0 auto;
+      width: max-content;
+    }
+  </style>
 </head>
 
 <body>
-    <script>
-        var text = document.createElement("h3");
-        text.textContent = "Ajax Example:";
-        document.body.appendChild(text);
-        var button = document.createElement("button");
-        button.textContent = "Fetch Names";
-        button.addEventListener("click", change);
-        document.body.appendChild(button);
-        var space = document.createElement("div");
-        document.body.appendChild(space);
+  <div id="form">
+    <h2>Login Page</h2>
+    <ul id="messages"></ul>
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+    <button id="submit">Submit</button>
+  </div>
 
-        function change() {
-            var httpReq = new XMLHttpRequest();
-            httpReq.open("GET", "samplehtml.html");
-            httpReq.onreadystatechange = function () {
-                space.innerHTML = this.responseText;
-            };
-            httpReq.send();
-        }
+  <script>
+    const form = {
+      username: document.getElementById("username"),
+      password: document.getElementById("password"),
+      submit: document.getElementById("submit"),
+      messages: document.getElementById("messages")
+    };
 
-    </script>
+    form.submit.addEventListener("click", function () {
+      const req = new XMLHttpRequest();
+
+      req.onload = function () {
+        console.log(req.responseText);
+      };
+
+      const requestData = 'username=' + form.username.value + '&password=' + form.password.value;
+      console.log(requestData);
+      req.open('GET', 'https://cors-anywhere.herokuapp.com');
+      req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      req.send(requestData);
+    });
+
+  </script>
 </body>
 
 </html>
