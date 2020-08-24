@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>CallBack Function</title>
+</head>
+
+<body>
+    <script>
+        setTimeout(() => {
+            squareEvenNo(10, displayOnConsole);
+            setTimeout(() => {
+                squareEvenNo(4, displayOnAlert);
+            }, 2000);
+        }, 3000);
+        var ch = setTimeout(squareEvenNo, 4000, 3, displayOnHtml);
+        function squareEvenNo(number, display) {
+            if (number % 2 == 0) {
+                display(number * number);
+            }
+            else {
+                display("Error:'" + number + "' is not a even number");
+            }
+        }
+        function displayOnConsole(result) {
+            console.log(result);
+        }
+        function displayOnHtml(result) {
+            document.body.innerHTML = result;
+        }
+        function displayOnAlert(result) {
+            alert(result);
+        }
+    </script>
+</body>
+
+</html>

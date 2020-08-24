@@ -1,0 +1,246 @@
+<html>
+
+<head>
+    <title>Question Bank 2</title>
+    <style>
+        div {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        table {
+            padding-left: 800px;
+
+        }
+
+        h3 {
+            text-align-last: center;
+        }
+
+        button {
+            border-radius: 0%;
+            background-color: indigo;
+            width: 200px;
+            height: 50px;
+        }
+
+        #controller,
+        #questionBox,
+        #result {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="start">
+        <h1>Question Bank</h1>
+        <button id="startButton" onclick="start()">Start</button>
+    </div>
+    <div id="questionBox"></div>
+    <div id="controller">
+        <button onclick="back()">Back</button>
+        <button onclick="submit()">Submit</button>
+        <button onclick="next()">Next</button>
+    </div>
+    <div id="result"></div>
+    <script>
+        var score, index, totalScore, jFile;
+        var questions = new Array();
+        (function () {
+            const req = new XMLHttpRequest();
+            req.onload = function () {
+                jFile = this.responseText;
+                setup(jFile);
+            };
+            req.open('GET', 'questionbank.json');
+            req.send();
+        })();
+        function setup(jFile) {
+            score = index = 0;
+            var queNum = [];
+            var jsonObject = JSON.parse(jFile);
+            for (var que in jsonObject) {
+                queNum.push(que)
+            }
+            totalScore = queNum.length;
+            for (var i = 0; i < queNum.length; i++) {
+                var line = jsonObject[queNum[i]];
+                var question = document.createElement("div");
+                question.id = i;
+                question.value = Number.parseInt(line[5]);
+                var text = document.createElement("h3");
+                text.textContent = "Question No " + (Number.parseInt(question.id) + 1) + " :" + line[0];
+                question.appendChild(text);
+                var table = document.createElement("table");
+                table.id = "table" + i;
+                for (var j = 1; j < 5; j++) {
+                    var row = table.insertRow();
+                    var cell = row.insertCell();
+                    var option = document.createElement("input");
+                    option.setAttribute("type", "radio");
+                    option.id = "option" + i;
+                    option.name = "choice";
+                    option.value = j;
+                    var label = document.createElement('label');
+                    label.htmlFor = "id";
+                    label.appendChild(document.createTextNode(line[j]));
+                    cell.appendChild(option);
+                    cell.appendChild(label);
+                }
+                question.appendChild(table);
+                question.style.display = "none";
+                questions.push(question);
+                document.getElementById("questionBox").appendChild(questions[i]);
+            }
+            addListner();
+        }
+        function addListner() {
+
+        }
+        function start() {
+            document.getElementById("start").style.display = "none";
+            document.getElementById("controller").style.display = "block";
+            document.getElementById("questionBox").style.display = "block";
+            questions[0].style.display = "block";
+            index = 0;
+        }
+        function next() {
+            if (index + 1 < questions.length) {
+                questions[index].style.display = "none";
+                index++;
+                questions[index].style.display = "block";
+            }
+            else {
+                alert("Last Question");
+            }
+        }
+        function back() {
+            if (index - 1 > -1) {
+                questions[index].style.display = "none";
+                index--;
+                questions[index].style.display = "block";
+            }
+            else {
+                alert("First Question");
+            }
+        }
+        function submit() {
+            const options = document.getElementById(questions[index].id).querySelectorAll('input[name="choice"]');
+            var selectedValue = -1;
+            for (const result of options) {
+                if (result.checked) {
+                    selectedValue = result.value;
+                }
+            }
+            if (selectedValue == -1) {
+                alert("choose an option");
+            }
+            else {
+                if (selectedValue == questions[index].value) {
+                    score++;
+                }
+                if (index - 1 > -1) {
+                    back();
+                    questions.splice(index + 1, 1);
+                }
+                else if (index + 1 < questions.length) {
+                    next();
+                    index--;
+                    questions.splice(index, 1);
+
+                }
+                else if (questions.length == 1) {
+                    question = [];
+                    document.getElementById("questionBox").innerHTML = "";
+                    displayResult();
+                }
+            }
+        }
+
+        function displayResult() {
+            document.getElementById("questionBox").style.display = "none";
+            document.getElementById("controller").style.display = "none";
+            document.getElementById("result").style.display = "block";
+            var pieChart = document.createElement("canvas");
+            pieChart.width = 300;
+            pieChart.height = 300;
+            document.getElementById("result").appendChild(pieChart);
+            var ctx = pieChart.getContext("2d");
+
+            function drawLine(ctx, startX, startY, endX, endY) {
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+            }
+
+            function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.stroke();
+            }
+
+            function drawPieSlice(ctx, centerX, centerY, radius, startAngle, endAngle, color) {
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            var Piechart = function (options) {
+                this.options = options;
+                this.canvas = options.canvas;
+                this.ctx = this.canvas.getContext("2d");
+                this.colors = options.colors;
+
+                this.draw = function () {
+                    var total_value = 0;
+                    var color_index = 0;
+                    var resultText = document.createElement("h3");
+                    for (var result in this.options.data) {
+                        var val = this.options.data[result];
+                        total_value += val;
+                        resultText.innerHTML += result + ":" + val + "<br>";
+                    }
+                    document.getElementById("result").appendChild(resultText);
+                    var start_angle = 0;
+                    for (result in this.options.data) {
+                        val = this.options.data[result];
+                        var slice_angle = 2 * Math.PI * val / total_value;
+
+                        drawPieSlice(
+                            this.ctx,
+                            this.canvas.width / 2,
+                            this.canvas.height / 2,
+                            Math.min(this.canvas.width / 2, this.canvas.height / 2),
+                            start_angle,
+                            start_angle + slice_angle,
+                            this.colors[color_index % this.colors.length]
+                        );
+
+                        start_angle += slice_angle;
+                        color_index++;
+                    }
+                }
+            }
+
+            var finalScore = {
+                "Correct": score,
+                "Wrong": totalScore - score,
+            };
+            var myPiechart = new Piechart(
+                {
+                    canvas: pieChart,
+                    data: finalScore,
+                    colors: ["green", "red"]
+                }
+            );
+            myPiechart.draw();
+        }
+    </script>
+</body>
+
+</html>

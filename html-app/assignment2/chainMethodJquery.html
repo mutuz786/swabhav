@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ChainMethod Jquery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#option").hide();
+            $("#menu").mouseenter(function(){
+                $("#option").slideDown(200).css("background-color","red");
+            })
+            $("#menu").mouseleave(function(){
+                $("#option").css("background-color","blueviolet").slideUp();
+            })
+        })
+    </script>
+    <style>
+        p{
+            background-color: blueviolet;
+            width: fit-content;
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="menu">File</p>
+    <p id="option">New <br>Open <br>Save <br>Save As</p>
+</body>
+
+</html>

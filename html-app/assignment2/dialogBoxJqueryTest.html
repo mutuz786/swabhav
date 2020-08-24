@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>Dailog Box in Jquery Test</title>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#dialogBox").dialog({
+                autoOpen: false
+            });
+            $("#open").click(function () {
+                $("#open").animate({
+                    opacity: '0.5'
+                });
+                $("#dialogBox").dialog("open");
+            });
+            $(".ui-button").click(function () {
+                $("#open").animate({
+                    opacity: '1.0'
+                });
+            });
+        });
+    </script>
+    <style>
+        #open {
+            background-color: chocolate;
+        }
+
+        #dialogBox {
+            background-color: gray;
+            border: 1px solid black;
+            color: cornsilk;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dialogBox" title="Messenger">Hello Murtaza</div>
+    <button id="open">Display</button>
+</body>
+
+</html>

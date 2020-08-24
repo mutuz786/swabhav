@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Events and Effects in Jquery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#fadeOnClick").click(function () {
+                $(this).fadeOut();
+            });
+            $("#hideOnDBClick").dblclick(function () {
+                $(this).hide();
+            });
+            $("#slideupOnMouseEnter").mouseenter(function () {
+                $(this).slideUp();
+            });
+            $("#animateOnMouseLeave").mouseleave(function () {
+                $(this).animate({
+                    height: '200px',
+                    opacity: '0.5'
+                });
+            });
+
+
+        });
+    </script>
+    <style>
+        p {
+            background-color: chocolate;
+            padding: 10px 10px;
+            width: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="fadeOnClick">Fade On Click</p>
+    <P id="hideOnDBClick">Hide On DBClick</P>
+    <p id="slideupOnMouseEnter">Slideup On MouseEnter</p>
+    <p id="animateOnMouseLeave">Animate On MouseLeave</p>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>Module Pattern 2</title>
+</head>
+
+<body>
+    <script>
+        var service = function () {
+            var serviceObj = {};
+            serviceObj.doTask1 = function () {
+                console.log("Doing Task1");
+            }
+            serviceObj.doTask2 = function () {
+                console.log("Doing Task2");
+            }
+            return serviceObj;
+        }
+        service.doTask1();
+        service.doTask2();
+        service.doTask1();
+    </script>
+</body>
+
+</html>

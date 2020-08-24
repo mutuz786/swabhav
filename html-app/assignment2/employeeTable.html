@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Employee Table</title>
+</head>
+
+<body>
+    <table id="empTable" border="1"></table>
+    <button id="display" onclick="display()">Display</button>
+
+    <script>
+        var employeeData;
+        getData();
+
+        function display() {
+            var table = document.getElementById("empTable");
+            var empArray = employeeData.split('\n');
+            for (var i = 0; i < empArray.length; i++) {
+                var row = table.insertRow(i);
+                var empDetail = empArray[i].split(',');
+                for (var j = 0; j < empDetail.length; j++) {
+                    var cell = row.insertCell(j);
+                    cell.innerHTML = empDetail[j];
+
+                }
+            }
+        }
+
+        function getData() {
+            var httpReq = new XMLHttpRequest();
+            httpReq.onload = function () {
+                employeeData = this.responseText;
+            };
+            httpReq.open("GET", "Employees.csv");
+            httpReq.send();
+        }
+    </script>
+</body>
+
+</html>
