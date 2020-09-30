@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>Async</title>
+</head>
+
+<body>
+    <script>
+        function doSomeOperation(num, callback) {
+            return new Promise(function (resolve, reject) {
+                var data = Math.random() * num;
+                if (data > 0.5) {
+                    resolve(data);
+                }
+                else {
+                    reject({ error: 'some error' });
+                }
+            });
+        }
+        doSomeOperation(10)
+            .then(function (data) { console.log(data) })
+            .catch(function (data) { console.log(data) });
+        console.log("End of program with parameters");
+    </script>
+</body>
+
+</html>

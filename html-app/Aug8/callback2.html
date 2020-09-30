@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>CallBack 2</title>
+</head>
+
+<body>
+    <script>
+        setTimeout(function () {
+            console.log("After 2 seconds")
+        }, 2000);
+        setTimeout(displayAlert, 4000);
+        setTimeout(displayHtml, 6000);
+
+        var displayHtml = function () {
+            alert("After 6 seconds");
+        }
+
+        function displayAlert() {
+            document.body.innerHTML = "After 4 seconds";
+        }
+    </script>
+</body>
+
+</html>

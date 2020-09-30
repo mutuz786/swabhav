@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>Binding</title>
+</head>
+
+<body>
+    ForeColor<select name="foreColor" id="foreColor"></select><br><br>
+    BackColor<select name="backColor" id="backColor"></select><br><br>
+    Text<input type="text" id="text"><br><br>
+    Font<input type="text" id="font">px <br><br>
+    <div id="banner">
+        <h1 id="sampleText">Text here</h1>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+        colors = [{ name: "red" }, { name: "blue" }, { name: "green" }, { name: "yellow" }]
+        for (var i = 0; i < colors.length; i++) {
+            $("#foreColor").append($('<option>').val(colors[i].name).text(colors[i].name));
+            $("#backColor").append($('<option>').val(colors[i].name).text(colors[i].name));
+        }
+        $("#foreColor").click(function () {
+            $("#banner").css("color", $("#foreColor").val());
+        });
+        $("#backColor").click(function () {
+            $("#banner").css("background-color", $("#backColor").val());
+        });
+        $("#text").keyup(function () {
+            $("#sampleText").text($("#text").val())
+        });
+        $("#font").keyup(function () {
+            $("#sampleText").css("font-size", $("#font").val() + "px")
+        });
+    </script>
+</body>
+
+</html>

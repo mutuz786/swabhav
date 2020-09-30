@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>Promise Test</title>
+</head>
+
+<body>
+    <script>
+        function promiseTest(score) {
+            var promise = new Promise((resolve, reject) => {
+                if (score > 65) {
+                    resolve("Pass");
+                }
+                else {
+                    reject("Fail");
+                }
+            });
+            return promise;
+        }
+        var promiseElement = promiseTest(20)
+            .then(function (data) { console.log(data) })
+            .catch(function (data) { console.log(data) });
+        console.log("End of program with parameters");
+
+    </script>
+</body>
+
+</html>

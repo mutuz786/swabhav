@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <title>Shopping Cart</title>
+    <style>
+        table {
+            border: 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    Products: <select id="products"></select><br>
+    Quantity: <input type="text" id="quantity" placeholder="1">
+    <button id="addButton">Add</button>
+    <table id="cart"></table>
+    <script src="jquery-app/jquery.js"></script>
+    <script>
+        cartObjects = [];
+        var products = [
+            { name: "MI note5", price: "20000" },
+            { name: "Iphone E1", price: "40000" },
+            { name: "Samsung J7", price: "12000" }
+        ]
+        for (var i = 0; i < products.length; i++) {
+            $("#products").append($('<option>').val(i).text(products[i].name + "-" + products[i].price));
+        }
+        $("#addButton").click(function () {
+            var button = document.createElement("button");
+            button.textContent = "X";
+            var item = $("#products").val();
+            var quantity = Number.parseInt($("#quantity").val());
+            if (isNaN(quantity)) {
+                quantity = 1;
+            }
+            var result = find(products[item].name)
+            if (result != -1) {
+                var obj = cartObjects[result];
+                obj[1] += quantity;
+                obj[3] = obj[1] * obj[2];
+            }
+
+            else {
+                var obj = [products[item].name, quantity, products[item].price, products[item].price * quantity];
+                cartObjects.push(obj);
+            }
+            display();
+        })
+
+        function display() {
+            var grandTotal = 0;
+            $("#cart").empty();
+            $("#cart").append("<tr> <th>Item</th> <th>Quantity</th> <th>perUnit</th> <th>Total</th>");
+            for (var i = 0; i < cartObjects.length; i++) {
+                $("#cart").append("<tr>");
+                grandTotal += cartObjects[i][3];
+                for (var j = 0; j < 4; j++) {
+                    const obj = cartObjects[i]
+                    $("#cart").append("<th>" + obj[j] + "</th>");
+                }
+                var button = document.createElement("button");
+                button.textContent = "X";
+                button.id = i;
+                $(button).click(function () {
+                    cartObjects.splice(this.id, 1);
+                    display();
+                })
+                $("#cart").append(button);
+                $("#cart").append("</tr>");
+            }
+            $("#cart").append("<tr> <th></th> <th></th> <th>CheckOut Cost</th> <th>(" + grandTotal + ")</th></tr");
+            console.log(grandTotal);
+        }
+        function find(name) {
+            if (cartObjects.length == 0) {
+                return -1;
+            }
+            for (var i = 0; i < cartObjects.length; i++) {
+                var obj = cartObjects[i];
+                if (obj[0] == name) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    </script>
+</body>
+
+</html>

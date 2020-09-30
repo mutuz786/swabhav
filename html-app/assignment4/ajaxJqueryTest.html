@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>Ajax Jquery Asynchronous Test</title>
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            'async': true,
+            'type': "GET",
+            'global': false,
+            'dataType': 'text',
+            'url': "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+            'data': { 'request': "", 'target': 'arrange_url', 'method': 'method_target' },
+            'success': function (data) {
+                console.log(data);
+            }
+        });
+        console.log("End of the program");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Constructor Pattern 3</title>
+</head>
+
+<body>
+    <script>
+        function Customer(name, location) {
+            this.name = name;
+            this.location = location;
+            this.show = function () {
+                setTimeout(() => {
+                    console.log("name:" + this.name + "|location:" + this.location);
+                }, 3000);
+            }
+        }
+
+        var c1 = new Customer("abc", "mumbai");
+        var c2 = new Customer("pqr", "delhi");
+        c2.show();
+        c1.show();
+    </script>
+</body>
+
+</html>

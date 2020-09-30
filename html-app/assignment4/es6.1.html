@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>ES6 Features(constants)</title>
+</head>
+
+<body>
+    <script>
+        function display() {
+            var a = 100;
+            const b = 200;
+            {
+                var a = 1;
+                const b = 2;
+                console.log("a:" + a);
+                console.log("b:" + b)
+            }
+            console.log("a:" + a);
+            console.log("b:" + b)
+        }
+        display();
+    </script>
+</body>
+
+</html>

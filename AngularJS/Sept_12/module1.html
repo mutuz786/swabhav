@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>Module1</title>
+</head>
+
+<body>
+    <script src="../angular.js"></script>
+
+    <script>
+        angular.module('modA', [])
+            .controller('controllerA', function ($rootScope) {
+                console.log("Controller A created");
+                $rootScope.message = "Welcome to Controller A";
+            })
+    </script>
+
+    <div ng-app="modA" ng-controller="controllerA">
+        {{message}}
+    </div>
+</body>
+
+</html>

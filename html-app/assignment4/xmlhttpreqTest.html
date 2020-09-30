@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title>XmlHttpRequest Test</title>
+</head>
+
+<body>
+    <script>
+        (function () {
+            var xmlHttpReq = new XMLHttpRequest();
+            xmlHttpReq.onload = function () {
+                console.log(xmlHttpReq.responseText);
+            }
+            xmlHttpReq.open("GET", "demo.txt");
+            xmlHttpReq.send();
+        })();
+        console.log("End of the program")
+    </script>
+</body>
+
+</html>

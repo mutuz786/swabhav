@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Module Pattern</title>
+</head>
+
+<body>
+    <script>
+        function makeEmployee() {
+            var emp = {};
+            var _fname, _lname;
+            emp.setFname = function (fname) {
+                _fname = fname;
+            }
+            emp.setLname = function (lname) {
+                _lname = lname;
+            }
+            emp.getFullName = function () {
+                return "name:" + _fname + " " + _lname;
+            }
+            return emp;
+        }
+
+        var e1 = makeEmployee();
+        e1.setFname("murtaza");
+        e1.setLname("Khilawala");
+        console.log(e1.getFullName());
+    </script>
+</body>
+
+</html>

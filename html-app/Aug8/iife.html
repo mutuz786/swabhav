@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>IIFE</title>
+</head>
+
+<body>
+    <script>
+        (function f1() {
+            console.log("inside f1");
+        })();
+        var f2 = function () {
+            console.log("inside f2");
+        }();
+        (function f3() {
+            console.log("inside f3");
+        }());
+
+    </script>
+</body>
+
+</html>

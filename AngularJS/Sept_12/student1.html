@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Student1</title>
+    <script src="../angular.js"></script>
+</head>
+
+<body ng-app="student">
+    <div ng-controller="getInfo">
+        <h2>{{name}}</h2>
+        <h2>{{uid}}</h2>
+        <h2 ng-style="cgpStyle">{{cgp}}</h2>
+    </div>
+    <script>
+        var student = { name: "murtaza", uid: 72, cgp: 8.8 }
+        angular.module("student", [])
+            .controller("getInfo", function ($scope) {
+                $scope.name = student.name;
+                $scope.uid = student.uid;
+                $scope.cgp = student.cgp;
+                if (student.cgp > 7) {
+                    $scope.cgpStyle = { "color": "green" };
+                }
+                else if (student.cgp < 5) {
+                    $scope.cgpStyle = { "color": "red" };
+                }
+                else {
+                    $scope.cgpStyle = { "color": "yellow" };
+                }
+            })
+    </script>
+</body>
+
+</html>

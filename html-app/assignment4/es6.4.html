@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>ES6 Features(Array Find Function)</title>
+</head>
+
+<body>
+    <script>
+        var people = [{ name: "a", age: 10 },
+        { name: "b", age: 23 },
+        { name: "c", age: 12 },
+        { name: "d", age: 19 },
+        { name: "e", age: 76 }]
+
+        function firstAdult(person) {
+            return person.age > 18;
+        }
+        var firstAdultPerson = people.find(firstAdult);
+        console.log(firstAdultPerson)
+    </script>
+</body>
+
+</html>

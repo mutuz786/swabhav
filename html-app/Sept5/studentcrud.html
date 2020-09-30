@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <title>Student CRUD</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        div {
+            text-align: center;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body {
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="form">
+        Roll No <input type="text" id="rollno"> <br><br>
+        Name <input type="text" id="name"> <br><br>
+        Age <input type="text" id="age"><br><br>
+        Email <input type="text" id="email"><br><br>
+        Date <input type="date" id="date"><br><br>
+        <form id="gender">
+            <input type="radio" id="male" name="gender" value="true">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="false">
+            <label for="female">Female</label><br>
+        </form>
+        <button onclick="add()">Add</button>
+        <button onclick="display()">Display</button>
+    </div>
+    <div id="display">
+        <p id="total"></p>
+        <table id="grid"></table>
+    </div>
+    <script>
+        var dataHolders = ["rollno", "name", "age", "email", "date", "gender"];
+        display();
+        function add() {
+            var data = [];
+            for (var i = 0; i < dataHolders.length - 1; i++) {
+                if ($("#" + dataHolders[i]).val() == "") {
+                    alert("Enter Data");
+                    return;
+                }
+                data.push($("#" + dataHolders[i]).val());
+            }
+            if ($("input[name='gender']:checked").val() == undefined) {
+                alert("Enter Data");
+                return;
+            }
+            else {
+                data.push($("input[name='gender']:checked").val());
+            }
+            $.post('http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students',
+                {
+                    "rollNo": data[0],
+                    "name": data[1],
+                    "age": data[2],
+                    "email": data[3],
+                    "date": data[4],
+                    "isMale": data[5]
+                },
+                function (data) {
+                    console.log("post successfull:" + data);
+                });
+        }
+        function display() {
+            var totalStudent;
+            $.getJSON('http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students', function (data, textStatus, jqXHR) {
+                displayTable(data);
+            }).fail(function (jqxhr, settings, ex) { alert('failed, ' + ex); });
+        }
+        function displayTable(data) {
+            $("#total").text("total student:" + data.length)
+            $("#grid").empty();
+            $("#grid").append("<tr> <th>RollNo</th> <th>Name</th> <th>Age</th> <th>Email</th> <th>Date</th> <th>isMale</th>");
+            for (var i = 0; i < data.length; i++) {
+                var student = data[i];
+                $("#grid").append("<tr id='t" + i + "'>");
+                $("#grid").append("<th>" + student.rollNo + "</th><th>" + student.name + "</th> <th>" + student.age + "</th><th>" + student.email + "</th><th>" + student.date + "</th><th>" + student.isMale + "</th>");
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.id = student.id;
+                $(deleteButton).click(function () {
+                    $.ajax({
+                        url: 'http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/' + this.id,
+                        method: 'DELETE',
+                        success: function (result) {
+                            display();
+                        },
+                        error: function (request, msg, error) {
+                            alert("Error:" + error);
+                        }
+                    });
+                })
+                var editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.id = i;
+                editButton.studentData = student;
+                editButton.save = false;
+                $(editButton).click(function () {
+                    $("#rollno").val(this.studentData.rollNo);
+                    $("#name").val(this.studentData.name);
+                    $("#age").val(this.studentData.age);
+                    $("#email").val(this.studentData.email);
+                    $("#date").val(this.studentData.date);
+                    $("#male").prop("checked", this.studentData.isMale);
+                    $("#female").prop("checked", !(this.studentData.isMale));
+
+                    var saveButton = document.getElementById("save");
+                    if (saveButton == null) {
+                        saveButton = document.createElement("button");
+                        saveButton.textContent = "Save";
+                        saveButton.id = "save";
+                        $("#form").append(saveButton);
+                    }
+                    saveButton.studentData = this.studentData;
+                    $(saveButton).click(function () {
+                        this.outerHTML = "";
+                        var data = {
+                            "rollNo": $("#rollno").val(),
+                            "name": $("#name").val(),
+                            "age": $("#age").val(),
+                            "email": $("#email").val(),
+                            "date": $("#date").val(),
+                            "isMale": $("input[name='gender']:checked").val()
+                        }
+                        $.ajax({
+                            type: 'PUT',
+                            url: 'http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/' + this.studentData.id,
+                            contentType: 'application/json',
+                            data: JSON.stringify(data),
+                        }).done(function () {
+                            display();
+                        }).fail(function (msg) {
+                            alert("Erroe:" + msg)
+                        })
+                    })
+
+
+                })
+                $("#grid").append(deleteButton);
+                $("#grid").append(editButton);
+                $("#grid").append("</tr>");
+            }
+        }
+    </script>
+</body>
+
+</html>

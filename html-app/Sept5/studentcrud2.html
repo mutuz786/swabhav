@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Student CRUD 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        function StudentDataService() {
+            var student = {};
+            student.get = function () {
+                return new Promise(function (resolve, reject) {
+                    $.getJSON('http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students', function (data) {
+                        resolve(data);
+                    }).fail(function (ex) { reject(ex) });
+                })
+            }
+            student.getById = function (id) {
+                return new Promise(function (resolve, reject) {
+                    $.getJSON('http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/' + id, function (data) {
+                        resolve(data);
+                    }).fail(function (ex) { reject(ex) });
+                })
+            }
+            student.add = function (student) {
+                return new Promise(function (resolve, reject) {
+                    $.post('http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students',
+                        student)
+                        .done(function () {
+                            resolve(data);
+                        })
+                        .fail(function (msg) {
+                            reject(ex);
+                        })
+                })
+            }
+            student.update = function (newStudent) {
+                $.ajax({
+                    method: 'PUT',
+                    url: 'http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/' + this.studentData.id,
+                    contentType: 'application/json',
+                    data: JSON.stringify(newStudent),
+                }).done(function () {
+                    resolve(data);
+                }).fail(function (msg) {
+                    reject(ex);
+                })
+            }
+            student.delete = function (id) {
+                $.ajax({
+                    url: 'http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/' + id,
+                    method: 'DELETE',
+                    success: function (result) {
+                        resolve(data)
+                    },
+                    error: function (error) {
+                        reject(error);
+                    }
+                });
+            }
+            return student;
+        }
+        var studentDB = StudentDataService();
+        studentDB.get()
+            .then(function (data) { console.log(data) })
+            .catch(function (ex) { document.write("Error:" + ex) })
+    </script>
+</body>
+
+</html>

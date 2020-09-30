@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <title>BlueBall Game</title>
+    <style>
+        div {
+            text-align: center;
+            padding: 300px 0;
+        }
+
+        #game,
+        #result {
+            display: none;
+        }
+
+        button {
+            color: gray;
+            border-radius: 100%;
+            width: 80px;
+            height: 80px;
+        }
+
+        #startButton {
+            border-radius: 0%;
+            background-color: indigo;
+            width: 200px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="startPage">
+        <h1>Finding Blue Ball<br>Among Grey Ball</h1>
+        <button id="startButton" onclick="go()">Start</button>
+    </div>
+
+    <div id="game">
+    </div>
+
+    <div id="result">
+        <h1 id="resultDisplay">hello</h1>
+    </div>
+
+    <script>
+        function go() {
+            var game = getGame();
+            game.start();
+        }
+        var getGame = function () {
+            var game = {}
+            var buttons = [];
+            var attempts = 0;
+            var isplaying = true;
+            var attemptDisplay;
+
+            game.start = function () {
+                var blueButton = Math.floor(Math.random() * 50);
+                attemptDisplay = document.createElement("h3");
+                attemptDisplay.textContent = "Attempts:0";
+                document.getElementById("game").appendChild(attemptDisplay);
+                console.log(blueButton)
+                for (var i = 0; i < 50; i++) {
+                    var button = document.createElement("button");
+                    button.textContent = "";
+                    button.id = i;
+                    button.addEventListener("click", function () {
+                        if (isplaying) {
+                            attempts++;
+                            attemptDisplay.textContent = "Attempts:" + attempts;
+                            if (this.id < blueButton) {
+                                this.style.backgroundColor = "red";
+                                game.check();
+                            }
+                            else if (this.id > blueButton) {
+                                this.style.backgroundColor = "green";
+                                game.check();
+                            }
+                            else {
+                                this.style.backgroundColor = "blue";
+                                isplaying = false;
+                                document.getElementById("resultDisplay").textContent = "You Won";
+                                game.displayResult();
+                            }
+                        }
+                    });
+                    buttons.push(button);
+                    document.getElementById("game").appendChild(buttons[i]);
+                }
+                document.getElementById("startPage").style.display = "none";
+                document.getElementById("game").style.display = "block";
+            }
+
+            game.check = function () {
+                if (attempts == 5) {
+                    document.getElementById("resultDisplay").textContent = "You Lost";
+                    isplaying = false;
+                    game.displayResult();
+                }
+            }
+            game.displayResult = function () {
+                setTimeout(() => {
+                    document.getElementById("game").style.display = "none";
+                    document.getElementById("game").innerHTML = "";
+                    buttons = [];
+                    attempts = 0;
+                    isplaying = true;
+                    document.getElementById("result").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("result").style.display = "none";
+                        document.getElementById("startPage").style.display = "block";
+                    }, 3000);
+                }, 3000);
+            }
+            return game;
+        }
+    </script>
+</body>
+
+</html>
