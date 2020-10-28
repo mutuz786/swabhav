@@ -1,0 +1,11 @@
+<web-app>
+<filter>
+   <filter-name>LogFilter</filter-name>
+   <filter-class>com.techlab.controller.AuthFilter</filter-class>
+</filter>
+
+<filter-mapping>
+   <filter-name>LogFilter</filter-name>
+   <url-pattern>/login</url-pattern>
+</filter-mapping>
+</web-app>

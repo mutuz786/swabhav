@@ -1,0 +1,10 @@
+<web-app>
+    <servlet>
+        <servlet-name>Beer Select</servlet-name>
+        <servlet-class>com.techlabs.web.BeerSelect</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Beer Select</servlet-name>
+        <url-pattern>/SelectBeer.do</url-pattern>
+    </servlet-mapping>
+</web-app>

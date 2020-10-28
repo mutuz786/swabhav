@@ -1,0 +1,19 @@
+<web-app>
+    <servlet>
+        <servlet-name>Add Student</servlet-name>
+        <jsp-file>/AddStudent.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Add Student</servlet-name>
+        <url-pattern>/AddStudent</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Student</servlet-name>
+        <jsp-file>/Student.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Student</servlet-name>
+        <url-pattern>/Student</url-pattern>
+    </servlet-mapping>
+</web-app>
