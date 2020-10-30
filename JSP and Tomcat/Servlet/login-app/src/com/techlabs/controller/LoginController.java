@@ -1,6 +1,7 @@
-package com.techlab.controller;
+package com.techlabs.controller;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,27 +9,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.techlab.model.Student;
-import com.techlab.service.StudentService;
+import com.techlabs.model.Login;
 
-@WebServlet("/addStud")
-public class AddStudentController extends HttpServlet {
+@WebServlet("/auth")
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public AddStudentController() {
-		super();
+	public LoginController() {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StudentService.editStudent((Student) request.getAttribute("student"));
-		response.sendRedirect("Student");
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StudentService.addStudent((Student) request.getAttribute("student"));
-		RequestDispatcher rd = request.getRequestDispatcher("Student");
-		rd.forward(request, response);
+		String uname = request.getParameter("uname");
+		String pword = request.getParameter("pword");
+		request.setAttribute("uname", uname);
+		if (Login.isValid(uname, pword)) {
+			response.sendRedirect("success.jsp");
+		} else {
+			response.sendRedirect("failure.jsp");
+		}
 	}
+
 }

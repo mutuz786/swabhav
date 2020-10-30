@@ -1,7 +1,6 @@
 package com.techlab.controller;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,14 +20,11 @@ public class AddStudentController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StudentService.editStudent((Student) request.getAttribute("student"));
-		response.sendRedirect("Student");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		StudentService.addStudent((Student) request.getAttribute("student"));
-		RequestDispatcher rd = request.getRequestDispatcher("Student");
-		rd.forward(request, response);
+		response.sendRedirect("Student");
 	}
 }

@@ -22,11 +22,11 @@ public class EditStudentController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Student student = StudentService.getStud(request.getParameter("id"));
+		Student student = (Student) request.getAttribute("student");
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		out.print("<form action='addStud?id=" + student.getId() + "' method='get'>");
-		out.print("<input type='hidden' name='id' value='"+student.getId()+"' >");
+		out.print("<input type='hidden' name='id' value='" + student.getId() + "' >");
 		out.print("Name:<input type='text' name='name' value='" + student.getName() + "'>");
 		out.print("<br>RollNo:<input type='text' name='rollNo' value='" + student.getRollNo() + "'>");
 		out.print("<br>Age:<input type='text' name='age' value='" + student.getAge() + "'>");

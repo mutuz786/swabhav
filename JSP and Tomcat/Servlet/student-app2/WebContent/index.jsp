@@ -1,5 +1,5 @@
+<%@page import="com.techlab.model.StudentDB"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.techlab.model.RegisterDB"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
 	<button onclick="add()">ADD</button>
 
 	<%
-		ArrayList<String[]> entries = RegisterDB.getData();
+		ArrayList<String[]> entries = StudentDB.getData();
 			out.print("<style> table, tr, td { border: 1px solid black; } </style>");
 			out.print("<table>");
 			for (String[] entry : entries) {

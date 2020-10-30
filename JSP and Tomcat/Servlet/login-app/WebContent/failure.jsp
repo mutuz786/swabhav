@@ -8,10 +8,8 @@
 </head>
 <body>
 	<%
-		if (request.getAttribute("result").equals("fail")) {
-			out.println("<h2>Wrong username or password</h2>");
-			out.println("<a href='login.html'>Logout</a>");
-		}
+		out.println("<h2>Wrong username or password</h2>");
+		out.println("<a href='login.jsp'>Logout</a>");
 	%>
 </body>
 </html>

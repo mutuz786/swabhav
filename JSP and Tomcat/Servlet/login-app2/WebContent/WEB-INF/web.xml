@@ -1,0 +1,37 @@
+<web-app>
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<jsp-file>/Login.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SuccessAdmin</servlet-name>
+		<jsp-file>/SuccessAdmin.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SuccessAdmin</servlet-name>
+		<url-pattern>/SuccessAdmin</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SuccessGuest</servlet-name>
+		<jsp-file>/SuccessGuest.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SuccessGuest</servlet-name>
+		<url-pattern>/SuccessGuest</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Failure</servlet-name>
+		<jsp-file>/Failure.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Failure</servlet-name>
+		<url-pattern>/Failure</url-pattern>
+	</servlet-mapping>
+</web-app>

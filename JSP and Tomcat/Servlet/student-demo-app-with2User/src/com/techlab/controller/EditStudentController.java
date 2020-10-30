@@ -1,7 +1,7 @@
 package com.techlab.controller;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.techlab.model.Student;
 import com.techlab.service.StudentService;
 
-@WebServlet("/addStud")
-public class AddStudentController extends HttpServlet {
+@WebServlet("/editStud")
+public class EditStudentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public AddStudentController() {
+	public EditStudentController() {
 		super();
 	}
 
@@ -27,8 +27,6 @@ public class AddStudentController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StudentService.addStudent((Student) request.getAttribute("student"));
-		RequestDispatcher rd = request.getRequestDispatcher("Student");
-		rd.forward(request, response);
 	}
+
 }

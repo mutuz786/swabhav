@@ -1,0 +1,55 @@
+<web-app>
+	<servlet>
+		<servlet-name>Add Student</servlet-name>
+		<jsp-file>/AddStudent.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Add Student</servlet-name>
+		<url-pattern>/AddStudent</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Student</servlet-name>
+		<jsp-file>/Student.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Student</servlet-name>
+		<url-pattern>/Student</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<jsp-file>/Login.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Failure</servlet-name>
+		<jsp-file>/Failure.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Failure</servlet-name>
+		<url-pattern>/Failure</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>DeleteFilter</filter-name>
+		<filter-class>com.techlab.controller.StudentFind</filter-class>
+	</filter>
+	<filter>
+		<filter-name>EditFilter</filter-name>
+		<filter-class>com.techlab.controller.StudentFind</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>DeleteFilter</filter-name>
+		<url-pattern>/deleteStud</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>EditFilter</filter-name>
+		<url-pattern>/editStud</url-pattern>
+	</filter-mapping>
+</web-app>
