@@ -1,0 +1,24 @@
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Roll Number</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Gender</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr ng-repeat="student in data">
+        <td>{{student.id}}</td>
+        <td>{{student.rollNo}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.date}}</td>
+        <td>{{student.isMale|genderFilter}}</td>
+        <td><button ng-click="edit(student)">Edit</button></td>
+        <td><button ng-click="delete(student)">Delete</button></td>
+    </tr>
+</table>

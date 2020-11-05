@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Student Display</title>
+        <script src="../angular.js"></script>
+        <script src="noapi.js"></script>
+    </head>
+    <body ng-app="NoApi" ng-controller="NoApiController">
+        <h1>No API Test</h1>
+        <input type="text" ng-model="num" ng-keyup="fetch()">
+        <br><br>
+        <h4>{{result}}</h4>
+    </body>
+</html>

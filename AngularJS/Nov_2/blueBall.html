@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Blue Ball Game</title>
+    <script src="../angular.js"></script>
+    <script src="blueBallJS.js"></script>
+    <style>
+        .ball {
+            border-radius: 100%;
+            width: 60px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body ng-app="game" ng-controller="gameCtrl">
+    <center>
+        <h3>BlueBall Game</h3><br>
+        <h4 ng-hide="ruleSet">Rules: <br> <br>
+            1.Find the blue Button among these <br><br>
+            2.You have 5 turns available<br><br>
+            3.If BLUE button is Before the selected Button then the color will be RED <br> <br>
+            4.If BLUE button is After the selected Button then the color will be GREEN <br> <br><br>
+            <button ng-click="init()">START</button></h4>
+        <div ng-hide="gameDisplay">
+            <p>Turns Left:{{turns}}</p>
+            <button class="ball" ng-repeat="x in buttons" ng-click="check(x)" id="{{x}}">{{x}}</button>
+            <h2>{{result}}</h2>
+            <a ng-click="restart()">{{option}}</a>
+        </div>
+    </center>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Scope Demo</title>
+</head>
+
+<body ng-app="A">
+    <b>{{company}}</b>
+
+    <section ng-controller="controlA">
+        <b>{{company}}</b><br>
+        <b>{{msg}}</b>
+    </section>
+
+    <b>{{company}}</b>
+
+    <section ng-controller="controlB">
+        <b>{{company}}</b><br>
+        <b>{{msg}}</b>
+    </section>
+
+    <b>{{company}}</b>
+
+    <script>
+        angular.module("A", ["B"])
+            .controller("controlA", function ($scope, $rootScope) {
+                $scope.msg = "controller A says hello"
+                $rootScope.company = "Aurion pro";
+                console.log("in controllerA")
+            });
+        angular.module("B", [])
+            .controller("controlB", function ($scope, $rootScope) {
+                $scope.msg = "controller B says hello"
+                console.log("in controllerB")
+            });
+    </script>
+</body>
+
+</html>

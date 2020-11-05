@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Student Filter</title>
+    <script src="../angular.js"></script>
+</head>
+
+<body ng-app="student" ng-controller="studentCtrl">
+    <li ng-repeat="s in students">
+        {{s.id}} {{s.name}} {{s.cgpa|grade}} <br><br>
+    </li>
+    <script>
+        angular.module("student", [])
+            .controller("studentCtrl", function ($scope) {
+                $scope.students = [{ id: 1, name: "murtaza", cgpa: 7 },
+                { id: 2, name: "rahul", cgpa: 8 },
+                { id: 3, name: "gaurav", cgpa: 7 },
+                { id: 4, name: "sagar", cgpa: 9 }
+                ];
+            })
+            .filter("grade", function () {
+                return function (cgpa) {
+                    if (cgpa <= 7)
+                        return "C";
+                    if (cgpa <= 8 && cgpa > 7)
+                        return "B";
+                    if (cgpa > 8)
+                        return "A";
+                }
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>To Do List</title>
+    <script src="../angular.js"></script>
+    <script src="todoList.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #d7e4db;
+            background-color: rgb(9, 214, 77);
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            background-color: rgb(255, 255, 255);
+        }
+        .stroked{
+            text-decoration-line: line-through;
+        }
+    </style>
+</head>
+
+<body ng-app="todo" ng-controller="todoCtrl">
+    <h3>ToDo List</h3>
+    <input type="text" ng-model="task">
+    <button ng-click="addTask()">AddTask</button> <br> <br>
+    <table>
+        <tr>
+            <th>Done</th>
+            <th>Task</th>
+            <th>Date</th>
+            <th>Remove</th>
+        </tr>
+        <tr ng-repeat="t in tasks track by $index">
+            <td><input type="checkbox" ng-model="t.checked" ng-click="arrange(t)"></td>
+            <td>
+                <p ng-style="t.stroke"> {{t.task}} </p>
+            </td>
+            <td>{{t.date| date:'dd/MM/yyyy HH:mm:ss'}}</td>
+            <td><button ng-click="deleteTask(t)">Remove</button></td>
+        </tr>
+    </table>
+</body>
+
+</html>

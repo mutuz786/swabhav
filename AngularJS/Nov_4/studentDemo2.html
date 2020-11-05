@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <title>Add Student</title>
+    <script src="../angular.js"></script>
+    <script src="studentDemo2.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #d7e4db;
+            background-color: rgb(9, 214, 77);
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body ng-app="HttpDemo" ng-controller="HttpController">
+    <h2>Http Fetch Demo</h2>
+    RollNo:
+    <input type="number" ng-model="student.rollNo"><br><br>
+    Name:
+    <input type="text" ng-model="student.name"><br><br>
+    Age:
+    <input type="number" ng-model="student.age"><br><br>
+    Email:
+    <input type="text" ng-model="student.email"><br><br>
+    Date:
+    <input type="date" ng-model="student.date"><br><br>
+    Is Male:
+    <form>
+        <input type="radio" ng-model="student.isMale" value="true">Yes
+        <input type="radio" ng-model="student.isMale" value="false">No <br><br>
+    </form>
+    <button ng-click="addStudent()">Add Data</button>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Roll Number</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Is Male?</th>
+        </tr>
+        <tr ng-repeat="student in data">
+            <td>{{student.id}}</td>
+            <td>{{student.rollNo}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.date}}</td>
+            <td>{{student.isMale}}</td>
+        </tr>
+    </table>
+</body>
+
+</html>

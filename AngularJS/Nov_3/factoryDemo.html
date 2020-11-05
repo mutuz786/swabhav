@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>FactoryDemo</title>
+    <script src="../angular.js"></script>
+    <script src="factoryDemo.js"></script>
+    <style>
+        button {
+            border-radius: 100%;
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            font-size: larger;
+        }
+
+        input {
+            margin: 5px;
+            height: 40px;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body ng-app="factory" ng-controller="factoryCtrl">
+    <center>
+        <h1>Enter Numbers:</h1>
+        <input type="number" ng-model="a"><br>
+        <input type="number" ng-model="b"><br>
+        <button ng-click="add()">+</button>
+        <button ng-click="sub()">-</button>
+        <button ng-click="div()">/</button>
+        <button ng-click="mul()">x</button>
+        <h1>{{result}}</h1>
+    </center>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <script src="../angular.js"></script>
+    <title>Binding Demo</title>
+</head>
+
+<body ng-app="A">
+    <section ng-controller="controlA">
+        <h1>Two way binding</h1>
+        Id:{{student.id}} <br>
+        Name:{{student.name}} <br>
+        Cgpa:{{student.cgpa}} <br>
+        <input ng-model="student.id">
+        <input ng-model="student.name">
+        <input ng-model="student.cgpa">
+    </section>
+
+    <script>
+        angular.module("A", [])
+            .controller("controlA", function ($scope, $rootScope) {
+                $scope.student = { id: "1", name: "murtaza", cgpa: "7.4" }
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>Http Demo</title>
+    <script src="../angular.js"></script>
+    <script src="httpDemo.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #d7e4db;
+            background-color: rgb(9, 214, 77);
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body ng-app="HttpDemo" ng-controller="HttpController">
+    <h2>Http Fetch Demo</h2>
+    <button ng-click="fetch()">Fetch</button>
+    <p>Status:{{status}}</p>
+    <p>Response Data:</p><br>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>ManagerId</th>
+            <th>Date Of Joining</th>
+            <th>Salary</th>
+            <th>Commision</th>
+            <th>DeptId</th>
+        </tr>
+        <tr ng-repeat="emp in data">
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.post}}</td>
+            <td>{{emp.mid}}</td>
+            <td>{{emp.doj}}</td>
+            <td>{{emp.sal}}</td>
+            <td>{{emp.comm}}</td>
+            <td>{{emp.deptid}}</td>
+        </tr>
+    </table>
+</body>
+
+</html>

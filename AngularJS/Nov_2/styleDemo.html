@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>Style Demo</title>
+    <script src="../angular.js"></script>
+</head>
+
+<body ng-app="A" ng-controller="ACtrl">
+    <h2 ng-style="mStyle">MURTAZA</h2>
+    <button ng-click="red()">Red</button>
+    <button ng-click="green()">Green</button>
+    <button ng-click="blue()">Blue</button>
+    <script>
+        angular.module("A", [])
+            .controller("ACtrl", function ($scope) {
+                $scope.red = function () {
+                    $scope.mStyle = { "color": "red" };
+                };
+                $scope.green = function () {
+                    $scope.mStyle = { "color": "green" };
+                };
+                $scope.blue = function () {
+                    $scope.mStyle = { "color": "blue" };
+                };
+            });
+    </script>
+</body>
+
+</html>

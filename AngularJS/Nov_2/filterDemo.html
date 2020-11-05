@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title>FilterDemo</title>
+    <script src="../angular.js"></script>
+</head>
+
+<body ng-app="">
+    <h3>Cuuerncy: <br>{{200000|currency}}</h3>
+    <h3>Date: <br>{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}</h3>
+    <h3>Json:
+        <pre id="default-spacing">{{ {'name':'value'} | json }}</pre>
+    </h3>
+    <h3>Lowercase: <br>{{"MURtaza"|lowercase}}</h3>
+    <h3>Uppercase: <br>{{"MURtaza"|uppercase}}</h3>
+    <h3>LimitTo: <br>{{[1,2,3,4,5,6,7] | limitTo:3}}</h3>
+    <h3>OrderBy: <br>{{[{name:"murtaza"},{name:"sagar"},{name:"gaurav"},]|orderBy:'name'}}</h3>
+</body>
+
+</html>

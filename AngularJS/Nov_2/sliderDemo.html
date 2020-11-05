@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>Slider Demo</title>
+    <script src="../angular.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <input type="range" min="1" max="50" ng-model="value" ng-mouseup="addButton()">
+        <button ng-repeat="x in number">
+            {{x+1}}
+        </button>
+    </div>
+    <script>
+        angular.module("myApp", [])
+            .controller("myController", function ($scope) {
+                $scope.addButton = function () {
+                    $scope.number = [];
+                    for (var i = 0; i < $scope.value; i++) {
+                        $scope.number.push(i);
+                    }
+
+                }
+            });
+    </script>
+</body>
+
+</html>

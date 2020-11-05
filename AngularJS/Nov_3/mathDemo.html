@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>FactoryDemo</title>
+    <script src="../angular.js"></script>
+    <script src="mathDemo.js"></script>
+</head>
+
+<body>
+    <div ng-app="MathDemo">
+        <input type="number" ng-model="data"><br>
+        <button ng-click="getSquare();getCube();">Submit</button> <br>
+        <div ng-controller="SquareController">
+            Square : {{result}}
+        </div>
+        <div ng-controller="CubeController">
+            Cube : {{result}}
+        </div>
+    </div>
+</body>
+
+</html>

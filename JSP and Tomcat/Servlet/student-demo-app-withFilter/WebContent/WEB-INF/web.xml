@@ -1,0 +1,99 @@
+<web-app>
+	<servlet>
+		<servlet-name>AddStudent</servlet-name>
+		<jsp-file>/AddStudent.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddStudent</servlet-name>
+		<url-pattern>/AddStudent</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EditStudent</servlet-name>
+		<jsp-file>/EditStudent.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditStudent</servlet-name>
+		<url-pattern>/EditStudent</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Student</servlet-name>
+		<jsp-file>/Student.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Student</servlet-name>
+		<url-pattern>/Student</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<jsp-file>/Login.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Failure</servlet-name>
+		<jsp-file>/Failure.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Failure</servlet-name>
+		<url-pattern>/Failure</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>FindFilterD</filter-name>
+		<filter-class>com.techlab.filter.StudentFind</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>FindFilterD</filter-name>
+		<url-pattern>/deleteStud</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>FindFilterE</filter-name>
+		<filter-class>com.techlab.filter.StudentFind</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>FindFilterE</filter-name>
+		<url-pattern>/editStud</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>SessionCheckA</filter-name>
+		<filter-class>com.techlab.filter.SessionCheck</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SessionCheckA</filter-name>
+		<url-pattern>/AddStudent</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>SessionCheckE</filter-name>
+		<filter-class>com.techlab.filter.SessionCheck</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SessionCheckE</filter-name>
+		<url-pattern>/EditStudent</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>SessionCheckD</filter-name>
+		<filter-class>com.techlab.filter.SessionCheck</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SessionCheckD</filter-name>
+		<url-pattern>/deleteStud</url-pattern>
+	</filter-mapping>
+
+
+
+</web-app>

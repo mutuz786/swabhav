@@ -1,0 +1,18 @@
+<div>
+    RollNo:
+    <input type="number" ng-model="student.rollNo"><br><br>
+    Name:
+    <input type="text" ng-model="student.name"><br><br>
+    Age:
+    <input type="number" ng-model="student.age"><br><br>
+    Email:
+    <input type="text" ng-model="student.email"><br><br>
+    Date:
+    <input type="date" ng-model="student.date"><br><br>
+    Is Male:
+    <form>
+        <input type="radio" ng-model="student.isMale" value="true">Yes
+        <input type="radio" ng-model="student.isMale" value="false">No <br><br>
+    </form>
+    <button ng-click="addStudent()">Add</button>
+</div>

@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Scope Demo</title>
+</head>
+
+<body ng-app="A">
+    <section ng-controller="controlA">
+        <button ng-click="show()">Show</button>
+        <h4 ng-repeat="student in students">
+            Id:{{student.id}} <br>
+            Name:{{student.name}} <br>
+            Img:{{student.address}}
+        </h4>
+    </section>
+
+    <script>
+        angular.module("A", [])
+            .controller("controlA", function ($scope, $rootScope) {
+                $scope.show = function () {
+                    $scope.students = [{ id: "1", name: "murtaza", address: "mumbai" },
+                    { id: "2", name: "sagar", address: "pune" },
+                    { id: "3", name: "rahul", address: "mumbai" },
+                    { id: "4", name: "gaurav", address: "surat" },
+                    { id: "5", name: "soham", address: "pune" }]
+                }
+            });
+    </script>
+</body>
+
+</html>
