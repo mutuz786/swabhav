@@ -18,8 +18,8 @@ angular.module("StudentApp", ["ngRoute"])
                 controller: "EditController"
             })
     }])
-    .controller("HomeController", ["$scope", "$rootScope", "$http", "$location", function ($scope, $rootScope, $http, $location) {
-        $http.get("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students")
+    .controller("HomeController", ["$scope", "$rootScope", "DataFactory", "$location", function ($scope, $rootScope, DataFactory, $location) {
+        DataFactory.getStudent()
             .then(function (response) {
                 $scope.data = response.data;
             }, function (response) {
@@ -27,20 +27,19 @@ angular.module("StudentApp", ["ngRoute"])
             });
         $scope.edit = function (student) {
             $rootScope.editTarget = student;
-            console.log($scope.editTarget);
             $location.path("/edit");
         }
         $scope.delete = function (student) {
-            $http.delete("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + student.id)
+            DataFactory.deleteStudent(student.id)
                 .then(function (response) {
                     $location.path("/");
                 });
         }
     }])
 
-    .controller("AddController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
+    .controller("AddController", ["$scope", "DataFactory", "$location", function ($scope, DataFactory, $location) {
         $scope.addStudent = function () {
-            $http.post("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students", $scope.student)
+            DataFactory.addStudent($scope.student)
                 .then(function (response) {
                     $scope.data = response.data;
                     $location.path("/home");
@@ -50,10 +49,10 @@ angular.module("StudentApp", ["ngRoute"])
         }
     }])
 
-    .controller("EditController", ["$scope", "$rootScope", "$http", "$location", function ($scope, $rootScope, $http, $location) {
-        console.log($rootScope.editTarget);
+    .controller("EditController", ["$scope", "$rootScope", "DataFactory", "$location", function ($scope, $rootScope, DataFactory, $location) {
         $scope.editStudent = function () {
-            $http.put("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + $rootScope.editTarget.id, $rootScope.editTarget)
+            console.log($rootScope.editTarget)
+            DataFactory.editStudent($rootScope.editTarget)
                 .then(function (response) {
                     $scope.data = response.data;
                     $location.path("/home");
@@ -61,6 +60,29 @@ angular.module("StudentApp", ["ngRoute"])
                     $scope.data = response.data || "request failed";
                 });
         }
+    }])
+
+    .factory("DataFactory", ["$http", function ($http) {
+        var url = 'http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/';
+        var DataFactory = {};
+
+        DataFactory.getStudent = function () {
+            return $http.get(url);
+        };
+
+        DataFactory.addStudent = function (student) {
+            return $http.post(url, student);
+        };
+
+        DataFactory.editStudent = function (student) {
+            return $http.put(url + student.id, student)
+        };
+
+        DataFactory.deleteStudent = function (id) {
+            return $http.delete(url + id);
+        };
+
+        return DataFactory;
     }])
 
     .filter("genderFilter", function () {
