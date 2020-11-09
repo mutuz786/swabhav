@@ -47,6 +47,6 @@ table, tr, td, th {
 			}
 		%>
 	</table>
-	<a href="Add">Add</a>
+	<a href="AddContact">Add</a>
 </body>
 </html>

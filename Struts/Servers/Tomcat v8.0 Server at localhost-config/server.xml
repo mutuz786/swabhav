@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="gradle-demo-app" path="/gradle-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:gradle-demo-app"/><Context docBase="contact-demo-app" path="/contact-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:contact-demo-app"/><Context docBase="struts-demo-app" path="/struts-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:struts-demo-app"/></Host>
+      <Context docBase="gradle-demo-app" path="/gradle-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:gradle-demo-app"/><Context docBase="contact-demo-app" path="/contact-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:contact-demo-app"/><Context docBase="struts-demo-app" path="/struts-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:struts-demo-app"/><Context docBase="login-app" path="/login-app" reloadable="true" source="org.eclipse.jst.j2ee.server:login-app"/><Context docBase="student-demo-app" path="/student-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:student-demo-app"/></Host>
     </Engine>
   </Service>
 </Server>

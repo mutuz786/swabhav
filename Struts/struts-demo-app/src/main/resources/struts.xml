@@ -4,9 +4,54 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
+	<constant name="struts.action.extension" value="" />
+
 	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="numLimiter" class="com.techlab.interceptor.NumInterceptor"></interceptor>
+		</interceptors>
+
+		<action name="login">
+			<result>login.jsp</result>
+		</action>
+
+		<action name="register">
+			<result>register.jsp</result>
+		</action>
+
 		<action name="welcome" class="com.techlab.action.WelcomeAction">
 			<result name="success">welcome.jsp</result>
 		</action>
+
+		<action name="session" class="com.techlab.action.SessionAction">
+			<result name="success">session.jsp</result>
+		</action>
+
+		<action name="browse" class="com.techlab.action.BrowseAction">
+			<result name="success">browse.jsp</result>
+		</action>
+
+		<action name="interceptDemo"
+			class="com.techlab.action.InterceptorAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>  
+			<interceptor-ref name="numLimiter"></interceptor-ref>
+			<result name="success">interceptorDemo.jsp</result>
+		</action>
+
+		<action name="validate" class="com.techlab.action.LoginAction"
+			method="login">
+			<result name="success">welcome.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+
+		<action name="registerData"
+			class="com.techlab.action.RegisterAction" method="registerDo">
+			<result name="success">successRegister.jsp</result>
+			<result name="error">register.jsp</result>
+			<result name="input">register.jsp</result>
+		</action>
+
 	</package>
 </struts>

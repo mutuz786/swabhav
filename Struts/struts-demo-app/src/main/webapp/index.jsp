@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>index</title>
 </head>
 <body>
+
+<a href="welcome">welcome</a>| <br><br> 
+<a href="browse">Browse</a>| <br><br> 
+<a href="login">Login</a>| <br><br> 
+<a href="register">Register</a>| <br><br> 
+<a href="interceptDemo">interceptor</a>| <br><br> 
+<a href="session">session</a>|  
 
 </body>
 </html>
