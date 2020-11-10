@@ -9,8 +9,12 @@
 	<package name="main" extends="struts-default">
 
 		<interceptors>
-			<interceptor name="numLimiter" class="com.techlab.interceptor.NumInterceptor"></interceptor>
+			<interceptor name="numLimiter"
+				class="com.techlab.interceptor.NumInterceptor"></interceptor>
+			<interceptor name="sessionCheck"
+				class="com.techlab.interceptor.SessionInterceptor"></interceptor>
 		</interceptors>
+
 
 		<action name="login">
 			<result>login.jsp</result>
@@ -19,6 +23,7 @@
 		<action name="register">
 			<result>register.jsp</result>
 		</action>
+
 
 		<action name="welcome" class="com.techlab.action.WelcomeAction">
 			<result name="success">welcome.jsp</result>
@@ -34,9 +39,11 @@
 
 		<action name="interceptDemo"
 			class="com.techlab.action.InterceptorAction">
-			<interceptor-ref name="defaultStack"></interceptor-ref>  
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="sessionCheck"></interceptor-ref>
 			<interceptor-ref name="numLimiter"></interceptor-ref>
 			<result name="success">interceptorDemo.jsp</result>
+			<result name="login">login.jsp</result>
 		</action>
 
 		<action name="validate" class="com.techlab.action.LoginAction"

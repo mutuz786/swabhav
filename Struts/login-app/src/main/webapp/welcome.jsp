@@ -8,9 +8,10 @@
 <title>Welcome</title>
 </head>
 <body>
-	<h1>
+	<h2>
 		Welcome
 		<s:property value="username" />
-	</h1>
+	</h2>
+	<a href="logoutDo" >logout</a>
 </body>
 </html>

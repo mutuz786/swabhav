@@ -11,7 +11,6 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 
 	@Override
 	public RegisterVM getModel() {
-		System.out.println("in getModel");
 		vm = new RegisterVM();
 		return vm;
 	}
@@ -21,7 +20,6 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 	}
 
 	public void validate() {
-		System.out.println("in validate");
 		isEmpty(vm.getName(), "name");
 		if (!isEmpty(vm.getEmail(), "email")) {
 			if (!vm.getEmail().contains(".com"))
@@ -60,7 +58,6 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 	}
 
 	public void setPasswordRepeat(String passwordRepeat) {
-		System.out.println("in setters");
 		this.passwordRepeat = passwordRepeat;
 	}
 

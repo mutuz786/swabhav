@@ -4,10 +4,11 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
-import com.opensymphony.xwork2.util.ValueStack;
 import com.techlab.model.User;
 
 public class SessionInterceptor implements Interceptor {
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void destroy() {
@@ -19,7 +20,6 @@ public class SessionInterceptor implements Interceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		ValueStack stack = invocation.getStack();
 		Map<String, Object> session = invocation.getInvocationContext().getSession();
 		User user = (User) session.get("user");
 		if (user == null)

@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginService {
-	private Map<String, String> users = null;
-	private static LoginService ls = null;
+	private static LoginService ls;
+	private Map<String, String> users;
 
 	private LoginService() {
-		System.out.println("in service constructor");
 		users = new HashMap<String, String>();
-		loadUser();
+		users.put("murtaza", "murtaza");
+		users.put("admin", "admin");
+		users.put("soham", "soham");
 	}
 
 	public static LoginService getInstance() {
@@ -19,17 +20,11 @@ public class LoginService {
 		return ls;
 	}
 
-	private void loadUser() {
-		users.put("admin", "admin");
-		users.put("murtaza", "murtaza");
-	}
-
-	public boolean isValidUser(String username, String password) {
+	public boolean isValid(String username, String password) {
 		if (users.containsKey(username)) {
 			if (users.get(username).equals(password))
 				return true;
 		}
-		System.out.println("false");
 		return false;
 	}
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Login</h1>
-	<s:form action="validate" method="post">
+	<s:form action="loginDo" method="post">
 		<s:textfield name="username" label="username" />
 		<s:password name="password" label="password" />
 		<s:submit value="Login" />

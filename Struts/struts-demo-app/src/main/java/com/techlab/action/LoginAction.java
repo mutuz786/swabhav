@@ -12,51 +12,36 @@ import com.techlab.service.LoginService;
 public class LoginAction implements SessionAware, ModelDriven<User> {
 	private String message;
 	private SessionMap<String, Object> session;
-	private User user;
+	private User userObject;
 
 	public String execute() throws Exception {
 		return "success";
 	}
 
 	public String login() {
-		if (user.getUsername().equals("")) {
+		System.out.println(userObject);
+		if (userObject.getUsername().equals("")) {
 			message = "*username required";
 			return "input";
 		}
-		if (user.getPassword().equals("")) {
+		if (userObject.getPassword().equals("")) {
 			message = "*password required";
 			return "input";
 		}
-		if (LoginService.getInstance().isValidUser(user.getUsername(), user.getPassword())) {
-			session.put("login", true);
+		if (LoginService.getInstance().isValidUser(userObject.getUsername(), userObject.getPassword())) {
+			session.put("user", userObject);
 			return "success";
 		}
 		return "error";
 	}
 
 	public String logout() {
-		session.put("login", false);
+		session.remove("user");
 		return "success";
 	}
 
 	public String getMessage() {
 		return message;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	@Override
@@ -66,15 +51,15 @@ public class LoginAction implements SessionAware, ModelDriven<User> {
 
 	@Override
 	public User getModel() {
-		User user = new User();
-		return user;
+		userObject = new User();
+		return userObject;
 	}
 
 	public User getUser() {
-		return user;
+		return userObject;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		this.userObject = user;
 	}
 }
