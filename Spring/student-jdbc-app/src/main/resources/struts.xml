@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant value="" name="struts.action.extension" />
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="sessionCheck"
+				class="com.techlab.interceptor.SessionCheck"></interceptor>
+
+			<interceptor-stack name="auth">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="sessionCheck" />
+			</interceptor-stack>
+
+		</interceptors>
+
+		<global-results>
+			<result name="login">login.jsp</result>
+		</global-results>
+
+
+		<action name="">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<action name="login"
+			class="com.techlab.action.AuthorizationAction" method="loginDo">
+			<result name="success" type="redirect">%{link}</result>
+			<result name="input">login.jsp</result>
+		</action>
+
+		<action name="logout"
+			class="com.techlab.action.AuthorizationAction" method="logoutDo">
+			<result name="success">login.jsp</result>
+		</action>
+
+
+		<action name="home"
+			class="com.techlab.action.DisplayStudentAction">
+			<interceptor-ref name="auth" />
+			<result name="success">displayStudent.jsp</result>
+		</action>
+
+		<action name="deleteStudent"
+			class="com.techlab.action.DeleteStudentAction">
+			<result name="success" type="redirect">home</result>
+		</action>
+
+		<action name="editForm"
+			class="com.techlab.action.EditStudentAction">
+			<interceptor-ref name="auth" />
+			<result name="success">editStudent.jsp</result>
+		</action>
+		<action name="editStudent" method="editDo"
+			class="com.techlab.action.EditStudentAction">
+			<result name="success" type="redirect">home</result>
+		</action>
+
+		<action name="addForm"
+			class="com.techlab.action.AddStudentAction">
+			<interceptor-ref name="auth" />
+			<result name="success">addStudent.jsp</result>
+		</action>
+		<action name="addStudent" method="addDo"
+			class="com.techlab.action.AddStudentAction">
+			<result name="success" type="redirect">home</result>
+		</action>
+
+	</package>
+</struts>

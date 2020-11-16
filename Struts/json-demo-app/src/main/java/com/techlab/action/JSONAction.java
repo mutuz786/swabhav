@@ -1,29 +1,27 @@
 package com.techlab.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.techlab.model.Employee;
+import com.techlab.service.EmployeeService;
 
 public class JSONAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
-	private List<User> users;;
+	private List<Employee> employees;;
 
 	@Override
 	public String execute() throws Exception {
-		users = new ArrayList<User>();
-		users.add(new User(1, "murtaza", 23, "khilawala62@gmail.com"));
-		users.add(new User(2, "soham", 32, "soham@gmail.com"));
-		users.add(new User(3, "rahul", 12, "rahul@gmail.com"));
+		employees = EmployeeService.getInstance().getEmployees();
 		return "success";
 	}
 
-	public List<User> getUsers() {
-		return users;
+	public List<Employee> getEmployees() {
+		return employees;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 
 }

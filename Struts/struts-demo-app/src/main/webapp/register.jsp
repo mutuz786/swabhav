@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-	<s:form action="registerData" method="post">
+	<s:form action="registerData" method="post" autocomplete="off">
 		<s:textfield name="name" label="Name" />
 		<s:textfield name="email" label="Email" />
 		<s:textfield name="username" label="Username" />

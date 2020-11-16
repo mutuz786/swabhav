@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.extension" value="" />
+
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="sessionCheck"
+				class="com.techlab.interceptor.SessionCheck"></interceptor>
+
+			<interceptor name="validateInput"
+				class="com.techlab.interceptor.ValidateInput"></interceptor>
+
+			<interceptor-stack name="auth">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="sessionCheck" />
+			</interceptor-stack>
+
+			<interceptor-stack name="valid">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="validateInput" />
+			</interceptor-stack>
+
+		</interceptors>
+
+		<global-results>
+			<result name="login">login.jsp</result>
+		</global-results>
+
+		<action name="">
+			<result type="redirect">home</result>
+		</action>
+
+
+		<action name="login" class="com.techlab.action.AuthAction"
+			method="loginDo">
+			<result name="success" type="redirect">%{link}</result>
+			<result name="input">login.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="logout" class="com.techlab.action.AuthAction"
+			method="logoutDo">
+			<result name="success" type="redirect">home</result>
+		</action>
+
+
+		<action name="home" class="com.techlab.action.DisplayAction">
+			<interceptor-ref name="auth" />
+			<result name="success">displayEmployee.jsp</result>
+		</action>
+
+		<action name="addForm" class="com.techlab.action.AddAction">
+			<interceptor-ref name="auth" />
+			<result name="success">addEmployee.jsp</result>
+		</action>
+		<action name="addEmployee" class="com.techlab.action.AddAction"
+			method="addDo">
+			<interceptor-ref name="valid" />
+			<result name="success" type="redirect">home</result>
+			<result name="input" type="redirect">addForm</result>
+		</action>
+
+		<action name="editForm" class="com.techlab.action.EditAction">
+			<interceptor-ref name="auth" />
+			<result name="success">editEmployee.jsp</result>
+		</action>
+		<action name="editEmployee"
+			class="com.techlab.action.EditAction" method="editDo">
+			<interceptor-ref name="valid" />
+			<result name="input" type="chain">editForm</result>
+			<result name="success" type="redirect">home</result>
+		</action>
+
+		<action name="deleteEmployee"
+			class="com.techlab.action.DeleteAction">
+			<result name="success" type="redirect">home</result>
+		</action>
+
+	</package>
+</struts>

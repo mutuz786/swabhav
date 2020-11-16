@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.extension" value="" />
+
+	<package name="main" extends="struts-default">
+
+
+		<interceptors>
+			<interceptor name="sessionCheck"
+				class="com.techlab.interceptor.SessionCheck"></interceptor>
+
+			<interceptor-stack name="auth">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="sessionCheck" />
+			</interceptor-stack>
+
+		</interceptors>
+
+		<global-results>
+			<result name="login">login.jsp</result>
+		</global-results>
+
+		<action name="login"
+			class="com.techlab.action.AuthorizationAction" method="loginDo">
+			<result name="success" type="redirect">%{link}</result>
+			<result name="input">login.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+
+		<action name="logout"
+			class="com.techlab.action.AuthorizationAction" method="logoutDo">
+			<result name="success">login.jsp</result>
+		</action>
+
+		<action name="home" class="com.techlab.action.DisplayAction">
+			<interceptor-ref name="auth" />
+			<result name="success">display.jsp</result>
+		</action>
+
+		<action name="addForm" class="com.techlab.action.AddAction">
+			<interceptor-ref name="auth" />
+			<result name="success">add.jsp</result>
+			<result name="input">add.jsp</result>
+		</action>
+		<action name="addStudent" class="com.techlab.action.AddAction"
+			method="add">
+			<result name="success" type="redirect">home</result>
+			<result name="input">add.jsp</result>
+		</action>
+
+		<action name="deleteStudent"
+			class="com.techlab.action.DeleteAction">
+			<result name="success" type="redirect">home</result>
+		</action>
+
+		<action name="editForm" class="com.techlab.action.EditAction">
+			<interceptor-ref name="auth" />
+			<result name="success">edit.jsp</result>
+			<result name="input">edit.jsp</result>
+		</action>
+		<action name="editStudent"
+			class="com.techlab.action.EditAction" method="edit">
+			<result name="success" type="redirect">home</result>
+			<result name="input">edit.jsp</result>
+		</action>
+
+
+	</package>
+</struts>

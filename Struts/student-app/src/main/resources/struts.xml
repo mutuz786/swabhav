@@ -24,6 +24,10 @@
 			<result name="login">login.jsp</result>
 		</global-results>
 
+		<action name="">
+			<result name="success">index.jsp</result>
+		</action>
+
 		<action name="login"
 			class="com.techlab.action.AuthorizationAction" method="loginDo">
 			<result name="success" type="redirect">%{link}</result>

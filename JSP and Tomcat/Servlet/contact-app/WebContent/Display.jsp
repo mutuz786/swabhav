@@ -8,13 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Display</title>
-<style>
-table, tr, td, th {
-	border: 1px solid black;
-	text-align: center;
-}
-</style>
-
+<link href="bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<h1>Contacts</h1>
@@ -48,5 +42,6 @@ table, tr, td, th {
 		%>
 	</table>
 	<a href="AddContact">Add</a>
+	
 </body>
 </html>
