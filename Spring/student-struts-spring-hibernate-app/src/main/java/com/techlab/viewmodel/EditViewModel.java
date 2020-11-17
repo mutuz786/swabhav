@@ -1,13 +1,14 @@
 package com.techlab.viewmodel;
 
 public class EditViewModel extends AddViewModel {
-	private String rollNo;
+	private String id;
 
-	public String getRollNo() {
-		return rollNo;
+	public String getId() {
+		return id;
 	}
 
-	public void setRollNo(String rollNo) {
-		this.rollNo = rollNo;
+	public void setId(String id) {
+		this.id = id;
 	}
+
 }

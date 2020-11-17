@@ -15,7 +15,7 @@ public class EditStudentAction extends ActionSupport implements ModelDriven<Edit
 	private StudentService studentService;
 
 	public String execute() {
-		Student student = studentService.getStudent(editVM.getRollNo());
+		Student student = studentService.getStudent(editVM.getId());
 		editVM.setName(student.getName());
 		editVM.setAddress(student.getAddress());
 		editVM.setAge(student.getAge());
@@ -23,7 +23,7 @@ public class EditStudentAction extends ActionSupport implements ModelDriven<Edit
 	}
 
 	public String editDo() {
-		studentService.editStudent(editVM.getRollNo(), editVM.getName(), editVM.getAddress(), editVM.getAge());
+		studentService.editStudent(editVM.getId(), editVM.getName(), editVM.getAddress(), editVM.getAge());
 		return "success";
 	}
 

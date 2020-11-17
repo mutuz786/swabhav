@@ -14,6 +14,6 @@
 		<property name="hbm2ddl.auto">update</property>
 		<property name="format_sql">true</property>
 		<mapping class="com.techlab.entity.Employee" />
-		<mapping class="com.techlab.entity.Deaprtment" />
+		<mapping class="com.techlab.entity.Department" />
 	</session-factory>
 </hibernate-configuration>

@@ -53,23 +53,22 @@ public class Test {
 
 		Session session = fact.openSession();
 		Transaction trans = session.beginTransaction();
-		session.persist(dept1);
-		session.persist(dept2);
+//		session.save(dept1);
+//		session.save(dept2);
+//		session.delete(dept1);
+//		session.delete(dept2);
 		System.out.println("Display Dept:");
 		readAll(session);
 		trans.commit();
 		session.close();
-		System.out.println("end");
 	}
 
 	private static void readAll(Session session) {
-		List<Department> depts = new ArrayList<Department>();
-		try {
-			depts = session.createQuery("from Department").list();
-		} catch (Exception e) {
-			e.printStackTrace();
+		List<Department> depts = session.createQuery("from Department").list();
+		String output = "---------------------------------------------\n";
+		for (Department dept : depts) {
+			output += "dept:" + dept.getName() + "\n";
 		}
-		for (Department dept : depts)
-			System.out.println("dept:" + dept.getName());
+		System.out.println(output);
 	}
 }

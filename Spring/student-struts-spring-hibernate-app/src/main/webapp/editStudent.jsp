@@ -10,7 +10,7 @@
 </head>
 <body>
 	<s:form action="editStudent" method="post">
-		<s:hidden name="rollNo" value="%{editVM.rollNo}" />
+		<s:hidden name="id" value="%{editVM.id}" />
 		<s:textfield name="name" value="%{editVM.name}" label="Name" />
 		<s:textfield name="address" value="%{editVM.address}" label="Address"></s:textfield>
 		<s:textfield name="age" value="%{editVM.age}" label="Age"></s:textfield>

@@ -34,7 +34,9 @@ public class StudentTest {
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
-			session.save(stud1);
+//			session.save(stud1);
+//			session.save(stud2);
+//			session.save(stud3);
 			List<Student> studList = new StudentCRUD().readAll(session);
 			printInfo(studList);
 			transaction.commit();
@@ -47,8 +49,10 @@ public class StudentTest {
 	}
 
 	private static void printInfo(List<Student> studList) {
+		String output = "------------------------------\n";
 		for (Student stud : studList) {
-			System.out.println("name: " + stud.getName() + "\tcgpa:" + stud.getCgpa());
+			output += "\nname: " + stud.getName() + "\tcgpa:" + stud.getCgpa();
 		}
+		System.out.println(output);
 	}
 }

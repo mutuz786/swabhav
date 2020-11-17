@@ -40,16 +40,16 @@ td {
 		</tr>
 		<s:iterator value="students">
 			<tr>
-				<td><s:property value="rollNo" /></td>
+				<td><s:property value="id" /></td>
 				<td><s:property value="name" /></td>
 				<td><s:property value="address" /></td>
 				<td><s:property value="age" /></td>
 				<td><s:form action="editForm" method="get">
-						<s:hidden name="rollNo" value="%{rollNo}" />
+						<s:hidden name="id" value="%{id}" />
 						<s:submit value="Edit" />
 					</s:form></td>
 				<td><s:form action="deleteStudent" method="post">
-						<s:hidden name="rollNo" value="%{rollNo}" />
+						<s:hidden name="id" value="%{id}" />
 						<s:submit value="Delete" />
 					</s:form></td>
 			</tr>

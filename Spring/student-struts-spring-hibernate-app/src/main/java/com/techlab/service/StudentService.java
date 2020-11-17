@@ -30,11 +30,7 @@ public class StudentService {
 	}
 
 	public Student getStudent(String id) {
-		for (Student student : getStudents()) {
-			if (student.getId().equals(id))
-				return student;
-		}
-		return null;
+		return repository.getRow(id);
 	}
 
 }

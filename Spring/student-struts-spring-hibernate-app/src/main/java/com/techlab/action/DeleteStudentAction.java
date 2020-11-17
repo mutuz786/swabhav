@@ -7,22 +7,22 @@ import com.techlab.service.StudentService;
 
 public class DeleteStudentAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
-	private String rollNo;
+	private String id;
 	@Autowired
 	private StudentService studentService;
 
 	@Override
 	public String execute() throws Exception {
-		studentService.deleteStudent(rollNo);
+		studentService.deleteStudent(id);
 		return "success";
 	}
 
-	public String getRollNo() {
-		return rollNo;
+	public String getId() {
+		return id;
 	}
 
-	public void setRollNo(String rollNo) {
-		this.rollNo = rollNo;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
