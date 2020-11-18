@@ -16,7 +16,7 @@ public class DisplayStudentAction implements Action {
 	@Override
 	public String execute() throws Exception {
 		students = studentService.getStudents();
-		return "success";
+		return Action.SUCCESS;
 	}
 
 	public List<Student> getStudents() {

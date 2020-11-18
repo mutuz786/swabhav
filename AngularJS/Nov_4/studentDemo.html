@@ -31,22 +31,16 @@
     <p>Response Data:</p><br>
     <table>
         <tr>
-            <th>Id</th>
             <th>Roll Number</th>
             <th>Name</th>
+            <th>Address</th>
             <th>Age</th>
-            <th>Email</th>
-            <th>Date</th>
-            <th>Is Male?</th>
         </tr>
-        <tr ng-repeat="emp in data">
-            <td>{{emp.id}}</td>
-            <td>{{emp.rollNo}}</td>
-            <td>{{emp.name}}</td>
-            <td>{{emp.age}}</td>
-            <td>{{emp.email}}</td>
-            <td>{{emp.date}}</td>
-            <td>{{emp.isMale}}</td>
+        <tr ng-repeat="student in data">
+            <td>{{student.rollNo}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.address}}</td>
+            <td>{{student.age}}</td>
         </tr>
     </table>
 </body>

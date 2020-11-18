@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant value="" name="struts.action.extension" />
+	<package name="main" extends="struts-default">
+
+
+		<interceptors>
+			<interceptor name="taskInterceptor"
+				class="com.techlab.interceptor.TaskInterceptor"></interceptor>
+
+			<interceptor-stack name="task">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="taskInterceptor" />
+			</interceptor-stack>
+
+		</interceptors>
+
+		<global-results>
+			<result name="login">view/Login.jsp</result>
+		</global-results>
+
+
+		<action name="login"
+			class="com.techlab.action.AuthorizationAction" method="loginDo">
+			<result name="success" type="redirect">%{link}</result>
+			<result name="input">view/Login.jsp</result>
+		</action>
+		<action name="logout"
+			class="com.techlab.action.AuthorizationAction" method="logoutDo">
+			<result name="success">view/Login.jsp</result>
+		</action>
+
+
+
+		<action name="">
+			<result type="redirect">home</result>
+		</action>
+
+		<action name="home"
+			class="com.techlab.action.DisplayUserAction">
+			<interceptor-ref name="task" />
+			<result name="success">view/DisplayUser.jsp</result>
+		</action>
+		<action name="addUser" method="execute"
+			class="com.techlab.action.AddUserAction">
+			<result name="success">view/AddUser.jsp</result>
+		</action>
+		<action name="addUser.do" method="addDo"
+			class="com.techlab.action.AddUserAction">
+			<result name="success" type="redirect">home</result>
+			<result name="input">view/AddUser.jsp</result>
+		</action>
+		<action name="editUser" method="execute"
+			class="com.techlab.action.EditUserAction">
+			<result name="success">view/EditUser.jsp</result>
+		</action>
+		<action name="editUser.do" method="editDo"
+			class="com.techlab.action.EditUserAction">
+			<result name="success" type="redirect">home</result>
+			<result name="input">view/EditUser.jsp</result>
+		</action>
+		<action name="deleteUser.do"
+			class="com.techlab.action.DeleteUserAction">
+			<result name="success" type="redirect">home</result>
+		</action>
+
+		<action name="task"
+			class="com.techlab.action.DisplayTaskAction">
+			<interceptor-ref name="task" />
+			<result name="success">view/DisplayTask.jsp</result>
+		</action>
+		<action name="task.check" method="doCheck"
+			class="com.techlab.action.DisplayTaskAction">
+			<interceptor-ref name="task" />
+			<result name="success" type="redirect">home</result>
+		</action>
+		<action name="addTask" method="execute"
+			class="com.techlab.action.AddTaskAction">
+			<result name="success">view/AddTask.jsp</result>
+		</action>
+		<action name="addTask.do" method="addDo"
+			class="com.techlab.action.AddTaskAction">
+			<result name="success" type="redirect">task</result>
+			<result name="input">view/AddTask.jsp</result>
+		</action>
+		<action name="editTask" method="execute"
+			class="com.techlab.action.EditTaskAction">
+			<result name="success">view/EditTask.jsp</result>
+		</action>
+		<action name="editTask.do" method="editDo"
+			class="com.techlab.action.EditTaskAction">
+			<result name="success" type="redirect">task</result>
+			<result name="input">view/EditTask.jsp</result>
+		</action>
+		<action name="deleteTask.do"
+			class="com.techlab.action.DeleteTaskAction">
+			<result name="success" type="redirect">task</result>
+		</action>
+
+		<action name="subTask"
+			class="com.techlab.action.DisplaySubTaskAction">
+			<interceptor-ref name="task" />
+			<result name="success">view/DisplaySubTask.jsp</result>
+		</action>
+		<action name="addSubTask" method="execute"
+			class="com.techlab.action.AddSubTaskAction">
+			<result name="success">view/AddSubTask.jsp</result>
+		</action>
+		<action name="addSubTask.do" method="addDo"
+			class="com.techlab.action.AddSubTaskAction">
+			<result name="success" type="redirect">subTask</result>
+			<result name="input">view/AddSubTask.jsp</result>
+		</action>
+		<action name="editSubTask" method="execute"
+			class="com.techlab.action.EditSubTaskAction">
+			<result name="success">view/EditTask.jsp</result>
+		</action>
+		<action name="editSubTask.do" method="editDo"
+			class="com.techlab.action.EditSubTaskAction">
+			<result name="success" type="redirect">subTask</result>
+			<result name="input">view/EditSubTask.jsp</result>
+		</action>
+		<action name="deleteSubTask.do"
+			class="com.techlab.action.DeleteSubTaskAction">
+			<result name="success" type="redirect">subTask</result>
+		</action>
+
+	</package>
+</struts>

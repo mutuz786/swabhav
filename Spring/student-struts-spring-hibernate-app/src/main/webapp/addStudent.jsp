@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Students</title>
+<title>Add User</title>
 </head>
 <body>
 	<s:form action="addStudent" method="post">
