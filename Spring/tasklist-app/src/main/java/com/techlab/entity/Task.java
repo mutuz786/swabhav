@@ -1,6 +1,7 @@
 package com.techlab.entity;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Task {
 	@JoinColumn
 	private User user;
 	@OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<SubTask> subTasks;
+	private Set<SubTask> subTasks = new HashSet<SubTask>();
 
 	public Task() {
 
@@ -76,11 +77,11 @@ public class Task {
 		this.user = user;
 	}
 
-	public List<SubTask> getSubTasks() {
+	public Set<SubTask> getSubTasks() {
 		return subTasks;
 	}
 
-	public void setSubTasks(List<SubTask> subTasks) {
+	public void setSubTasks(Set<SubTask> subTasks) {
 		this.subTasks = subTasks;
 	}
 }

@@ -46,7 +46,7 @@ td, th {
 				<td><s:property value="email" /></td>
 				<td><s:property value="username" /></td>
 				<td><s:property value="password" /></td>
-				<td><s:form action="task" method="get">
+				<td><s:form action="task" method="post">
 						<s:hidden name="id" value="%{id}" />
 						<s:submit value="Tasks" class="btn btn-primary btn-lg" />
 					</s:form></td>

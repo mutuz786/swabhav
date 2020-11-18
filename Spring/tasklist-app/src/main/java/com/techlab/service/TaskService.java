@@ -34,4 +34,8 @@ public class TaskService {
 		return repository.getTask(id);
 	}
 
+	public void updateStatus(String id, boolean done, String date) {
+		repository.updateTask(id, done, date);
+	}
+
 }

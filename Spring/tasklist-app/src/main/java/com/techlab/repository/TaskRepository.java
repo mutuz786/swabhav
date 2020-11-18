@@ -54,4 +54,12 @@ public class TaskRepository {
 		return null;
 	}
 
+	public void updateTask(String id, boolean done, String date) {
+		Task task = getTask(id);
+		task.setDone(done);
+		task.setDate(date);
+		fact.getCurrentSession().update(task);
+
+	}
+
 }

@@ -19,11 +19,11 @@
 </style>
 </head>
 <body class="jumbotron">
-	<h2 class="display-4">Edit Task</h2>
+	<h2 class="display-4">Edit SubTask</h2>
 	<hr class="my-4">
 	<center>
 		<br> <br> <br>
-		<s:form action="editTask.do" method="post">
+		<s:form action="editSubTask.do" method="post">
 			<s:hidden name="id" value="%{editVM.id}" />
 			<s:textfield name="title" value="%{title}" label="Enter Title"
 				class="form-control" />

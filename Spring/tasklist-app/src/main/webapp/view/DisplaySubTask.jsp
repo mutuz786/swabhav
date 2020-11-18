@@ -15,7 +15,7 @@
 </style>
 </head>
 <body class="jumbotron">
-	<h2 class="display-4">Tasks</h2>
+	<h2 class="display-4">SubTasks</h2>
 	<hr class="my-4">
 	<ul class="nav nav-pills">
 		<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
@@ -33,9 +33,10 @@
 		</tr>
 		<s:iterator value="subTasks">
 			<tr class="hover-class">
-				<td><s:form action="task.check" method="post">
-						<s:checkbox theme="simple" name="done" value="%{done}"
-							onclick="Auto_Au('rej');" />
+				<td><s:form action="subTask.check" method="post">
+						<s:hidden name="id" value="%{id}" />
+						<s:checkbox theme="simple" name="done" fieldValue="%{done}"
+							onChange="this.form.submit()" />
 					</s:form></td>
 				<td><s:property value="title" /></td>
 				<td><s:property value="date" /></td>

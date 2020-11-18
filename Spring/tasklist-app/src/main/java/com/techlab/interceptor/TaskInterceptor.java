@@ -38,7 +38,6 @@ public class TaskInterceptor implements Interceptor {
 		String id = stack.findString("id");
 		if (id != null) {
 			User user = userService.getUser(id);
-			System.out.println(user);
 			if (user != null)
 				session.put("user", user);
 			Task task = taskService.getTask(id);

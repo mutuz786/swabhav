@@ -24,9 +24,23 @@
 
 
 		<action name="login"
+			class="com.techlab.action.AuthorizationAction">
+			<result name="success">view/Login.jsp</result>
+		</action>
+		<action name="login.do"
 			class="com.techlab.action.AuthorizationAction" method="loginDo">
 			<result name="success" type="redirect">%{link}</result>
 			<result name="input">view/Login.jsp</result>
+			<result name="error">view/Login.jsp</result>
+		</action>
+		<action name="register"
+			class="com.techlab.action.RegisterAction">
+			<result name="success">view/Register.jsp</result>
+		</action>
+		<action name="register.do" method="registerDo"
+			class="com.techlab.action.RegisterAction">
+			<result name="success" type="redirect">home</result>
+			<result name="input">view/Register.jsp</result>
 		</action>
 		<action name="logout"
 			class="com.techlab.action.AuthorizationAction" method="logoutDo">
@@ -46,6 +60,7 @@
 		</action>
 		<action name="addUser" method="execute"
 			class="com.techlab.action.AddUserAction">
+			<interceptor-ref name="task" />
 			<result name="success">view/AddUser.jsp</result>
 		</action>
 		<action name="addUser.do" method="addDo"
@@ -55,6 +70,7 @@
 		</action>
 		<action name="editUser" method="execute"
 			class="com.techlab.action.EditUserAction">
+			<interceptor-ref name="task" />
 			<result name="success">view/EditUser.jsp</result>
 		</action>
 		<action name="editUser.do" method="editDo"
@@ -71,14 +87,16 @@
 			class="com.techlab.action.DisplayTaskAction">
 			<interceptor-ref name="task" />
 			<result name="success">view/DisplayTask.jsp</result>
+			<result name="error">home</result>
 		</action>
 		<action name="task.check" method="doCheck"
 			class="com.techlab.action.DisplayTaskAction">
 			<interceptor-ref name="task" />
-			<result name="success" type="redirect">home</result>
+			<result name="success" type="redirect">task</result>
 		</action>
 		<action name="addTask" method="execute"
 			class="com.techlab.action.AddTaskAction">
+			<interceptor-ref name="task" />
 			<result name="success">view/AddTask.jsp</result>
 		</action>
 		<action name="addTask.do" method="addDo"
@@ -88,6 +106,7 @@
 		</action>
 		<action name="editTask" method="execute"
 			class="com.techlab.action.EditTaskAction">
+			<interceptor-ref name="task" />
 			<result name="success">view/EditTask.jsp</result>
 		</action>
 		<action name="editTask.do" method="editDo"
@@ -105,8 +124,14 @@
 			<interceptor-ref name="task" />
 			<result name="success">view/DisplaySubTask.jsp</result>
 		</action>
+		<action name="subTask.check" method="doCheck"
+			class="com.techlab.action.DisplaySubTaskAction">
+			<interceptor-ref name="task" />
+			<result name="success" type="redirect">subTask</result>
+		</action>
 		<action name="addSubTask" method="execute"
 			class="com.techlab.action.AddSubTaskAction">
+			<interceptor-ref name="task" />
 			<result name="success">view/AddSubTask.jsp</result>
 		</action>
 		<action name="addSubTask.do" method="addDo"
@@ -116,7 +141,8 @@
 		</action>
 		<action name="editSubTask" method="execute"
 			class="com.techlab.action.EditSubTaskAction">
-			<result name="success">view/EditTask.jsp</result>
+			<interceptor-ref name="task" />
+			<result name="success">view/EditSubTask.jsp</result>
 		</action>
 		<action name="editSubTask.do" method="editDo"
 			class="com.techlab.action.EditSubTaskAction">

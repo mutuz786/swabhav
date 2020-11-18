@@ -54,4 +54,11 @@ public class SubTaskRepository {
 		return null;
 	}
 
+	public void updateStatus(String id, boolean done, String date) {
+		SubTask subTask = getSubTask(id);
+		subTask.setDone(done);
+		subTask.setDate(date);
+		fact.getCurrentSession().update(subTask);
+	}
+
 }

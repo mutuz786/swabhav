@@ -1,5 +1,6 @@
 package com.techlab.action;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,11 +23,24 @@ public class DisplayTaskAction implements Action, SessionAware {
 	@Override
 	public String execute() throws Exception {
 		User user = (User) session.get("user");
+		if (user == null)
+			return Action.ERROR;
 		tasks = service.getTasks(user.getId());
 		return Action.SUCCESS;
 	}
 
 	public String doCheck() {
+		Task task = service.getTask(id);
+		Date date = null;
+		if (task.getDate().length() == 0) {
+			date = new Date();
+			task.setDate(date.toGMTString());
+			task.setDone(true);
+		} else {
+			task.setDate("");
+			task.setDone(false);
+		}
+		service.updateStatus(id, task.isDone(), task.getDate());
 		return Action.SUCCESS;
 	}
 

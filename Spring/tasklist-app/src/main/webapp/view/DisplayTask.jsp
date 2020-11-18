@@ -35,12 +35,13 @@
 		<s:iterator value="tasks">
 			<tr class="hover-class">
 				<td><s:form action="task.check" method="post">
-						<s:checkbox theme="simple" name="done" value="%{done}"
-							onclick="Auto_Au('rej');" />
+						<s:hidden name="id" value="%{id}" />
+						<s:checkbox theme="simple" name="done" fieldValue="%{done}"
+							onChange="this.form.submit()" />
 					</s:form></td>
 				<td><s:property value="title" /></td>
 				<td><s:property value="date" /></td>
-				<td><s:form action="subTask" method="get">
+				<td><s:form action="subTask" method="post">
 						<s:hidden name="id" value="%{id}" />
 						<s:submit value="SubTasks" class="btn btn-primary btn-lg" />
 					</s:form></td>

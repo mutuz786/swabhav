@@ -1,5 +1,6 @@
 package com.techlab.action;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,17 @@ public class DisplaySubTaskAction implements Action, SessionAware {
 	}
 
 	public String doCheck() {
+		SubTask subTask = service.getSubTask(id);
+		Date date = null;
+		if (subTask.getDate().length() == 0) {
+			date = new Date();
+			subTask.setDate(date.toGMTString());
+			subTask.setDone(true);
+		} else {
+			subTask.setDate("");
+			subTask.setDone(false);
+		}
+		service.updateStatus(id, subTask.isDone(), subTask.getDate());
 		return Action.SUCCESS;
 	}
 

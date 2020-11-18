@@ -18,22 +18,28 @@
 }
 </style>
 </head>
+</head>
 <body class="jumbotron">
 	<h1 class="display-4">Welcome</h1>
 	<hr class="my-4">
 	<ul class="nav">
-		<li class="nav-item"><a class="nav-link active" href="">Login</a>
+		<li class="nav-item"><a class="nav-link active" href="login">Login</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="register">Register</a></li>
+		<li class="nav-item"><a class="nav-link" href="">Register</a></li>
 	</ul>
 	<hr class="my-4">
 
-	<s:form action="login.do" method="post">
+	<s:form action="register.do" method="post">
+		<s:textfield name="firstName" label="Enter First Name"
+			class="form-control" />
+		<s:textfield name="lastName" label="Enter Last Name"
+			class="form-control" />
+		<s:textfield name="email" label="Enter Email" class="form-control" />
 		<s:textfield name="username" label="Enter Username"
 			class="form-control" />
 		<s:password name="password" label="Enter Password"
 			class="form-control" />
-		<s:submit value="Login" class="btn btn-primary" />
+		<s:submit value="Register" class="btn btn-primary" />
 	</s:form>
 
 </body>

@@ -6,6 +6,7 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -20,12 +21,18 @@ public class AuthorizationAction extends ActionSupport implements SessionAware, 
 	private UserViewModel user;
 	private String link;
 
+	@Override
+	public String execute() throws Exception {
+		return Action.SUCCESS;
+	}
+
 	public String loginDo() {
 		if (authorizationService.isValid(user.getUsername(), user.getPassword())) {
 			session.put("isUser", true);
 			link = (String) ActionContext.getContext().getSession().get("link");
 			return "success";
 		}
+		addFieldError("username", "wrong username and password");
 		return "error";
 	}
 

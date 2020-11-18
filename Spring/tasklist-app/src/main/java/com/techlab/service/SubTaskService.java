@@ -33,4 +33,8 @@ public class SubTaskService {
 	public SubTask getSubTask(String id) {
 		return repository.getSubTask(id);
 	}
+
+	public void updateStatus(String id, boolean done, String date) {
+		repository.updateStatus(id,done,date);
+	}
 }
