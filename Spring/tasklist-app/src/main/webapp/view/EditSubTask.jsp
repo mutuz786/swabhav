@@ -8,21 +8,21 @@
 <meta charset="ISO-8859-1">
 <title>TaskList</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-	crossorigin="anonymous">
-	
-<style type="text/css">
-.errorMessage {
-	color: red;
-}
-</style>
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="headerScript"></script>
+<link rel="stylesheet" href="style">
+
+
 </head>
-<body class="jumbotron">
-	<h2 class="display-4">Edit SubTask</h2>
-	<hr class="my-4">
-	<center>
-		<br> <br> <br>
+<body>
+	<div id="header"></div>
+	<br>
+	<ul class="nav nav-pills">
+		<li class="nav-item"><a class="nav-link" href="subTask">Back</a></li>
+	</ul>
+	<br>
+	<div align="center">
 		<s:form action="editSubTask.do" method="post">
 			<s:hidden name="id" value="%{editVM.id}" />
 			<s:textfield name="title" value="%{title}" label="Enter Title"
@@ -30,7 +30,6 @@
 
 			<s:submit value="Edit" class="btn btn-primary" />
 		</s:form>
-	</center>
-
+	</div>
 </body>
 </html>

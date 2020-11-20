@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.techlab.entity.User;
 import com.techlab.service.AuthorizationService;
 import com.techlab.viewmodel.UserViewModel;
 
@@ -28,8 +29,12 @@ public class AuthorizationAction extends ActionSupport implements SessionAware, 
 
 	public String loginDo() {
 		if (authorizationService.isValid(user.getUsername(), user.getPassword())) {
-			session.put("isUser", true);
+			User newUser = authorizationService.getUser(user.getUsername());
+			session.put("user", newUser);
+			session.put("isAdmin", user.isAdmin());
 			link = (String) ActionContext.getContext().getSession().get("link");
+			if (link == "")
+				link = "home";
 			return "success";
 		}
 		addFieldError("username", "wrong username and password");
@@ -37,7 +42,9 @@ public class AuthorizationAction extends ActionSupport implements SessionAware, 
 	}
 
 	public String logoutDo() {
-		session.put("isUser", false);
+		session.remove("user");
+		session.remove("task");
+		session.remove("isAdmin");
 		ActionContext.getContext().getSession().put("link", "home");
 		return "success";
 	}

@@ -8,28 +8,27 @@
 <meta charset="ISO-8859-1">
 <title>TaskList</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-	crossorigin="anonymous">
-	
-<style type="text/css">
-.errorMessage {
-	color: red;
-}
-</style>
-</head>
-<body class="jumbotron">
-	<h2 class="display-4">Add Task</h2>
-	<hr class="my-4">
-	<center>
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="headerScript"></script>
+<link rel="stylesheet" href="style">
 
+</head>
+<body>
+	<div id="header"></div>
+
+	<br>
+	<ul class="nav nav-pills">
+		<li class="nav-item"><a class="nav-link" href="task">Back</a></li>
+	</ul>
+	<br>
+	<div align="center">
 		<br> <br>
 		<s:form action="addTask.do" method="post">
 			<s:textfield name="title" label="Enter Title" class="form-control" />
 			<s:submit value="Add" class="btn btn-primary" />
 		</s:form>
 
-	</center>
-
+	</div>
 </body>
 </html>

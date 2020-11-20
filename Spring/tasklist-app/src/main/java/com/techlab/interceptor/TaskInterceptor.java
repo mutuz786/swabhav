@@ -34,18 +34,11 @@ public class TaskInterceptor implements Interceptor {
 
 		SessionMap<String, Object> session = (SessionMap<String, Object>) invocation.getInvocationContext()
 				.getSession();
+		HttpServletRequest req = ServletActionContext.getRequest();
 		ValueStack stack = invocation.getStack();
 		String id = stack.findString("id");
-		if (id != null) {
-			User user = userService.getUser(id);
-			if (user != null)
-				session.put("user", user);
-			Task task = taskService.getTask(id);
-			if (task != null)
-				session.put("task", task);
-		}
-		if (session.get("isUser") == null || session.get("isUser").equals(false)) {
-			HttpServletRequest req = ServletActionContext.getRequest();
+		
+		if (session.get("user") == null) {
 			String[] uri = req.getRequestURI().split("/");
 			String link;
 			if (req.getQueryString() == null) {
@@ -55,6 +48,21 @@ public class TaskInterceptor implements Interceptor {
 			}
 			session.put("link", link);
 			return "login";
+		}
+
+		if (id != null) {
+			User user = userService.getUser(id);
+			if (user != null)
+				session.put("user", user);
+			Task task = taskService.getTask(id);
+			if (task != null)
+				session.put("task", task);
+		}
+
+		Object isAdmin = session.get("isAdmin");
+		if (isAdmin != null) {
+			if ((boolean) isAdmin)
+				req.setAttribute("isAdmin", true);
 		}
 		return invocation.invoke();
 	}

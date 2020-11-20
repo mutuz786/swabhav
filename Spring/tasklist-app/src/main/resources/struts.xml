@@ -4,6 +4,8 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<constant value="" name="struts.action.extension" />
+	<constant name="struts.action.excludePattern"
+		value="/botdetectcaptcha" />
 	<package name="main" extends="struts-default">
 
 
@@ -52,8 +54,21 @@
 		<action name="">
 			<result type="redirect">home</result>
 		</action>
+		<action name="header">
+			<result>view/header.jsp</result>
+		</action>
+		<action name="headerScript">
+			<result>view/headerScript.js</result>
+		</action>
+		<action name="home">
+			<result>view/home.jsp</result>
+		</action>
+		<action name="style">
+			<result>view/style.css</result>
+		</action>
 
-		<action name="home"
+
+		<action name="user"
 			class="com.techlab.action.DisplayUserAction">
 			<interceptor-ref name="task" />
 			<result name="success">view/DisplayUser.jsp</result>
@@ -65,7 +80,7 @@
 		</action>
 		<action name="addUser.do" method="addDo"
 			class="com.techlab.action.AddUserAction">
-			<result name="success" type="redirect">home</result>
+			<result name="success" type="redirect">user</result>
 			<result name="input">view/AddUser.jsp</result>
 		</action>
 		<action name="editUser" method="execute"
@@ -75,19 +90,19 @@
 		</action>
 		<action name="editUser.do" method="editDo"
 			class="com.techlab.action.EditUserAction">
-			<result name="success" type="redirect">home</result>
+			<result name="success" type="redirect">user</result>
 			<result name="input">view/EditUser.jsp</result>
 		</action>
 		<action name="deleteUser.do"
 			class="com.techlab.action.DeleteUserAction">
-			<result name="success" type="redirect">home</result>
+			<result name="success" type="redirect">user</result>
 		</action>
 
 		<action name="task"
 			class="com.techlab.action.DisplayTaskAction">
 			<interceptor-ref name="task" />
 			<result name="success">view/DisplayTask.jsp</result>
-			<result name="error">home</result>
+			<result name="error" type="redirect">user</result>
 		</action>
 		<action name="task.check" method="doCheck"
 			class="com.techlab.action.DisplayTaskAction">
@@ -123,6 +138,7 @@
 			class="com.techlab.action.DisplaySubTaskAction">
 			<interceptor-ref name="task" />
 			<result name="success">view/DisplaySubTask.jsp</result>
+			<result name="error" type="redirect">task</result>
 		</action>
 		<action name="subTask.check" method="doCheck"
 			class="com.techlab.action.DisplaySubTaskAction">

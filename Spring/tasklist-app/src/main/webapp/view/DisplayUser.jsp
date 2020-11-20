@@ -8,24 +8,26 @@
 <meta charset="ISO-8859-1">
 <title>TaskList</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-	crossorigin="anonymous">
-<style type="text/css">
-td, th {
-	text-align: center;
-	padding: 10px;
-}
-</style>
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="headerScript"></script>
+<link rel="stylesheet" href="style">
+
 </head>
-<body class="jumbotron">
-	<h2 class="display-4">Home Page</h2>
-	<hr class="my-4">
-	<ul class="nav nav-pills">
-		<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
-		<li class="nav-item"><a class="nav-link" href="addUser">Add</a></li>
-	</ul>
-	<hr class="my-4">
+<body>
+	<div id="header"></div>
+
+	<br>
+	<%
+		boolean isAdmin = (boolean) session.getAttribute("isAdmin");
+		if (isAdmin) {
+	%>
+	<a class="nav-link active" href="register">Add</a>
+	<%
+		}
+	%>
+	<br>
+
 	<table class="table table-dark">
 		<tr>
 			<th scope="col">ID</th>
@@ -35,8 +37,14 @@ td, th {
 			<th scope="col">USERNAME</th>
 			<th scope="col">PASSWORD</th>
 			<th scope="col">TASKS</th>
+			<%
+				if (isAdmin) {
+			%>
 			<th scope="col">EDIT</th>
 			<th scope="col">DELETE</th>
+			<%
+				}
+			%>
 		</tr>
 		<s:iterator value="users">
 			<tr class="hover-class">
@@ -48,18 +56,25 @@ td, th {
 				<td><s:property value="password" /></td>
 				<td><s:form action="task" method="post">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Tasks" class="btn btn-primary btn-lg" />
+						<s:submit value="Tasks" class="btn btn-success" />
 					</s:form></td>
+				<%
+					if (isAdmin) {
+				%>
 				<td><s:form action="editUser" method="get">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Edit" class="btn btn-primary btn-lg" />
+						<s:submit value="Edit" class="btn btn-warning" />
 					</s:form></td>
 				<td><s:form action="deleteUser.do" method="post">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Delete" class="btn btn-primary btn-lg" />
+						<s:submit value="Delete" class="btn btn-danger" />
 					</s:form></td>
+				<%
+					}
+				%>
 			</tr>
 		</s:iterator>
 	</table>
+
 </body>
 </html>

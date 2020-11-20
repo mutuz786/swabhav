@@ -1,8 +1,6 @@
 package com.techlab.service;
 
 import java.util.List;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +30,14 @@ public class UserService {
 
 	public void editUser(String id, String firstName, String lastName, String email, String username, String password) {
 		repository.editUser(id, firstName, lastName, email, username, password);
+	}
+
+	public boolean isUsernamePresent(String username) {
+		for (User user : getUsers()) {
+			if (user.getUsername().equals(username))
+				return true;
+		}
+		return false;
 	}
 
 }

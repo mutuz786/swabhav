@@ -1,0 +1,22 @@
+<h1 [innerHtml]='"helloWorld"' [style.font-color]="'red'"></h1>
+<h1 [innerHtml]="student.rollno"></h1>
+<h1 [innerHtml]="student.name"></h1>
+<h1 [innerHtml]="student.cgpa"></h1>
+
+
+<input type="submit" class="btn" value="Load Student" (click)="addStudent()">
+
+<p class="life-container">
+    {{student.rollno}}|
+    {{student.name}}|
+    {{student.cgpa}} <br>
+</p>
+
+
+<input type="submit" class="btn" value="Load Students" (click)="addStudents()">
+
+<p class="life-container" *ngFor="let student of students">
+    {{student.rollno}} |
+    {{student.name}} |
+    {{student.cgpa}} <br>
+</p>

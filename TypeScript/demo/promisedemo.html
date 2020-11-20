@@ -1,0 +1,48 @@
+<html ng-app="promiseMod">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-controller="promiseController">
+        <h1>
+            Final Value:{{num}}
+            <br>
+            Count:{{count}}
+        </h1>
+    </div>
+    <script>
+        angular.module("promiseMod", [])
+            .controller("promiseController", ['$scope', '$q', function ($scope, $q) {
+                $scope.addNumber = function (num) {
+                    var prom = $q.defer()
+                    $scope.count++
+                    if (angular.isNumber(num)) {
+                        setTimeout(function () {
+                            prom.resolve(num + 1)
+                        }, 1000);
+
+                    } else {
+                        prom.reject("error")
+                    }
+                    return prom.promise
+                }
+                $scope.count = 0;
+                $scope.num = 0;
+                $scope.promise = $scope.addNumber($scope.num)
+                $scope.promise
+                    .then(function (resolve) { return $scope.addNumber(resolve) })
+                    .then(function (resolve) { return $scope.addNumber("resolve") })
+                    .then(function (resolve) { return $scope.addNumber(resolve) })
+                    .then(function (resolve) { return $scope.addNumber(resolve) })
+                    .then(function (resolve) { return $scope.addNumber(resolve) })
+                    .then(function (resolve) { $scope.num = resolve },
+                        function (reject) { $scope.num = reject })
+
+
+            }])
+    </script>
+</body>
+
+</html>

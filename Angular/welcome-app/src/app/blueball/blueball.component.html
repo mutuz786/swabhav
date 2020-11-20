@@ -1,0 +1,15 @@
+<div [hidden]="hideIntro">
+    <h1> Rules:</h1> <br> <br>
+    <h3>1.Find the blue Button among these <br><br>
+        2.You have 5 turns available<br><br>
+        3.If BLUE button is Before the selected Button then the color will be RED <br> <br>
+        4.If BLUE button is After the selected Button then the color will be GREEN <br> <br><br> </h3>
+    <button (click)="start()">START</button>
+</div>
+<div [hidden]="hideGame">
+    <h1>Turns Left:{{balls}}</h1>
+    <button *ngFor="let ball of balls" [style.background-color]="ball.color" (click)="check(ball.id)" class="ballStyle">{{ball.id}}</button>
+</div>
+<div [hidden]="hideResult">
+
+</div>

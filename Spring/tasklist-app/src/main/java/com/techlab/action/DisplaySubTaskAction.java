@@ -23,8 +23,9 @@ public class DisplaySubTaskAction implements Action, SessionAware {
 	@Override
 	public String execute() throws Exception {
 		Task task = (Task) session.get("task");
-		if (task == null)
+		if (task == null) {
 			return Action.ERROR;
+		}
 		subTasks = service.getSubTasks(task.getId());
 		return Action.SUCCESS;
 	}
