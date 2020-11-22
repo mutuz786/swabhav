@@ -6,13 +6,16 @@ import com.captcha.botdetect.web.servlet.Captcha;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.techlab.service.EmailService;
 import com.techlab.service.UserService;
 import com.techlab.viewmodel.RegisterViewModel;
 
-public class RegisterAction extends ActionSupport implements ModelDriven<RegisterViewModel>{
+public class RegisterAction extends ActionSupport implements ModelDriven<RegisterViewModel> {
 	private static final long serialVersionUID = 1L;
 	@Autowired
-	private UserService service;
+	private UserService uService;
+	@Autowired
+	private EmailService eService;
 	private RegisterViewModel registerVM;
 
 	@Override
@@ -21,25 +24,24 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 	}
 
 	public String registerDo() {
-		service.addUser(registerVM.getFirstName(), registerVM.getLastName(), registerVM.getEmail(),
+		uService.addUser(registerVM.getFirstName(), registerVM.getLastName(), registerVM.getEmail(),
 				registerVM.getUsername(), registerVM.getPassword());
-		
+		final String message = "Congratulations " + registerVM.getFirstName()
+				+ "\nYou have completed your registration process\nHere are your details:\n" + "\nFirstName:"
+				+ registerVM.getFirstName() + "\nLastName:" + registerVM.getLastName() + "\nEmail:"
+				+ registerVM.getEmail() + "\nUsername:" + registerVM.getUsername() + "\nPassword:"
+				+ registerVM.getPassword();
+		new Thread(new Runnable() {
+			public void run() {
+				eService.send(registerVM.getEmail(), message);
+			}
+		}).start();
 		return Action.SUCCESS;
 	}
 
 	public void validateRegisterDo() {
-		if (registerVM.getFirstName() == "")
-			addFieldError("firstName", "first name required");
-		if (registerVM.getLastName() == "")
-			addFieldError("lastName", "last name required");
-		if (registerVM.getEmail() == "")
-			addFieldError("email", "email required");
-		if (registerVM.getUsername() == "")
-			addFieldError("username", "username required");
-		if (service.isUsernamePresent(registerVM.getUsername()))
+		if (uService.isUsernamePresent(registerVM.getUsername()))
 			addFieldError("username", "username already taken");
-		if (registerVM.getPassword() == "")
-			addFieldError("password", "password required");
 		if (!registerVM.getConfirmPassword().equals(registerVM.getPassword()))
 			addFieldError("confirmPassword", "password doesnt match");
 		Captcha captcha = Captcha.load(ServletActionContext.getRequest(), "capthcaFile");

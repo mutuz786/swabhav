@@ -21,6 +21,7 @@
 		<h3>Login</h3>
 		<hr class="my-4">
 		<br>
+		<s:actionerror class="alert alert-danger"/>
 		<s:form action="login.do" method="post">
 			<s:textfield name="username" label="Enter Username"
 				class="form-control" />

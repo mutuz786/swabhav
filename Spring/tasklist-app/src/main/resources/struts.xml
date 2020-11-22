@@ -6,6 +6,25 @@
 	<constant value="" name="struts.action.extension" />
 	<constant name="struts.action.excludePattern"
 		value="/botdetectcaptcha" />
+
+	<package name="json_package" namespace="/json"
+		extends="json-default">
+		<interceptors>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<action name="userJson"
+			class="com.techlab.action.UserJSONAction">
+			<interceptor-ref name="defaultStack" />
+			<result type='json'></result>
+		</action>
+
+	</package>
+
+
 	<package name="main" extends="struts-default">
 
 
@@ -24,7 +43,6 @@
 			<result name="login">view/Login.jsp</result>
 		</global-results>
 
-
 		<action name="login"
 			class="com.techlab.action.AuthorizationAction">
 			<result name="success">view/Login.jsp</result>
@@ -41,7 +59,7 @@
 		</action>
 		<action name="register.do" method="registerDo"
 			class="com.techlab.action.RegisterAction">
-			<result name="success" type="redirect">home</result>
+			<result name="success" type="redirect">user</result>
 			<result name="input">view/Register.jsp</result>
 		</action>
 		<action name="logout"
@@ -55,7 +73,7 @@
 			<result type="redirect">home</result>
 		</action>
 		<action name="header">
-			<result>view/header.jsp</result>
+			<result>view/NavBar.jsp</result>
 		</action>
 		<action name="headerScript">
 			<result>view/headerScript.js</result>
@@ -87,6 +105,10 @@
 			class="com.techlab.action.EditUserAction">
 			<interceptor-ref name="task" />
 			<result name="success">view/EditUser.jsp</result>
+		</action>
+		<action name="setBlocked.do" method="setBlockedDo"
+			class="com.techlab.action.EditUserAction">
+			<result name="success" type="redirect">user</result>
 		</action>
 		<action name="editUser.do" method="editDo"
 			class="com.techlab.action.EditUserAction">

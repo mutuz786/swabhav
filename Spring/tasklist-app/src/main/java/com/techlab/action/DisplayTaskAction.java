@@ -1,5 +1,6 @@
 package com.techlab.action;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ public class DisplayTaskAction implements Action, SessionAware {
 	private String id;
 	private List<Task> tasks;
 	private SessionMap<String, Object> session;
+	private List<Integer> lengths;
 
 	@Override
 	public String execute() throws Exception {
@@ -26,21 +28,21 @@ public class DisplayTaskAction implements Action, SessionAware {
 		if (user == null)
 			return Action.ERROR;
 		tasks = service.getTasks(user.getId());
+		lengths = new ArrayList<Integer>();
+		for (Task temp : tasks) {
+			lengths.add(temp.getSubTasks().size());
+		}
 		return Action.SUCCESS;
 	}
 
+	@SuppressWarnings("deprecation")
 	public String doCheck() {
 		Task task = service.getTask(id);
-		Date date = null;
 		if (task.getDate().length() == 0) {
-			date = new Date();
-			task.setDate(date.toGMTString());
-			task.setDone(true);
+			service.updateStatus(id, true, new Date().toGMTString());
 		} else {
-			task.setDate("");
-			task.setDone(false);
+			service.updateStatus(id, false, "");
 		}
-		service.updateStatus(id, task.isDone(), task.getDate());
 		return Action.SUCCESS;
 	}
 
@@ -63,6 +65,14 @@ public class DisplayTaskAction implements Action, SessionAware {
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = (SessionMap<String, Object>) session;
+	}
+
+	public List<Integer> getLengths() {
+		return lengths;
+	}
+
+	public void setLengths(List<Integer> lengths) {
+		this.lengths = lengths;
 	}
 
 }

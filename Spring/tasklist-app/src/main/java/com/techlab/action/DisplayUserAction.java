@@ -15,16 +15,21 @@ import com.techlab.service.UserService;
 public class DisplayUserAction implements Action, SessionAware {
 	private List<User> users;
 	@Autowired
-	private UserService service;
+	private UserService uService;
 	private SessionMap<String, Object> session;
+	private List<Integer> lengths;
 
 	@Override
 	public String execute() throws Exception {
 		users = new ArrayList<User>();
 		if ((boolean) session.get("isAdmin"))
-			users = service.getUsers();
+			users = uService.getUsers();
 		else
 			users.add((User) session.get("user"));
+		lengths = new ArrayList<Integer>();
+		for (User temp : users) {
+			lengths.add(temp.getTasks().size());
+		}
 		session.remove("task");
 		return "success";
 	}
@@ -44,6 +49,14 @@ public class DisplayUserAction implements Action, SessionAware {
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = (SessionMap<String, Object>) session;
+	}
+
+	public List<Integer> getLengths() {
+		return lengths;
+	}
+
+	public void setLengths(List<Integer> lengths) {
+		this.lengths = lengths;
 	}
 
 }

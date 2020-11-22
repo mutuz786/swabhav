@@ -10,14 +10,15 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="headerScript"></script>
 <link rel="stylesheet" href="style">
-
+<style type="text/css">
+body {
+	background-image: url("https://images.hdqwalls.com/wallpapers/dark-minimal-scenery-4k-xj.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%, 100%;
+}
+</style>
 </head>
 <body>
 	<div id="header"></div>
-	<h2>This is my TaskList App</h2>
-	<ul class="nav nav-pills">
-		<li class="nav-item"><a class="nav-link" href="user">Go To
-				User Table</a></li>
-	</ul>
 </body>
 </html>

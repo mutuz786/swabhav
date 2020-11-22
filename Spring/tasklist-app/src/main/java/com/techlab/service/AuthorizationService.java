@@ -31,7 +31,15 @@ public class AuthorizationService {
 			users.put(user.getUsername(), user.getPassword());
 		}
 	}
-
+	
+	public boolean isBlocked(String username) {
+		for (User user : repository.getUsers()) {
+			if (user.getUsername().equals(username) && user.isBlocked())
+				return true;
+		}
+		return false;
+	}
+	
 	public User getUser(String username) {
 		for (User user : repository.getUsers()) {
 			if (user.getUsername().equals(username))

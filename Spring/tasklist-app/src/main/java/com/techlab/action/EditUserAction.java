@@ -1,5 +1,9 @@
 package com.techlab.action;
 
+import java.util.Map;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.Action;
@@ -9,15 +13,16 @@ import com.techlab.entity.User;
 import com.techlab.service.UserService;
 import com.techlab.viewmodel.EditUserViewModel;
 
-public class EditUserAction extends ActionSupport implements ModelDriven<EditUserViewModel> {
+public class EditUserAction extends ActionSupport implements ModelDriven<EditUserViewModel>, SessionAware {
 	private static final long serialVersionUID = 1L;
 	@Autowired
-	private UserService service;
+	private UserService uService;
 	private EditUserViewModel editUserVM;
+	private SessionMap<String, Object> session;
 
 	@Override
 	public String execute() {
-		User user = service.getUser(editUserVM.getId());
+		User user = uService.getUser(editUserVM.getId());
 		editUserVM.setFirstName(user.getFirstName());
 		editUserVM.setLastName(user.getLastName());
 		editUserVM.setEmail(user.getEmail());
@@ -27,8 +32,21 @@ public class EditUserAction extends ActionSupport implements ModelDriven<EditUse
 	}
 
 	public String editDo() {
-		service.editUser(editUserVM.getId(), editUserVM.getFirstName(), editUserVM.getLastName(), editUserVM.getEmail(),
-				editUserVM.getUsername(), editUserVM.getPassword());
+		uService.editUser(editUserVM.getId(), editUserVM.getFirstName(), editUserVM.getLastName(),
+				editUserVM.getEmail(), editUserVM.getUsername(), editUserVM.getPassword());
+		return Action.SUCCESS;
+	}
+
+	public String setBlockedDo() {
+		User user1 = uService.getUser(editUserVM.getId());
+		User user2 = (User) session.get("user");
+		System.out.println(user1.getId() + "|" + user2.getId());
+		if (!user1.getId().equals(user2.getId())) {
+			if (user1.isBlocked())
+				uService.setBlocked(editUserVM.getId(), false);
+			else
+				uService.setBlocked(editUserVM.getId(), true);
+		}
 		return Action.SUCCESS;
 	}
 
@@ -58,6 +76,15 @@ public class EditUserAction extends ActionSupport implements ModelDriven<EditUse
 
 	public void setEditUserVM(EditUserViewModel editUserVM) {
 		this.editUserVM = editUserVM;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = (SessionMap<String, Object>) session;
+	}
+
+	public SessionMap<String, Object> getSession() {
+		return session;
 	}
 
 }

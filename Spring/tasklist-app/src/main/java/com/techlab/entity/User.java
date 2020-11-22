@@ -1,5 +1,6 @@
 package com.techlab.entity;
 
+import java.sql.Blob;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +19,9 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private boolean blocked;
+	private Blob profilePic;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Task> tasks = new HashSet<Task>();
 
 	public User() {
@@ -88,5 +91,21 @@ public class User {
 
 	public void setTasks(Set<Task> tasks) {
 		this.tasks = tasks;
+	}
+
+	public boolean isBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
+	}
+
+	public Blob getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(Blob profilePic) {
+		this.profilePic = profilePic;
 	}
 }

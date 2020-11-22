@@ -5,12 +5,5 @@ body {
 .errorMessage {
 	color: red;
 	margin-left: 12px;
-	background-color: yellow;
-	color: red;
 }
 
-td, th {
-	padding: 10px;
-	horizontal-align: middle;
-	margin: auto;
-}

@@ -49,4 +49,10 @@ public class UserRepository {
 		user.setPassword(password);
 		fact.getCurrentSession().update(user);
 	}
+
+	public void setblockedStatus(String id, boolean blocked) {
+		User user = getUser(id);
+		user.setBlocked(blocked);
+		fact.getCurrentSession().update(user);
+	}
 }

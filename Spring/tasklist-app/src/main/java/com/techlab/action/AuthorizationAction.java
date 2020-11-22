@@ -33,8 +33,8 @@ public class AuthorizationAction extends ActionSupport implements SessionAware, 
 			session.put("user", newUser);
 			session.put("isAdmin", user.isAdmin());
 			link = (String) ActionContext.getContext().getSession().get("link");
-			if (link == "")
-				link = "home";
+			if (link == "home" || link == null)
+				link = "user";
 			return "success";
 		}
 		addFieldError("username", "wrong username and password");
@@ -49,11 +49,13 @@ public class AuthorizationAction extends ActionSupport implements SessionAware, 
 		return "success";
 	}
 
-	public void validateLogin() {
+	public void validateLoginDo() {
 		if (user.getUsername() == "")
 			addFieldError("username", "enter username");
 		if (user.getPassword() == "")
 			addFieldError("password", "enter password");
+		if (authorizationService.isBlocked(user.getUsername()))
+			addActionError("Sorry User You Have been blocked by the admin");
 	}
 
 	@Override

@@ -30,6 +30,7 @@ public class DisplaySubTaskAction implements Action, SessionAware {
 		return Action.SUCCESS;
 	}
 
+	@SuppressWarnings("deprecation")
 	public String doCheck() {
 		SubTask subTask = service.getSubTask(id);
 		Date date = null;

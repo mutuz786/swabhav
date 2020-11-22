@@ -32,8 +32,12 @@ public class UserService {
 		repository.editUser(id, firstName, lastName, email, username, password);
 	}
 
+	public void setBlocked(String id, boolean blocked) {
+		repository.setblockedStatus(id, blocked);
+	}
+
 	public boolean isUsernamePresent(String username) {
-		for (User user : getUsers()) {
+		for (User user : repository.getUsers()) {
 			if (user.getUsername().equals(username))
 				return true;
 		}
