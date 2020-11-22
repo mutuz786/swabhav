@@ -6,6 +6,7 @@
 	<constant value="" name="struts.action.extension" />
 	<constant name="struts.action.excludePattern"
 		value="/botdetectcaptcha" />
+	<constant name="struts.devMode" value="false" />
 
 	<package name="json_package" namespace="/json"
 		extends="json-default">
@@ -23,6 +24,7 @@
 		</action>
 
 	</package>
+
 
 
 	<package name="main" extends="struts-default">
@@ -83,6 +85,9 @@
 		</action>
 		<action name="style">
 			<result>view/style.css</result>
+		</action>
+		<action name="getImg" class="com.techlab.action.ImageFetch">
+			<result name=""></result>
 		</action>
 
 

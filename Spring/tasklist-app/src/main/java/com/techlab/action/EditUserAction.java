@@ -1,9 +1,12 @@
 package com.techlab.action;
 
+import java.io.FileInputStream;
+import java.sql.Blob;
 import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.Action;
@@ -31,9 +34,11 @@ public class EditUserAction extends ActionSupport implements ModelDriven<EditUse
 		return Action.SUCCESS;
 	}
 
-	public String editDo() {
+	public String editDo() throws Exception {
+		FileInputStream stream = new FileInputStream(editUserVM.getImg());
+		Blob imgBlob = Hibernate.getLobCreator(uService.getSession()).createBlob(stream, editUserVM.getImg().length());
 		uService.editUser(editUserVM.getId(), editUserVM.getFirstName(), editUserVM.getLastName(),
-				editUserVM.getEmail(), editUserVM.getUsername(), editUserVM.getPassword());
+				editUserVM.getEmail(), editUserVM.getUsername(), editUserVM.getPassword(), imgBlob);
 		return Action.SUCCESS;
 	}
 

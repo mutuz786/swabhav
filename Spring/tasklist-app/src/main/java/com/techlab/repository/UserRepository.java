@@ -1,8 +1,10 @@
 package com.techlab.repository;
 
+import java.sql.Blob;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,8 +32,8 @@ public class UserRepository {
 		return null;
 	}
 
-	public void addUser(String firstName, String lastName, String email, String username, String password) {
-		User user = new User(UUID.randomUUID().toString(), firstName, lastName, email, username, password);
+	public void addUser(String firstName, String lastName, String email, String username, String password, Blob img) {
+		User user = new User(UUID.randomUUID().toString(), firstName, lastName, email, username, password, img);
 		fact.getCurrentSession().save(user);
 	}
 
@@ -40,13 +42,15 @@ public class UserRepository {
 		fact.getCurrentSession().delete(user);
 	}
 
-	public void editUser(String id, String firstName, String lastName, String email, String username, String password) {
+	public void editUser(String id, String firstName, String lastName, String email, String username, String password,
+			Blob img) {
 		User user = getUser(id);
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setEmail(email);
 		user.setUsername(username);
 		user.setPassword(password);
+		user.setImg(img);
 		fact.getCurrentSession().update(user);
 	}
 
@@ -54,5 +58,9 @@ public class UserRepository {
 		User user = getUser(id);
 		user.setBlocked(blocked);
 		fact.getCurrentSession().update(user);
+	}
+
+	public Session getSession() {
+		return fact.openSession();
 	}
 }

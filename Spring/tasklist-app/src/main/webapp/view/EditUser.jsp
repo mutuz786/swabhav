@@ -22,7 +22,8 @@
 	</ul>
 	<br>
 	<div align="center">
-		<s:form action="editUser.do" method="post">
+		<s:form action="editUser.do" method="post"
+			enctype="multipart/form-data">
 			<s:hidden name="id" value="%{editUserVM.id}" />
 			<s:textfield name="firstName" value="%{editUserVM.firstName}"
 				label="Enter First Name" class="form-control" />
@@ -38,6 +39,8 @@
 
 			<s:password name="password" value="%{editUserVM.password}"
 				label="Enter Password" class="form-control" />
+				
+			<s:file name="img" label="Enter Profile Picture" class="validate" />
 
 			<s:submit value="Edit" class="btn btn-primary" />
 		</s:form>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant value="" name="struts.action.extension" />
+	<constant name="struts.devMode" value="true" />
+
+	<package name="main" extends="struts-default">
+
+		<action name="">
+			<result name="success" type="redirect">home</result>
+		</action>
+
+		<action name="home">
+			<result name="success">register.jsp</result>
+		</action>
+
+		<action name="add.do" class="com.techlab.action.PersonAction"
+			method="addDo">
+			<result name="success" type="redirect">display</result>
+		</action>
+
+		<action name="display" class="com.techlab.action.PersonAction">
+			<result name="success">display.jsp</result>
+		</action>
+		
+		<action name="imageFetch" class="com.techlab.action.ImageFetch">
+			<result name=""></result>
+		</action>
+		
+	</package>
+</struts>

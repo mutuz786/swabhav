@@ -1,11 +1,14 @@
 package com.techlab.viewmodel;
 
+import java.io.File;
+
 public class AddUserViewModel {
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String username;
 	private String password;
+	private File img;
 
 	public String getFirstName() {
 		return firstName;
@@ -45,5 +48,13 @@ public class AddUserViewModel {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public File getImg() {
+		return img;
+	}
+
+	public void setImg(File img) {
+		this.img = img;
 	}
 }

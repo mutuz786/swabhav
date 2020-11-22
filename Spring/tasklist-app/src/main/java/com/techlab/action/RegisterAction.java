@@ -1,6 +1,10 @@
 package com.techlab.action;
 
+import java.io.FileInputStream;
+import java.sql.Blob;
+
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.captcha.botdetect.web.servlet.Captcha;
 import com.opensymphony.xwork2.Action;
@@ -23,9 +27,11 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 		return Action.SUCCESS;
 	}
 
-	public String registerDo() {
+	public String registerDo() throws Exception {
+		FileInputStream stream = new FileInputStream(registerVM.getImg());
+		Blob imgBlob = Hibernate.getLobCreator(uService.getSession()).createBlob(stream, registerVM.getImg().length());
 		uService.addUser(registerVM.getFirstName(), registerVM.getLastName(), registerVM.getEmail(),
-				registerVM.getUsername(), registerVM.getPassword());
+				registerVM.getUsername(), registerVM.getPassword(), imgBlob);
 		final String message = "Congratulations " + registerVM.getFirstName()
 				+ "\nYou have completed your registration process\nHere are your details:\n" + "\nFirstName:"
 				+ registerVM.getFirstName() + "\nLastName:" + registerVM.getLastName() + "\nEmail:"
@@ -40,8 +46,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 	}
 
 	public void validateRegisterDo() {
-		if (uService.isUsernamePresent(registerVM.getUsername()))
-			addFieldError("username", "username already taken");
+		System.out.println("registerVm:" + registerVM.getUsername() + "|" + registerVM.getConfirmPassword());
 		if (!registerVM.getConfirmPassword().equals(registerVM.getPassword()))
 			addFieldError("confirmPassword", "password doesnt match");
 		Captcha captcha = Captcha.load(ServletActionContext.getRequest(), "capthcaFile");

@@ -1,6 +1,9 @@
 package com.techlab.service;
 
+import java.sql.Blob;
 import java.util.List;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +19,8 @@ public class UserService {
 		return repository.getUsers();
 	}
 
-	public void addUser(String firstName, String lastName, String email, String username, String password) {
-		repository.addUser(firstName, lastName, email, username, password);
+	public void addUser(String firstName, String lastName, String email, String username, String password, Blob img) {
+		repository.addUser(firstName, lastName, email, username, password, img);
 	}
 
 	public User getUser(String id) {
@@ -28,8 +31,9 @@ public class UserService {
 		repository.deleteUser(id);
 	}
 
-	public void editUser(String id, String firstName, String lastName, String email, String username, String password) {
-		repository.editUser(id, firstName, lastName, email, username, password);
+	public void editUser(String id, String firstName, String lastName, String email, String username, String password,
+			Blob img) {
+		repository.editUser(id, firstName, lastName, email, username, password, img);
 	}
 
 	public void setBlocked(String id, boolean blocked) {
@@ -42,6 +46,10 @@ public class UserService {
 				return true;
 		}
 		return false;
+	}
+
+	public Session getSession() {
+		return repository.getSession();
 	}
 
 }

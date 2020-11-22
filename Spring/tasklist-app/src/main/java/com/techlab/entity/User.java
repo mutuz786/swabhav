@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,7 +21,8 @@ public class User {
 	private String username;
 	private String password;
 	private boolean blocked;
-	private Blob profilePic;
+	@Lob
+	private Blob img;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Task> tasks = new HashSet<Task>();
 
@@ -28,13 +30,14 @@ public class User {
 
 	}
 
-	public User(String id, String firstName, String lastName, String email, String username, String password) {
+	public User(String id, String firstName, String lastName, String email, String username, String password,Blob img) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.username = username;
 		this.password = password;
+		this.img=img;
 	}
 
 	public String getId() {
@@ -101,11 +104,11 @@ public class User {
 		this.blocked = blocked;
 	}
 
-	public Blob getProfilePic() {
-		return profilePic;
+	public Blob getImg() {
+		return img;
 	}
 
-	public void setProfilePic(Blob profilePic) {
-		this.profilePic = profilePic;
+	public void setImg(Blob img) {
+		this.img = img;
 	}
 }

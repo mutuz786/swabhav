@@ -14,52 +14,45 @@
 <link rel="stylesheet" href="style">
 
 <script>
-	$(document).ready(function () {
+	$(document).ready(function() {
 		var obj;
-		var validEmail,validUname;
+		var validEmail, validUname;
 		var validInput;
 		$.ajax({
-            url : '<s:url action="json/userJson" />',
-            success : function(data) {
-              obj = data.users;
-            }
-          });
-		$("#email").keyup(function () {
-			$("#eErr").hide();
-			for (var i = 0; i < obj.length; i++) {
-				if ($("#email").val() == obj[i].email) {
-					validEmail = false;
-					$("#eErr").show();
-					refresh();
-					return
-				}
+			url : '<s:url action="json/userJson" />',
+			success : function(data) {
+				obj = data.users;
 			}
+		});
+
+		$(".validate").keyup(function() {
+			validInput = true;
 			validEmail = true;
-			refresh();
-		})
-		$("#username").keyup(function () {
+			validUname = true;
+			var elements = $(".validate").toArray()
+			$("#eErr").hide();
 			$("#uErr").hide()
 			for (var i = 0; i < obj.length; i++) {
 				if ($("#username").val() == obj[i].username) {
 					validUname = false;
 					$("#uErr").show();
-					refresh();
-					return
+					break;
 				}
 			}
-			validUname = true;
-			refresh();
-		})
-		$(".form-control").keyup(function () {
-			var elements = $(".form-control").toArray()
+			for (var i = 0; i < obj.length; i++) {
+				if ($("#email").val() == obj[i].email) {
+					validEmail = false;
+					$("#eErr").show();
+					break;
+				}
+			}
 			for (var i = 0; i < elements.length; i++) {
 				if (elements[i].value == "") {
 					validInput = false;
 					refresh();
-					return;
+					break;
 				}
 			}
-			validInput = true;
 			refresh();
 		})
 		function refresh() {
@@ -70,7 +63,6 @@
 		}
 	})
 </script>
-
 </head>
 <body>
 	<div id="header"></div>
@@ -80,32 +72,35 @@
 		<h3>Register</h3>
 		<hr class="my-4">
 		<br>
-		<p class="alert alert-danger" style="display: none" id="uErr">Username
-			already taken</p>
-		<p class="alert alert-danger" style="display: none" id="eErr">Email
-			already taken</p>
-		<s:form action="register.do" method="post">
+		<s:form action="register.do" method="post"
+			enctype="multipart/form-data">
 			<s:textfield name="firstName" label="Enter First Name"
-				class="form-control" />
+				class="form-control validate" />
 			<s:textfield name="lastName" label="Enter Last Name"
-				class="form-control" />
-			<s:textfield name="email" label="Enter Email" class="form-control"
-				id="email" />
+				class="form-control validate" />
+			<s:textfield name="email" label="Enter Email"
+				class="form-control validate" id="email" />
 			<s:textfield name="username" label="Enter Username"
-				class="form-control" id="username" />
+				class="form-control validate" id="username" />
 			<s:password name="password" label="Enter Password"
-				class="form-control" />
+				class="form-control validate" />
 			<s:password name="confirmPassword" label="Confirm Password"
-				class="form-control" />
+				class="form-control validate" />
+			<s:file name="img" label="Enter Profile Picture" class="validate" />
+
 			<tr>
 				<td align="center"><botDetect:captcha id="capthcaFile"
 						userInputID="captchaCode" /></td>
 			</tr>
 			<s:textfield name="captchaCode" label="Enter Captcha"
-				class="form-control" />
+				class="form-control validate" />
 			<s:submit value="Register" class="btn btn-primary" id="submitBtn"
 				disabled="true" />
 		</s:form>
+		<p class="alert alert-danger" style="display: none" id="uErr">Username
+			already taken</p>
+		<p class="alert alert-danger" style="display: none" id="eErr">Email
+			already taken</p>
 	</div>
 
 

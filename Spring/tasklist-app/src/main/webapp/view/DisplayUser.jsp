@@ -16,6 +16,14 @@
 td, th {
 	text-align: center;
 }
+
+img {
+	object-fit: cover;
+	border-radius: 50%;
+	height: 70px;
+	width: 70px;
+	border: 1px solid black;
+}
 </style>
 </head>
 <body>
@@ -33,6 +41,7 @@ td, th {
 	<br>
 	<table class="table table-dark">
 		<tr>
+			<th scope="col">PROFILE</th>
 			<th scope="col">ID</th>
 			<th scope="col">FIRST NAME</th>
 			<th scope="col">LAST NAME</th>
@@ -53,6 +62,8 @@ td, th {
 		</tr>
 		<s:iterator status="status" value="users">
 			<tr class="hover-class">
+				<td><img
+					src="<s:url action='getImg'><s:param name='id' value='%{id}'></s:param></s:url>" /></td>
 				<td><s:property value="id" /></td>
 				<td><s:property value="firstName" /></td>
 				<td><s:property value="lastName" /></td>
