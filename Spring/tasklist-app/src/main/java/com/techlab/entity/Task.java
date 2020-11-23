@@ -22,7 +22,7 @@ public class Task {
 	@ManyToOne
 	@JoinColumn
 	private User user;
-	@OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<SubTask> subTasks = new HashSet<SubTask>();
 
 	public Task() {

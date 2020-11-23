@@ -6,16 +6,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Tasklist</title>
+<style>
+.check-with-label:checked+.label-for-check {
+	text-decoration-line: line-through;
+}
+</style>
 </head>
 <body>
 	<s:a href="display">display</s:a>
 
-	<s:form action="add.do" method="POST" enctype="multipart/form-data">
-		<s:textfield name="id" label="ID" />
-		<s:textfield name="name" label="Name" />
-		<s:file name="img" label="Enter Profile" />
-		<s:submit value="Submit" />
-	</s:form>
+	<s:checkbox name="done" fieldValue="%{done}"
+		onChange="this.form.submit()" class="check-with-label" theme="simple"
+		id="hello" />
+	<label class="label-for-check" for="hello"><s:property
+			value="title" /></label>
+
+
+	<input type="checkbox" class="check-with-label" id="exampleCheck1" onchange="alert('hello')">
+	<label class="label-for-check" for="exampleCheck1">Check me
+		out</label>
 
 </body>
 </html>

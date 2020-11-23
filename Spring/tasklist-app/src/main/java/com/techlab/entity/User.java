@@ -23,7 +23,7 @@ public class User {
 	private boolean blocked;
 	@Lob
 	private Blob img;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Task> tasks = new HashSet<Task>();
 
 	public User() {

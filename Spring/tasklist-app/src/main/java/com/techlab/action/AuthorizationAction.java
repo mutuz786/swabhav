@@ -31,6 +31,7 @@ public class AuthorizationAction extends ActionSupport implements SessionAware, 
 		if (authorizationService.isValid(user.getUsername(), user.getPassword())) {
 			User newUser = authorizationService.getUser(user.getUsername());
 			session.put("user", newUser);
+			session.put("loginUser", newUser);
 			session.put("isAdmin", user.isAdmin());
 			link = (String) ActionContext.getContext().getSession().get("link");
 			if (link == "home" || link == null)
@@ -42,6 +43,7 @@ public class AuthorizationAction extends ActionSupport implements SessionAware, 
 	}
 
 	public String logoutDo() {
+		session.remove("loginUser");
 		session.remove("user");
 		session.remove("task");
 		session.remove("isAdmin");

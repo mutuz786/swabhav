@@ -12,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.Action;
 import com.techlab.entity.Task;
 import com.techlab.entity.User;
+import com.techlab.service.SubTaskService;
 import com.techlab.service.TaskService;
 
 public class DisplayTaskAction implements Action, SessionAware {
 	@Autowired
-	private TaskService service;
+	private TaskService tService;
+	@Autowired
+	private SubTaskService sService;
 	private String id;
 	private List<Task> tasks;
 	private SessionMap<String, Object> session;
@@ -27,21 +30,21 @@ public class DisplayTaskAction implements Action, SessionAware {
 		User user = (User) session.get("user");
 		if (user == null)
 			return Action.ERROR;
-		tasks = service.getTasks(user.getId());
+		tasks = tService.getTasks(user.getId());
 		lengths = new ArrayList<Integer>();
-		for (Task temp : tasks) {
-			lengths.add(temp.getSubTasks().size());
+		for (Task tempTask : tasks) {
+			lengths.add(sService.getSubTasks(tempTask.getId()).size());
 		}
 		return Action.SUCCESS;
 	}
 
 	@SuppressWarnings("deprecation")
 	public String doCheck() {
-		Task task = service.getTask(id);
+		Task task = tService.getTask(id);
 		if (task.getDate().length() == 0) {
-			service.updateStatus(id, true, new Date().toGMTString());
+			tService.updateStatus(id, true, new Date().toGMTString());
 		} else {
-			service.updateStatus(id, false, "");
+			tService.updateStatus(id, false, "");
 		}
 		return Action.SUCCESS;
 	}

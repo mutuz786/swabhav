@@ -14,7 +14,7 @@ import com.techlab.entity.User;
 import com.techlab.service.TaskService;
 import com.techlab.service.UserService;
 
-public class TaskInterceptor implements Interceptor {
+public class UserInterceptor implements Interceptor {
 	private static final long serialVersionUID = 1L;
 	@Autowired
 	private UserService userService;
@@ -38,7 +38,7 @@ public class TaskInterceptor implements Interceptor {
 		ValueStack stack = invocation.getStack();
 		String id = stack.findString("id");
 		
-		if (session.get("user") == null) {
+		if (session.get("loginUser") == null) {
 			String[] uri = req.getRequestURI().split("/");
 			String link;
 			if (req.getQueryString() == null) {

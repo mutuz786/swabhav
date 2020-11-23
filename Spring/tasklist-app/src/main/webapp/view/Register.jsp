@@ -68,10 +68,11 @@
 	<div id="header"></div>
 
 	<br>
+	<h3 align="center">Register</h3>
+	<hr class="my-4">
+	<a class="nav-link active" href="user">Back</a>
+	<br>
 	<div align="center">
-		<h3>Register</h3>
-		<hr class="my-4">
-		<br>
 		<s:form action="register.do" method="post"
 			enctype="multipart/form-data">
 			<s:textfield name="firstName" label="Enter First Name"

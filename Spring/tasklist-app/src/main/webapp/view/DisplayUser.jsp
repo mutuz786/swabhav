@@ -73,15 +73,15 @@ img {
 				<td><s:property value="lengths[#status.index]" /></td>
 				<td width="100px"><s:form action="task" method="post">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Tasks" class="btn btn-success" />
+						<s:submit value="Tasks" class="btn btn-success" theme="simple"/>
 					</s:form></td>
 				<td width="100px"><s:form action="editUser" method="get">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Edit" class="btn btn-warning" />
+						<s:submit value="Edit" class="btn btn-warning" theme="simple"/>
 					</s:form></td>
 				<td width="100px"><s:form action="deleteUser.do" method="post">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Delete" class="btn btn-danger" />
+						<s:submit value="Delete" class="btn btn-danger" theme="simple"/>
 					</s:form></td>
 				<%
 					if (isAdmin) {
@@ -89,8 +89,7 @@ img {
 				<td width="100px"><s:form action="setBlocked.do" method="post">
 						<s:hidden name="id" value="%{id}" />
 						<s:checkbox name="blocked" fieldValue="%{bloocked}"
-							onChange="this.form.submit()" />
-						<s:property value="title" />
+							onChange="this.form.submit()" theme="simple"/>
 					</s:form></td>
 				<%
 					}
@@ -99,6 +98,5 @@ img {
 			</tr>
 		</s:iterator>
 	</table>
-
 </body>
 </html>

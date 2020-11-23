@@ -17,6 +17,9 @@ public class UserJSONAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		users = uService.getUsers();
+		for(User user:users) {
+			user.setTasks(null);
+		}
 		return "success";
 	}
 

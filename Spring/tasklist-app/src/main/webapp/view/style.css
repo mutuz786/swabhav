@@ -7,3 +7,13 @@ body {
 	margin-left: 12px;
 }
 
+.check-with-label:checked+.label-for-check {
+	text-decoration-line: line-through;
+}
+
+td, th {
+	text-align: center;
+}
+.leftAlign {
+	text-align: left;
+}

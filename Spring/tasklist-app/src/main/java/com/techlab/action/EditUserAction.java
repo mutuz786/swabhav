@@ -44,7 +44,7 @@ public class EditUserAction extends ActionSupport implements ModelDriven<EditUse
 
 	public String setBlockedDo() {
 		User user1 = uService.getUser(editUserVM.getId());
-		User user2 = (User) session.get("user");
+		User user2 = (User) session.get("loginUser");
 		System.out.println(user1.getId() + "|" + user2.getId());
 		if (!user1.getId().equals(user2.getId())) {
 			if (user1.isBlocked())

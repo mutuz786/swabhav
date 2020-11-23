@@ -8,7 +8,7 @@
 		value="/botdetectcaptcha" />
 	<constant name="struts.devMode" value="false" />
 
-	<package name="json_package" namespace="/json"
+	<package name="json" namespace="/json"
 		extends="json-default">
 		<interceptors>
 			<interceptor-stack name="defaultStack">
@@ -17,6 +17,7 @@
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
+		
 		<action name="userJson"
 			class="com.techlab.action.UserJSONAction">
 			<interceptor-ref name="defaultStack" />
@@ -31,12 +32,12 @@
 
 
 		<interceptors>
-			<interceptor name="taskInterceptor"
-				class="com.techlab.interceptor.TaskInterceptor"></interceptor>
+			<interceptor name="userInterceptor"
+				class="com.techlab.interceptor.UserInterceptor"></interceptor>
 
-			<interceptor-stack name="task">
+			<interceptor-stack name="customStack">
 				<interceptor-ref name="defaultStack" />
-				<interceptor-ref name="taskInterceptor" />
+				<interceptor-ref name="userInterceptor" />
 			</interceptor-stack>
 
 		</interceptors>
@@ -66,7 +67,7 @@
 		</action>
 		<action name="logout"
 			class="com.techlab.action.AuthorizationAction" method="logoutDo">
-			<result name="success">view/Login.jsp</result>
+			<result name="success" type="redirect">home</result>
 		</action>
 
 
@@ -93,12 +94,12 @@
 
 		<action name="user"
 			class="com.techlab.action.DisplayUserAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/DisplayUser.jsp</result>
 		</action>
 		<action name="addUser" method="execute"
 			class="com.techlab.action.AddUserAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/AddUser.jsp</result>
 		</action>
 		<action name="addUser.do" method="addDo"
@@ -108,7 +109,7 @@
 		</action>
 		<action name="editUser" method="execute"
 			class="com.techlab.action.EditUserAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/EditUser.jsp</result>
 		</action>
 		<action name="setBlocked.do" method="setBlockedDo"
@@ -127,18 +128,18 @@
 
 		<action name="task"
 			class="com.techlab.action.DisplayTaskAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/DisplayTask.jsp</result>
 			<result name="error" type="redirect">user</result>
 		</action>
 		<action name="task.check" method="doCheck"
 			class="com.techlab.action.DisplayTaskAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success" type="redirect">task</result>
 		</action>
 		<action name="addTask" method="execute"
 			class="com.techlab.action.AddTaskAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/AddTask.jsp</result>
 		</action>
 		<action name="addTask.do" method="addDo"
@@ -148,7 +149,7 @@
 		</action>
 		<action name="editTask" method="execute"
 			class="com.techlab.action.EditTaskAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/EditTask.jsp</result>
 		</action>
 		<action name="editTask.do" method="editDo"
@@ -163,18 +164,18 @@
 
 		<action name="subTask"
 			class="com.techlab.action.DisplaySubTaskAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/DisplaySubTask.jsp</result>
 			<result name="error" type="redirect">task</result>
 		</action>
 		<action name="subTask.check" method="doCheck"
 			class="com.techlab.action.DisplaySubTaskAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success" type="redirect">subTask</result>
 		</action>
 		<action name="addSubTask" method="execute"
 			class="com.techlab.action.AddSubTaskAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/AddSubTask.jsp</result>
 		</action>
 		<action name="addSubTask.do" method="addDo"
@@ -184,7 +185,7 @@
 		</action>
 		<action name="editSubTask" method="execute"
 			class="com.techlab.action.EditSubTaskAction">
-			<interceptor-ref name="task" />
+			<interceptor-ref name="customStack" />
 			<result name="success">view/EditSubTask.jsp</result>
 		</action>
 		<action name="editSubTask.do" method="editDo"

@@ -48,24 +48,27 @@ td, th {
 				<td class="leftAlign"><s:form action="task.check" method="post"
 						theme="simple">
 						<s:hidden name="id" value="%{id}" />
-						<s:checkbox name="done" fieldValue="%{done}"
-							onChange="this.form.submit()" class="check-with-label" />
-						<s:property value="title" />
+						<input type="checkbox" class="check-with-label" id="exampleCheck1"
+							onchange="this.form.submit()" name="done" value="true"
+							<s:if test = "done"> checked="checked"</s:if>>
+						<label class="label-for-check" for="exampleCheck1"><s:property
+								value="title" /></label>
+
 					</s:form></td>
 
 				<td><s:property value="date" /></td>
 				<td><s:property value="lengths[#status.index]" /></td>
 				<td width="100px"><s:form action="subTask" method="post">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Subtask" class="btn btn-success" />
+						<s:submit value="Subtask" class="btn btn-success" theme="simple" />
 					</s:form></td>
 				<td width="100px"><s:form action="editTask" method="get">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Edit" class="btn btn-warning" />
+						<s:submit value="Edit" class="btn btn-warning" theme="simple" />
 					</s:form></td>
 				<td width="100px"><s:form action="deleteTask.do" method="post">
 						<s:hidden name="id" value="%{id}" />
-						<s:submit value="Delete" class="btn btn-danger" />
+						<s:submit value="Delete" class="btn btn-danger" theme="simple" />
 					</s:form></td>
 			</tr>
 		</s:iterator>
